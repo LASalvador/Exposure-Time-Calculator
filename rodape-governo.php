@@ -15,5 +15,5 @@
 </div>
 
 <div class="assina-inpe" >
-	<div class="conteudo-rodape">2018 © INPE - Instituto Nacional de Pesquisas Espaciais <span class="right">Desenvolvido por <a href="/ti/" title="Acesse COCTI/INPE" />CEA/INPE</a></span></div>
+	<div class="conteudo-rodape">2018 © INPE - Instituto Nacional de Pesquisas Espaciais <span class="right">Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank" />CEA/INPE</a></span></div>
 </div>
