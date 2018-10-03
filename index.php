@@ -22,11 +22,14 @@
 	<!-- CONTRASTE -->
 	<link media="all" href="/css/css-intranet-inpe-contraste.css" rel="stylesheet" id="intranet-css-contraste" /> 
 	<link media="all" href="/css/css-menu-contraste.css" rel="stylesheet" id="menu-css-contraste" /> 
-	<!-- css do modal -->
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
 
 	<script src="/js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
 	<script src="/js/jquery/jquery.cookie.js" type="application/javascript"></script>  
+	<script src="/js/functions.js" type="application/javascript"></script>
+
+	<!-- css do modal -->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>  
+	<!-- JS do Modal-->
 	<script type="text/javascript" src="/js/modal.js"></script>
 	<style>
 		.city {display:none}
@@ -37,7 +40,7 @@
 		table td{
 			border: 1px solid #606060 ;
 			margin: 2px;
-			padding: 2px;
+			padding: 5px;
 		}
 	</style>
 
@@ -94,7 +97,7 @@
 									</p>
 									<p>
 										<label for="tTemp">Time Integration</label><br>
-										<input type="Number" name="tTemp" id="cTemp" placeholder="60" min=0.001 max="100.000" /><font>s</font>
+										<input type="Number" name="tTemp" id="cTemp" placeholder="60" min=0 max="100.000" /><font>s</font>
 									</p>
 									<p>
 										<label for="">Number of WavePlate</label>
@@ -132,13 +135,13 @@
 										<label for="">Detector</label>
 										<br>
 
-										<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray">Choice CCD</a>
+										<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-gray">Click to Choice a CCD</a>
 										<div id="id01" class="w3-modal">
 										 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
 										  <header class="w3-container w3-blue"> 
 										   <span onclick="document.getElementById('id01').style.display='none'" 
 										   class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
-										   <h2>Header</h2>
+										   <h2>CCDs</h2>
 										  </header>
 										  <!-- Realiza as transições de tabs -->
 										  <div class="w3-bar w3-border-bottom">
@@ -153,44 +156,46 @@
 
 										  <div id="105" class="w3-container city">
 										   <h1> CCD - 105</h1>
-										   <table id="105">
-										   	<tr>
-										   		<td>Type</td>
-										   		<td colspan="2">Marconi CCD42-40-1-368</td>
-										   	<tr>
-										   	<tr>
-										   		<td> Image Size[pixels]</td>
-										   		<td> 2048 X 2048</td>
-										   	</tr>
-										   	<tr>
-										   		<td> Pixel Size[microns]</td>
-										   		<td> 13,5 X 13,5</td>
-										   	</tr>
-										   	<tr>
-										   		<td> Dark current [e-/pixel/s]</td>
-										   		<td> 1.5X10<sup>-4</sup></td>
-										   	</tr>
-										   	<tr>
-										   		<td>Saturation</td>
-										   		<td> 9X10<sup>4</sup></td>
-										   	</tr>
-										   	<tr>
-										   		<td>Controller</td>
-										   		<td>WI Mark2e</td>
-										   	</tr>
+										   <table id="105-1">
+											   	<tr>
+											   		<td>Type</td>
+											   		<td colspan="2">Marconi CCD42-40-1-368</td>
+											   	</tr>
+											   	<tr>
+											   		<td> Image Size[pixels]</td>
+											   		<td> 2048 X 2048</td>
+											   	</tr>
+											   	<tr>
+											   		<td> Pixel Size[microns]</td>
+											   		<td> 13,5 X 13,5</td>
+											   	</tr>
+											   	<tr>
+											   		<td> Dark current [e-/pixel/s]</td>
+											   		<td> 1.5X10<sup>-4</sup></td>
+											   	</tr>
+											   	<tr>
+											   		<td>Saturation</td>
+											   		<td> 9X10<sup>4</sup></td>
+											   	</tr>
+											   	<tr>
+											   		<td>Controller</td>
+											   		<td>WI Mark2e</td>
+											   	</tr>
+										   </table>
+										   <table id="105-2">
 										   	<tr>
 										   		<td>Mode</td>
-										   		<td>Slow</td>
-										   		<td>Fast</td>
-										   	</tr>
-										   	<tr>
 										   		<td>Readout Noise</td>
-										   		<td>2.5</td>
-										   		<td>4.0</td>
+										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td>Gain</td>
+										   		<td>Slow</td>
 										   		<td>2.5</td>
+										   		<td>2.5</td>
+										   	</tr>
+										   	<tr>
+										   		<td>Fast</td>
+										   		<td>4.0</td>
 										   		<td>2.5</td>
 										   	</tr>
 										   </table>
@@ -198,11 +203,11 @@
 
 										  <div id="106" class="w3-container city">
 										   <h1>CCD - 106</h1>
-										   	<table id="106">
+										   	<table id="106-1">
 										   	<tr>
 										   		<td>Type</td>
 										   		<td colspan="2">SITe SI003AB</td>
-										   	<tr>
+										   	</tr>
 										   	<tr>
 										   		<td> Image Size[pixels]</td>
 										   		<td> 1024 X 1024</td>
@@ -223,19 +228,21 @@
 										   		<td>Controller</td>
 										   		<td>WI Mark2e</td>
 										   	</tr>
+										   </table>
+										   <table id="106-2">
 										   	<tr>
 										   		<td>Mode</td>
-										   		<td>Slow</td>
-										   		<td>Fast</td>
-										   	</tr>
-										   	<tr>
 										   		<td>Readout Noise</td>
-										   		<td>4.1</td>
-										   		<td>9.5</td>
+										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td>Gain</td>
+										   		<td>Slow</td>
+										   		<td>4.1</td>
 										   		<td>5.0</td>
+										   	</tr>
+										   	<tr>
+										   		<td>Fast</td>
+										   		<td>9.5</td>
 										   		<td>5.0</td>
 										   	</tr>
 										   </table>
@@ -854,12 +861,13 @@
 										    <table id="iXon-1">
 										    	<tr>
 										    		<td>Image Size[pixels]</td>
-										    		<td>1024X1024</td>
+										    		<td>1024 X 1024</td>
 										    	</tr>
 										    	<tr>
 										    		<td>Pixel Size[microns]</td>
 										    		<td>13,0 X 13,0</td>
 										    	</tr>
+										    </table>
 										    <table id="iXon-2">
 										    	<tr>
 										    		<td>A/D Rate</td>
@@ -977,6 +985,122 @@
 										    		<td>401</td>
 										    	</tr>
 										    </table>
+										    <table id="iXon-3">
+										    	<tr>
+										    		<td>A/D Rate</td>
+										    		<td>Preamp setting</td>
+										    		<td>CCD sensitivy</td>
+										    		<td>Single Pixel Noise</td>
+										    		<td>Base Mean Level</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="2">10MHz 14 bit EM Amplifier</td>
+										    		<td>x2.5</td>
+										    		<td>22.5</td>
+										    		<td>56.5</td>
+										    		<td>379</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>10.5</td>
+										    		<td>48</td>
+										    		<td>363</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="3">5 MHz 14 bit EM Amplifier</td>
+										    		<td>x1.0</td>
+										    		<td>49.8</td>
+										    		<td>77.3</td>
+										    		<td>407</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 2.5</td>
+										    		<td>20.2</td>
+										    		<td>48.9</td>
+										    		<td>410</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>8.9</td>
+										    		<td>36.9</td>
+										    		<td>419</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="3">3 MHz 14 bit EM Amplifier</td>
+										    		<td>x 1.0</td>
+										    		<td>47.5</td>
+										    		<td>51.9</td>
+										    		<td>409</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x  2.5</td>
+										    		<td>19.8</td>
+										    		<td>34.8</td>
+										    		<td>414</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>9</td>
+										    		<td>28.7</td>
+										    		<td>416</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="3">1 MHz 16bit EM Amplifier</td>
+										    		<td>x 1.0</td>
+										    		<td>20</td>
+										    		<td>33.9</td>
+										    		<td>401</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 2.5</td>
+										    		<td>7.9</td>
+										    		<td>20.5</td>
+										    		<td>401</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>3.6</td>
+										    		<td>17.2</td>
+										    		<td>401</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="3">3MHz 14 bit CON Amplifier</td>
+										    		<td>x 1.0</td>
+										    		<td>9.9</td>
+										    		<td>14.4</td>
+										    		<td>396</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 2.5</td>
+										    		<td>3.9</td>
+										    		<td>10.6</td>
+										    		<td>398</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>1.7</td>
+										    		<td>9.3</td>
+										    		<td>400</td>
+										    	</tr>
+										    	<tr>
+										    		<td rowspan="3">1MHz 16 bit CON Amplifier</td>
+										    		<td>x 1.0</td>
+										    		<td>3.7</td>
+										    		<td>8.1</td>
+										    		<td>400</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 2.5</td>
+										    		<td>1.5</td>
+										    		<td>6.3</td>
+										    		<td>401</td>
+										    	</tr>
+										    	<tr>
+										    		<td>x 5.1</td>
+										    		<td>0.7</td>
+										    		<td>5.7</td>
+										    		<td>401</td>
+										    	</tr>
 										    </table>
 										  </div>
 
@@ -1020,7 +1144,7 @@
 										<input type="radio" name="tSky" id="cSky1" checked>
 										<label for="cSky1">Photometric</label>
 										<input type="radio" name="tSky" id="cSky2">
-										<label for="cSky2">God</label>
+										<label for="cSky2">Good</label>
 										<input type="radio" name="tSky" id="cSky3">
 										<label for="cSky3">Regular</label>
 									</p>
