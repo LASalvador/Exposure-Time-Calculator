@@ -1,0 +1,114 @@
+{
+	"A":{
+		"readoutNoise":2.5,
+		"gain": 2.5
+	},
+	"B":{
+		"readoutNoise": 4.0,
+		"gain":2.5
+	},
+	"C":{
+		"readoutNoise": 4.1,
+		"gain":5.0
+	},
+	"D":{
+		"readoutNoise": 9.5,
+		"gain":5.0
+	},
+	"E":{
+		"readoutNoise":68.8 ,
+		"gain":7.1
+	},
+	"F":{
+		"readoutNoise": 50.9,
+		"gain": 4.0
+	},
+	"G":{
+		"readoutNoise":32.3 ,
+		"gain": 2.0
+	},
+	"H":{
+		"readoutNoise": 28.2,
+		"gain":3.5
+	},
+	"I":{
+		"readoutNoise": 18.3 ,
+		"gain": 1.8
+	},
+	"J":{
+		"readoutNoise": 12.1 ,
+		"gain": 1.0
+	},
+	"K":{
+		"readoutNoise": 11.2 ,
+		"gain": 3.5
+	},
+	"L":{
+		"readoutNoise":6.9 ,
+		"gain":1.8
+	},
+	"M":{
+		"readoutNoise": 6.0 ,
+		"gain": 0.9
+	},
+	"N":{
+		"readoutNoise": 4.1 ,
+		"gain": 3.4
+	},
+	"O":{
+		"readoutNoise":3.2 ,
+		"gain": 1.8
+	},
+	"P":{
+		"readoutNoise": 2.9,
+		"gain": 0.9
+	},
+	"Q":{
+		"readoutNoise": 56.3 ,
+		"gain": 6.1
+	},
+	"R":{
+		"readoutNoise": 35.0,
+		"gain":3.3
+	},
+	"S":{
+		"readoutNoise": 29.7,
+		"gain":1.8
+	},
+	"T":{
+		"readoutNoise": 26.6,
+		"gain":3.7
+	},
+	"U":{
+		"readoutNoise": 16.6,
+		"gain": 2.0
+	},
+	"V":{
+		"readoutNoise": 12.2,
+		"gain":1.0
+	},
+	"W":{
+		"readoutNoise": 9.2,
+		"gain":3.5
+	},
+	"X":{
+		"readoutNoise":7.7 ,
+		"gain":1.9
+	},
+	"Y":{
+		"readoutNoise": 6.3,
+		"gain":1.0
+	},
+	"Z":{
+		"readoutNoise":3.9 ,
+		"gain":3.5
+	},
+	"AA":{
+		"readoutNoise": 3.3 ,
+		"gain": 1.9
+	},
+	"AB":{
+		"readoutNoise": 3.1,
+		"gain":1.0
+	}
+}
