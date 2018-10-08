@@ -1,4 +1,5 @@
 {
+	"COMMENT":"CCD 105",
 	"A":{
 		"readoutNoise":2.5,
 		"gain": 2.5
@@ -7,6 +8,7 @@
 		"readoutNoise": 4.0,
 		"gain":2.5
 	},
+	"COMMENT":"CCD 106",
 	"C":{
 		"readoutNoise": 4.1,
 		"gain":5.0
@@ -15,6 +17,7 @@
 		"readoutNoise": 9.5,
 		"gain":5.0
 	},
+	"COMMENT":"CCD iKon 10127",
 	"E":{
 		"readoutNoise":68.8 ,
 		"gain":7.1
@@ -63,6 +66,7 @@
 		"readoutNoise": 2.9,
 		"gain": 0.9
 	},
+	"COMMENT":"CCD iKon 9867",
 	"Q":{
 		"readoutNoise": 56.3 ,
 		"gain": 6.1
