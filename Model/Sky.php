@@ -9,9 +9,11 @@
 		private $transparencySky;
 		private $magnitudeSky;
 		
-		function __construct(argument)
+		function __construct($transparency, $magnitude)
 		{
-			# code...
+			//$this->setNumberPhotons();
+			$this->setTransparencySky($transparency);
+			$this->setMagnitudeSky($magnitude);
 		}
 		public function setNumberPhotons($numberPhotons)
 		{
@@ -23,7 +25,18 @@
 		}
 		public function setTransparencySky($transparency)
 		{
-			$this->transparencySky = $transparency;
+			if($transparency == 1)
+			{
+				$this->transparencySky = 0.7;
+			}
+			else if($transparency ==2)
+			{
+				$this->transparencySky = 0.5;	
+			}
+			else
+			{
+				$this->transparencySky = 0.3;
+			}
 		}
 		public function getTransparencySky()
 		{
@@ -31,7 +44,18 @@
 		}
 		public function setMagnitudeSky($magnitude)
 		{
-			$this->magnitudeSky = $magnitude;
+			if($magnitude == 1)
+			{
+				$this->magnitudeSky = 24;
+			}
+			else if($magnitude == 2)
+			{
+				$this->magnitudeSky = 23;	
+			}
+			else
+			{
+				$this->magnitudeSky = 22;
+			}
 		}
 		public function getMagnitudeSKy()
 		{

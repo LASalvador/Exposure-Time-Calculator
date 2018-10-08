@@ -9,10 +9,12 @@
  	private $aperture;
  	private $focalReducer;
  	private $plateScale;
- 	private $cdd
- 	function __construct(argument)
+ 	private $ccd;
+ 	function __construct($numberWavePlates,$aperture,$focal)
  	{
- 		# code...
+ 		$this->setNumberWavePlates($numberWavePlates);
+ 		$this->setAperture($aperture);
+ 		$this->setFocalReducer($focal);
  	}
  	public function setNumberWavePlates($number)
  	{
@@ -26,7 +28,7 @@
  	{
  		$this->aperture = $aperture;
  	}
- 	public function getAperture ($value='')
+ 	public function getAperture()
  	{
  		 return $this->aperture;	
  	}

@@ -3,14 +3,19 @@
 	 * This class represents the CCD.
 	 * @author: Lucas Almeida Salvador
 	 */
+
+	include_once 'ReaderJSON.php';
 	class CCD
 	{
 		private $readoutNoise;
 		private $gain;
 		private $quantumEfficiency;
-		public function __construct(argument)
+		public function __construct($ccdNumber,$ccdType, $filter)
 		{
-			# code...
+			$reader = new ReaderJSON();
+			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($ccdNumber,$filter));
+			$this->setReadoutNoise($reader->readCCDvalues($ccdType,'readoutNoise'));
+			$this->setGain($reader->readCCDvalues($ccdType,'gain'));
 		}
 		public function setReadoutNoise($readoutNoise)
 		{
@@ -31,6 +36,10 @@
 		public function setQuanTumEfficiency($quantum)
 		{
 			$this->quantumEfficiency = $quantum;
+		}
+		public function getQuanTumEfficiency()
+		{
+			return $this->quantumEfficiency;
 		}
 
 	}

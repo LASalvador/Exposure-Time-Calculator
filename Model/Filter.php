@@ -1,25 +1,24 @@
 <?php
  /**
   * This class represents the Filter used during the observation
+  * @author: Lucas Almeida Salvador
   */
+
+ include_once 'ReaderJSON.php';
  class Filter 
  {
- 	private $centerBandLength;
  	private $filterWidth;
  	private $effectiveLenght;
  	private $fluxZero;
 
- 	function __construct(argument)
+ 	function __construct($filter)
  	{
- 		# code...
- 	}
- 	public function setCenterBandLength($centerBandLength)
- 	{
- 		$this->centerBandLength = $centerBandLength;
- 	}
- 	public function getCenterBandLength()
- 	{
- 		return $this->centerBandLength;
+ 		$reader = new ReaderJSON();
+ 		$this->setFilterWidth($reader->readFilter($filter, 'filterWidth'));
+ 		$this->setEffectiveLenght($reader->readFilter($filter,'effectiveLenght'));
+ 		$this->setFluxZero($reader->readFilter($filter,'fluxZero'));
+
+
  	}
  	public function setFilterWidth($filter)
  	{
@@ -29,15 +28,15 @@
  	{
  		return $this->filterWidth;
  	}
- 	public function setEffectiveLenght($effectiveLenght)
+ 	public function setEffectiveLenght($effective)
  	{
- 		$this->effectiveLenght = $effectiveLenght;
+ 		$this->effectiveLenght = $effective;
  	}
  	public function getEffectiveLenght()
  	{
  		return $this->effectiveLenght;
  	}
- 	public function setFluxZerou($flux)
+ 	public function setFluxZero($flux)
  	{
  		$this->fluxZero = $flux;
  	}
