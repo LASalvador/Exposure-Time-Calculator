@@ -10,11 +10,12 @@
  	private $focalReducer;
  	private $plateScale;
  	private $ccd;
- 	function __construct($numberWavePlates,$aperture,$focal)
+ 	function __construct($numberWavePlates,$aperture,$focal,$ccd)
  	{
  		$this->setNumberWavePlates($numberWavePlates);
  		$this->setAperture($aperture);
  		$this->setFocalReducer($focal);
+ 		$this->setCCD($ccd);
  	}
  	public function setNumberWavePlates($number)
  	{
