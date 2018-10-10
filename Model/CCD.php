@@ -10,9 +10,12 @@
 		private $readoutNoise;
 		private $gain;
 		private $quantumEfficiency;
-		public function __construct($ccdNumber,$ccdType, $filter)
+		private $ccdNumber;
+		public function __construct($ccdType, $filter)
 		{
+
 			$reader = new ReaderJSON();
+			$this->setCCDNumber($ccdType);
 			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($ccdNumber,$filter));
 			$this->setReadoutNoise($reader->readCCDvalues($ccdType,'readoutNoise'));
 			$this->setGain($reader->readCCDvalues($ccdType,'gain'));
@@ -40,6 +43,33 @@
 		public function getQuanTumEfficiency()
 		{
 			return $this->quantumEfficiency;
+		}
+		public function setCCDNumber($letter)
+		{
+			if($letter>='A' && $letter<='B')
+			{
+				$this->ccdNumber = 'CCD1';
+			}
+			if($letter>='C' && $letter<='D')	
+			{
+				$this->ccdNumber = 'CCD2';
+			}
+			if($letter>='E' && $letter<='AB')
+			{
+				$this->ccdNumber = 'CCD3';
+			}
+			/*if($letter>='' && $letter<='')	
+			{
+				$this->ccdNumber = 'CCD4';
+			}
+			if($letter>='' && $letter<='')
+			{
+				$this->ccdNumber = 'CCD5';
+			}
+			if($letter>='' && $letter<='')	
+			{
+				$this->ccdNumber = 'CCD6';
+			}*/
 		}
 
 	}

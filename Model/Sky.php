@@ -9,11 +9,11 @@
 		private $transparencySky;
 		private $magnitudeSky;
 		
-		function __construct($transparency, $magnitude)
+		function __construct($transparencySky, $moonPhase)
 		{
 			//$this->setNumberPhotons();
-			$this->setTransparencySky($transparency);
-			$this->setMagnitudeSky($magnitude);
+			$this->setTransparencySky($transparencySky);
+			$this->setMagnitudeSky($moonPhase);
 		}
 		public function setNumberPhotons($numberPhotons)
 		{
