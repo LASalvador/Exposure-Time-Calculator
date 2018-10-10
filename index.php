@@ -92,7 +92,7 @@
                             <strong>ETC</strong>
 							<br>
 							<!-- Begging of Form -->
-							<form method="post" id="fEtc" action="">
+							<form method="post" id="fEtc" action="Controller/Controller.php">
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
@@ -122,10 +122,10 @@
 									</p>
 									<p>
 										<label for="cSigma">Sigma P</label>
-										<input type="Number" name="tSigma" id="cSigmaP" placeholder="0.1" min=0 max=100 />
+										<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1" min=0 max=100 />
 										<font>%</font> &nbsp; &nbsp;&nbsp;&nbsp;
 										<label for="cSigma">Sigma V</label>
-										<input type="Number" name="tSigma" id="cSigmaV" placeholder="0.1" min=0 max=100/>
+										<input type="Number" name="tSigmaV" id="cSigmaV" placeholder="0.1" min=0 max=100/>
 										<font>%</font>
 									</p>
 									<p>
@@ -193,12 +193,12 @@
 										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD1" value="1"/><label for="cCCD1">Slow</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD1" value="A"/><label for="cCCD1">Slow</label></td>
 										   		<td>2.5</td>
 										   		<td>2.5</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD2" value="2"/><label for="cCCD2">Fast</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD2" value="B"/><label for="cCCD2">Fast</label></td>
 										   		<td>4.0</td>
 										   		<td>2.5</td>
 										   	</tr>
@@ -241,12 +241,12 @@
 										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD3" value="3"/><label for="cCCD3">Slow</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD3" value="C"/><label for="cCCD3">Slow</label></td>
 										   		<td>4.1</td>
 										   		<td>5.0</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD4" value="4"/><label for="cCCD4">Fast</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD4" value="D"/><label for="cCCD4">Fast</label></td>
 										   		<td>9.5</td>
 										   		<td>5.0</td>
 										   	</tr>
@@ -283,7 +283,7 @@
 										   			<td><p>Base Mean Level</p></td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD5" value="5"/><label for="cCCD5">1</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD5" value="E"/><label for="cCCD5">1</label></td>
 										   			<td>5.0</td>
 										   			<td>x 1</td>
 										   			<td>7.1</td>
@@ -291,7 +291,7 @@
 										   			<td>2118</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD6" value="6"/><label for="cCCD6">2</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD6" value="F"/><label for="cCCD6">2</label></td>
 										   			<td>5.0</td>
 										   			<td>x 2</td>
 										   			<td>4.0</td>
@@ -299,7 +299,7 @@
 										   			<td>3205</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD7" value="7"/><label for="cCCD7">3</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD7" value="G"/><label for="cCCD7">3</label></td>
 										   			<td>5.0</td>
 										   			<td>x 4</td>
 										   			<td>2.0</td>
@@ -307,7 +307,7 @@
 										   			<td>4795</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD8" value="8"/><label for="cCCD8">4</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD8" value="H"/><label for="cCCD8">4</label></td>
 										   			<td>3.0</td>
 										   			<td>x 1</td>
 										   			<td> 3.5</td>
@@ -315,7 +315,7 @@
 										   			<td>1363</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD9" value="9"/><label for="cCCD9">5</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD9" value="I"/><label for="cCCD9">5</label></td>
 										   			<td>3.0</td>
 										   			<td>x 2</td>
 										   			<td>1.8</td>
@@ -323,7 +323,7 @@
 										   			<td>1769</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD10" value="10"/><label for="cCCD10">6</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD10" value="J"/><label for="cCCD10">6</label></td>
 										   			<td>3.0</td>
 										   			<td>x 4</td>
 										   			<td>1.0</td>
@@ -331,7 +331,7 @@
 										   			<td>2119</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD11" value="11"/><label for="cCCD11">7</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD11" value="K"/><label for="cCCD11">7</label></td>
 										   			<td>1.0</td>
 										   			<td>x 1</td>
 										   			<td>3.5</td>
@@ -339,7 +339,7 @@
 										   			<td>855</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD12" value="12"/><label for="cCCD12">8</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD12" value="L"/><label for="cCCD12">8</label></td>
 										   			<td>1.0</td>
 										   			<td>x 2</td>
 										   			<td>1.8</td>
@@ -347,7 +347,7 @@
 										   			<td>875</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD13" value="13"/><label for="cCCD13">9</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD13" value="M"/><label for="cCCD13">9</label></td>
 										   			<td>1.0</td>
 										   			<td>x 4</td>
 										   			<td>0.9</td>
@@ -355,7 +355,7 @@
 										   			<td>887</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD14" value="14"/><label for="cCCD14">10</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD14" value="N"/><label for="cCCD14">10</label></td>
 										   			<td>0.05</td>
 										   			<td>x 1</td>
 										   			<td>3.4</td>
@@ -363,7 +363,7 @@
 										   			<td>836</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD15" value="15"/><label for="cCCD15">11</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD15" value="O"/><label for="cCCD15">11</label></td>
 										   			<td>0.05</td>
 										   			<td>x 2</td>
 										   			<td>1.8</td>
@@ -371,7 +371,7 @@
 										   			<td>858</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD16" value="16"/><label for="cCCD16">12</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD16" value="P"/><label for="cCCD16">12</label></td>
 										   			<td>0.05</td>
 										   			<td>x 4</td>
 										   			<td>0.9</td>
@@ -391,7 +391,7 @@
 										   			<td><p>Base Mean Level</p></td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD17" value="17"/><label for="cCCD17">1</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD17" value="Q"/><label for="cCCD17">1</label></td>
 										   			<td>5.0</td>
 										   			<td>x 1</td>
 										   			<td>6.1</td>
@@ -399,7 +399,7 @@
 										   			<td>2196</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD18" value="18"/><label for="cCCD18">2</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD18" value="R"/><label for="cCCD18">2</label></td>
 										   			<td>5.0</td>
 										   			<td>x 2</td>
 										   			<td>3.3</td>
@@ -407,7 +407,7 @@
 										   			<td>3340</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD19" value="19"/><label for="cCCD19">3</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD19" value="S"/><label for="cCCD19">3</label></td>
 										   			<td>5.0</td>
 										   			<td>x 4</td>
 										   			<td>1.8</td>
@@ -415,7 +415,7 @@
 										   			<td>4983</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD20" value="20"/><label for="cCCD20">4</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD20" value="T"/><label for="cCCD20">4</label></td>
 										   			<td>3.0</td>
 										   			<td>x 1</td>
 										   			<td>3.7</td>
@@ -423,7 +423,7 @@
 										   			<td>1335</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD21" value="21"/><label for="cCCD21">5</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD21" value="U"/><label for="cCCD21">5</label></td>
 										   			<td>3.0</td>
 										   			<td>x 2</td>
 										   			<td>2.0</td>
@@ -431,7 +431,7 @@
 										   			<td>1756</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD22" value="22"/><label for="cCCD22">6</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD22" value="V"/><label for="cCCD22">6</label></td>
 										   			<td>3.0</td>
 										   			<td>x 4</td>
 										   			<td>1.0</td>
@@ -439,7 +439,7 @@
 										   			<td>2094</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD23" value="23"/><label for="cCCD23">7</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD23" value="W"/><label for="cCCD23">7</label></td>
 										   			<td>1.0</td>
 										   			<td>x 1</td>
 										   			<td>3.5</td>
@@ -447,7 +447,7 @@
 										   			<td>930</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD24" value="24"/><label for="cCCD24">8</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD24" value="X"/><label for="cCCD24">8</label></td>
 										   			<td>1.0</td>
 										   			<td>x 2</td>
 										   			<td>1.9</td>
@@ -455,7 +455,7 @@
 										   			<td>909</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD25" value="25"/><label for="cCCD25">9</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD25" value="Y"/><label for="cCCD25">9</label></td>
 										   			<td>1.0</td>
 										   			<td>x 4</td>
 										   			<td>1.0</td>
@@ -463,7 +463,7 @@
 										   			<td>839</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD26" value="26"/><label for="cCCD26">10</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD26" value="Z"/><label for="cCCD26">10</label></td>
 										   			<td>0.05</td>
 										   			<td>x 1</td>
 										   			<td>3.5</td>
@@ -471,7 +471,7 @@
 										   			<td>873</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD27" value="27"/><label for="cCCD27">11</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD27" value="AA"/><label for="cCCD27">11</label></td>
 										   			<td>0.05</td>
 										   			<td>x 2</td>
 										   			<td>1.9</td>
@@ -479,7 +479,7 @@
 										   			<td>852</td>
 										   		</tr>
 										   		<tr>
-										   			<td><input type="radio" name="tCCD" id="cCCD28" value="28"/><label for="cCCD28">12</label></td>
+										   			<td><input type="radio" name="tCCD" id="cCCD28" value="AB"/><label for="cCCD28">12</label></td>
 										   			<td>0.05</td>
 										   			<td>x 4</td>
 										   			<td>1.0</td>
@@ -490,6 +490,7 @@
 										   <!--End CCD Ikon table 9867 -->
 										  </div>
 										  <!-- End tab CCD iKon 10127 9867 -->
+										  <!-- Mudar Values daqui p frente -->
 										  <!-- Begin CCD iKon 14912 -->
 										  <div id="iKon-L936-EX" class="w3-container city">
 											<h1> CCD - iKon - 14912</h1>
