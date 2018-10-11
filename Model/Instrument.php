@@ -10,12 +10,13 @@
  	private $focalReducer;
  	private $plateScale;
  	private $ccd;
- 	function __construct($numberWavePlates,$aperture,$focal,$ccd)
+ 	function __construct($numberWavePlates, $dTel,$focal,$ccd)
  	{
  		$this->setNumberWavePlates($numberWavePlates);
- 		$this->setAperture($aperture);
+ 		$this->setAperture($dTel);
  		$this->setFocalReducer($focal);
  		$this->setCCD($ccd);
+ 		$this->setPlateScale($ccd->getCCDNumber(),$focal, $dTel);
  	}
  	public function setNumberWavePlates($number)
  	{
@@ -41,9 +42,48 @@
  	{
  		return $this->focalReducer;
  	}
- 	public function setPlateScale($plateScale)
+ 	public function setPlateScale($ccdNumber, $focalReducer, $dTel)
  	{
- 		$this->plateScale = $plateScale;
+
+ 		if($ccdNumber == "CCD2")
+ 		{
+ 			if($focalReducer == 1 && $dTel == 0.6)
+ 			{
+ 				$this->plateScale = 1.208;		
+ 			}
+ 			elseif ($focalReducer == 1 && $dTel == 1.6) 
+ 			{
+ 				$this->plateScale = 0.64;
+ 			}
+ 			elseif($focalReducer == 0 && $dTel == 0.6)
+ 			{
+ 				$this->plateScale = 0.604;
+ 			}
+ 			elseif($focalReducer == 0 && $dTel == 1.6)
+ 			{
+ 				$this->plateScale = 0.32;
+ 			}
+ 		}
+ 		else
+ 		{
+ 			if($focalReducer == 1 && $dTel == 0.6)
+ 			{
+ 				$this->plateScale = 0.68;		
+ 			}
+ 			elseif($focalReducer == 1 && $dTel == 1.6) 
+ 			{
+ 				$this->plateScale = 0.36;
+ 			}
+ 			elseif($focalReducer == 0 && $dTel == 0.6)
+ 			{
+ 				$this->plateScale = 0.34;
+ 			}
+ 			elseif($focalReducer == 0 && $dTel == 1.6)
+ 			{
+ 				$this->plateScale = 0.18;
+ 			}
+
+ 		}
  	}
  	public function getPlateScale()
  	{
