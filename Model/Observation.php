@@ -14,34 +14,46 @@
  	private $numberPixels;
  	private $radiusAperture;
  	private $timeExposure;
- 	const PI = 3.14159;
- 	const H = 6.62607e-34; 
- 	const K = 1.18531e10;
 
- 	function __construct()
+ 	function __construct($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $rap )
  	{
+ 		$this->setMagnitude($mag);
+ 		$this->setRadiusAperture($rap);
+ 		$this->setNumberPixels($rap);
+ 		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag);
  	}
- 	public function setSigmaP($snr, $nwp, $type)
+ 	public function setSigmaP($type, $snr, $nwp, $sigmaP = 0)
  	{
  		if($type == 1)
- 		{
+ 		{ // in this type use wave 1/2
  			$temp = (100/sqrt($snr))*(1/$nwp);
+ 			$this->sigmaP = $temp;
+ 		}
+ 		elseif($type == 2)
+ 		{ // this type use wave 1/4
+ 			$temp = (1/2) * ((100/sqrt($snr)) * (1/$nwp));
  			$this->sigmaP = $temp;
  		}
  		else
  		{
- 			$temp = (1/2) * ((100/sqrt($snr)) * (1/$nwp));
- 			$this->sigmaP = $temp;
+ 			$this->sigmaP = $sigmaP;	
  		}
  	}
  	public function getSigmaP()
  	{
  		return	$this->sigmaP;
  	}
- 	public function setSigmaV($snr, $nwp)
+ 	public function setSigmaV($type, $snr, $nwp, $sigmaV)
  	{
- 		$temp = (1/sqrt(2)) * (100/sqrt($snr)) * (1/$nwp);
- 		$this->sigmaV = $temp;
+ 		if($type == 1)
+ 		{
+ 			$temp = (1/sqrt(2)) * (100/sqrt($snr)) * (1/$nwp);
+ 			$this->sigmaV = $temp;
+ 		}
+ 		else
+ 		{
+ 			$this->sigmaV = $getSigmaV;
+ 		}
  	}
  	public function getSigmaV()
  	{
@@ -49,7 +61,7 @@
  	}
  	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag)
  	{
- 			$this->numberPhotons = $q * $tSky * K * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, 0.4*$mag);
+ 			$this->numberPhotons = $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, 0.4*$mag);
  	}
  	public function getNumberPhotons()
  	{
@@ -73,7 +85,7 @@
  	}
  	public function setNumberPixels($rap)
  	{
- 		$this->numberPixels = PI * pow($rap, 2);
+ 		$this->numberPixels =  3.14159 * pow($rap, 2);
  	}
  	public function getNumberPixels()
  	{
@@ -87,7 +99,7 @@
  	{
  		return $this->radiusAperture;
  	}
- 	public function setTimeExposure($type,$t, $n=0, $snr = 0, $npix = 0, $ns = 0, $nr = 0, $g = 0)
+ 	public function setTimeExposure($type,$t = 0, $n=0, $snr = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0)
  	{
  		if($type==1) 
  		{
@@ -95,7 +107,7 @@
  		}
  		else
  		{
- 			$t = ($snr *( $n + 2* $npix *$ns) + sqrt(pow(-($snr *( $n + 2* $npix *$ns)), 2) - 4 * (pow($n,2)) * (-2*$npix* pow($snr,2) * (pow($nr,2) + pow(0.289, 2)*pow($g,2))))/2*pow($n, 2));
+ 			$t = ($snr *( $n + 2* $nPix *$ns) + sqrt(pow(-($snr *( $n + 2* $nPix *$ns)), 2) - 4 * (pow($n,2)) * (-2*$nPix* pow($snr,2) * (pow($nr,2) + pow(0.289, 2)*pow($g,2))))/2*pow($n, 2));
  			$this->timeExposure = $t;
  		}
  	}
