@@ -96,7 +96,7 @@
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" placeholder="15" min="0" max="23" /><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" placeholder="15" min="0" max="23" required="required" /><font>mag</font>
 									</p>
 									<p>
 										<label for="tTemp">Integration time</label><br>
@@ -115,9 +115,9 @@
 									<p>
 										<!--Descobrir como isso interfere nos cálculos-->
 										<label>WavePlate</label><br>
-										<input type="radio" name="tWave" id="cWave1" checked="checked"  value="1"/>
+										<input type="radio" name="tWave" id="cWave1" checked="checked"  value="1/2"/>
 											<label for="cWave1">1/2 wave</label>
-											<input type="radio" name="tWave" id="cWave2" value="2"/>
+											<input type="radio" name="tWave" id="cWave2" value="1/4"/>
 											<label for="cWave2">1/4 wave</label>
 									</p>
 									<p>
@@ -193,7 +193,7 @@
 										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD1" value="A"/><label for="cCCD1">Slow</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD1" value="A" checked="checked" /><label for="cCCD1">Slow</label></td>
 										   		<td>2.5</td>
 										   		<td>2.5</td>
 										   	</tr>
@@ -1256,9 +1256,9 @@
 										<!-- End Modal -->
 									</p>
 									<p>	<label>Focal Reducer</label><br>
-										<input type="radio" name="tFocal" id="cFocal1" value="True">
+										<input type="radio" name="tFocal" id="cFocal1" value="1">
 										<label for="cFocal1">Yes</label>
-										<input type="radio" name="tFocal" id="cFocal2" checked value="False">
+										<input type="radio" name="tFocal" id="cFocal2" checked value="0">
 										<label for="cFocal2">No</label>
 									</p>
 									<p>									
@@ -1294,7 +1294,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" placeholder="2"><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" placeholder="2" required="required"><font>arcsec</font>
 									</p>
 
 									<input type="submit" name="bCalculate" value="Calculate">
