@@ -16,7 +16,7 @@
 
 			$reader = new ReaderJSON();
 			$this->setCCDNumber($ccdType);
-			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($ccdNumber,$filter));
+			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($this->getCCDNumber(),$filter));
 			$this->setReadoutNoise($reader->readCCDvalues($ccdType,'readoutNoise'));
 			$this->setGain($reader->readCCDvalues($ccdType,'gain'));
 		}
@@ -70,6 +70,10 @@
 			{
 				$this->ccdNumber = 'CCD6';
 			}*/
+		}
+		public function getCCDNumber()
+		{
+			return $this->ccdNumber;
 		}
 
 	}
