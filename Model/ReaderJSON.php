@@ -16,7 +16,7 @@
 		{
 			$arquivo = file_get_contents('../static/ccd.json');
 			$json = json_decode($arquivo);
-			return $json->$ccdMode->$attribute;
+			return $json->{$ccdMode}->{$attribute};
 		}
 		function readFilter($filter, $attribute)
 		{
