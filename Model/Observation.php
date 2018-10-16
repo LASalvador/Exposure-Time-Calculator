@@ -22,7 +22,7 @@
  		$this->setNumberPixels($rap);
  		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag);
  	}
- 	public function setSigmaP($type, $snr, $nwp, $sigmaP = 0)
+ 	public function setSigmaP($type, $snr = 0, $nwp = 0 , $sigmaP = 0)
  	{
  		if($type == 1)
  		{ // in this type use wave 1/2
@@ -43,7 +43,7 @@
  	{
  		return	$this->sigmaP;
  	}
- 	public function setSigmaV($type, $snr, $nwp, $sigmaV)
+ 	public function setSigmaV($type, $snr = 0, $nwp = 0, $sigmaV = 0)
  	{
  		if($type == 1)
  		{
