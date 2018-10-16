@@ -1,4 +1,5 @@
-<?php 	
+<?php 
+	session_start();	
 	include '../Model/Filter.php'; 
 	include '../Model/Sky.php';
 	include '../Model/CCD.php';
@@ -48,6 +49,7 @@
 	echo "QuantumEfficiency: ".$ccd->getQuanTumEfficiency().'<br>';
 	echo "ReadoutNoise: ".$ccd->getReadoutNoise().'<br>';
 	echo "Gain: ".$ccd->getGain().'<br>';
+	echo "Number:".$ccd->getCCDNumber()."<br>";
 	
 	echo '<h1>Instrument</h1>';
 	$instrument = new Instrument($nwp,$dTel,$focal,$ccd);
@@ -71,6 +73,52 @@
 	echo 'Radius Aperture: '.$observation->getRadiusAperture().'<br>';
 	echo 'Number pixels: '.$observation->getNumberPixels().'<br>';
 	echo 'Number Photons: '.$observation->getNumberPhotons().'<br>';
+
+
+ 	if(isset($time))
+ 	{
+ 		if($wave=='1/2')
+ 		{
+ 			$observation->setSignalNoiseRadio($observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain());
+			$observation->setSigmaP(1, $observation->getSignalNoiseRadio(),$nwp); 
+
+
+				echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
+				echo 'sigmaP: '. number_format($observation->getSigmaP()).'<br>';
+ 
+ 		}
+ 		elseif ($wave=='1/4')
+ 		{
+ 			$observation->setSignalNoiseRadio($observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain());
+			$observation->setSigmaP(2, $observation->getSignalNoiseRadio(),$nwp); 
+			$observation->setSigmaV(1, $observation->getSignalNoiseRadio(),$nwp); 
+
+			echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
+			echo 'sigmaP: '. number_format($observation->getSigmaP()).'<br>';
+			echo 'sigmaV: '. number_format($observation->getSigmaV()).'<br>';
+ 		}
+
+ 	}
+ 	else
+ 	{
+
+ 	}
+
+ 	$_SESSION['quantumEfficiency']=$instrument->getCCD()->getQuanTumEfficiency();
+ 	$_SESSION['gain']=$instrument->getCDD()->getGain();
+ 	$_SESSION['readoutNoise'] = $instrument->getCCD()->getReadoutNoise();
+ 	$_SESSION['fluxZero']= $filtro->getFluxZero();
+ 	$_SESSION['central'] = $filtro->getEffectiveLenght();
+ 	$_SESSION['band'] = $filtro->getFilterWidth();
+ 	$_SESSION['sky'] = $sky->getTransparencySky();
+ 	$_SESSION['plateScale'] = $instrument->getPlateScale();
+
+ 	$_SESSION['time'] = $observation->getTimeExposure();
+ 	$_SESSION['simgaP'] = $observation->getSigmaP();
+ 	$observation->getSigmaV() != null ? $_SESSION['simgaV'] = $observation->getSigmaV(): 0;
+ 	$_SESSION['snr'] = $observation->getSignalNoiseRadio(); 
+	header("location: ../index.php#output"); 	
+?>
 
 
 
