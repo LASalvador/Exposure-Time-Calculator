@@ -1,117 +1,117 @@
 {
 	"COMMENT":"CCD 105",
-	"A":{
+	"1":{
 		"readoutNoise":2.5,
 		"gain": 2.5
 	},
-	"B":{
+	"2":{
 		"readoutNoise": 4.0,
 		"gain":2.5
 	},
 	"COMMENT":"CCD 106",
-	"C":{
+	"3":{
 		"readoutNoise": 4.1,
 		"gain":5.0
 	},
-	"D":{
+	"4":{
 		"readoutNoise": 9.5,
 		"gain":5.0
 	},
 	"COMMENT":"CCD iKon 10127",
-	"E":{
+	"5":{
 		"readoutNoise":68.8 ,
 		"gain":7.1
 	},
-	"F":{
+	"6":{
 		"readoutNoise": 50.9,
 		"gain": 4.0
 	},
-	"G":{
+	"7":{
 		"readoutNoise":32.3 ,
 		"gain": 2.0
 	},
-	"H":{
+	"8":{
 		"readoutNoise": 28.2,
 		"gain":3.5
 	},
-	"I":{
+	"9":{
 		"readoutNoise": 18.3 ,
 		"gain": 1.8
 	},
-	"J":{
+	"10":{
 		"readoutNoise": 12.1 ,
 		"gain": 1.0
 	},
-	"K":{
+	"11":{
 		"readoutNoise": 11.2 ,
 		"gain": 3.5
 	},
-	"L":{
+	"12":{
 		"readoutNoise":6.9 ,
 		"gain":1.8
 	},
-	"M":{
+	"13":{
 		"readoutNoise": 6.0 ,
 		"gain": 0.9
 	},
-	"N":{
+	"14":{
 		"readoutNoise": 4.1 ,
 		"gain": 3.4
 	},
-	"O":{
+	"15":{
 		"readoutNoise":3.2 ,
 		"gain": 1.8
 	},
-	"P":{
+	"16":{
 		"readoutNoise": 2.9,
 		"gain": 0.9
 	},
 	"COMMENT":"CCD iKon 9867",
-	"Q":{
+	"17":{
 		"readoutNoise": 56.3 ,
 		"gain": 6.1
 	},
-	"R":{
+	"18":{
 		"readoutNoise": 35.0,
 		"gain":3.3
 	},
-	"S":{
+	"19":{
 		"readoutNoise": 29.7,
 		"gain":1.8
 	},
-	"T":{
+	"20":{
 		"readoutNoise": 26.6,
 		"gain":3.7
 	},
-	"U":{
+	"21":{
 		"readoutNoise": 16.6,
 		"gain": 2.0
 	},
-	"V":{
+	"22":{
 		"readoutNoise": 12.2,
 		"gain":1.0
 	},
-	"W":{
+	"23":{
 		"readoutNoise": 9.2,
 		"gain":3.5
 	},
-	"X":{
+	"24":{
 		"readoutNoise":7.7 ,
 		"gain":1.9
 	},
-	"Y":{
+	"25":{
 		"readoutNoise": 6.3,
 		"gain":1.0
 	},
-	"Z":{
+	"26":{
 		"readoutNoise":3.9 ,
 		"gain":3.5
 	},
-	"AA":{
+	"27":{
 		"readoutNoise": 3.3 ,
 		"gain": 1.9
 	},
-	"AB":{
+	"28":{
 		"readoutNoise": 3.1,
 		"gain":1.0
 	}
