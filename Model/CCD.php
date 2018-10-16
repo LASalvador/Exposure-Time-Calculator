@@ -44,17 +44,17 @@
 		{
 			return $this->quantumEfficiency;
 		}
-		public function setCCDNumber($letter)
+		public function setCCDNumber($number)
 		{
-			if($letter>='A' && $letter<='B')
+			if($number>=1 && $number<=2)
 			{
 				$this->ccdNumber = 'CCD1';
 			}
-			if($letter>='C' && $letter<='D')	
+			elseif($number>=2 && $number<=4)	
 			{
 				$this->ccdNumber = 'CCD2';
 			}
-			if($letter>='E' && $letter<='AB')
+			elseif($number>=5 && $number<=28)
 			{
 				$this->ccdNumber = 'CCD3';
 			}
