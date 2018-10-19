@@ -96,14 +96,14 @@
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" placeholder="15" min="0" max="23" required="required" /><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" placeholder="15" min="0" max="23"/><font>mag</font>
 									</p>
 									<p>
 										<label for="tTemp">Integration time</label><br>
 										<input type="Number" name="tTemp" id="cTemp" placeholder="60" min=0 max="100,000" /><font>s</font>
 									</p>
 									<p>
-										<label for="cNwp">Number of WavePlate position</label>
+										<label for="cNwp">Number of WavePlate positions</label>
 										<br>
 										<select name="tNwp" id="cNwp">
 											<option value="4">4</option>
@@ -122,7 +122,7 @@
 									</p>
 									<p>
 										<label for="cSigma">Sigma P</label>
-										<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1" min=0 max=100 />
+										<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1"/>
 										<font>%</font> &nbsp; &nbsp;&nbsp;&nbsp;
 										<label for="cSigma">Sigma V</label>
 										<input type="Number" name="tSigmaV" id="cSigmaV" placeholder="0.1" min=0 max=100/>
@@ -149,12 +149,12 @@
 										  </header>
 										  <!-- Realiza as transições de tabs -->
 										  <div class="w3-bar w3-border-bottom">
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, '105')">CCD 105</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, '106')">CCD 106</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, 'iKon-L936-BV')">iKon - 9867 & 10127</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, 'iKon-L936-BR')">iKon - 13739 & 13740</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openCity(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '105')">CCD 105</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '106')">CCD 106</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BV')">iKon - 9867 & 10127</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
 										  </div>
 										  
 										  <!-- Begin CCD 105 -->
@@ -1885,7 +1885,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" placeholder="2" required="required"><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" placeholder="2"><font>arcsec</font>
 									</p>
 
 									<input type="submit" name="bCalculate" value="Calculate">
@@ -1894,15 +1894,8 @@
 
 							</form>
 							<!-- End of Form -->   
-
-							<section>
-								<iframe src="output.php" id="output" name="output" height='800' width="80%"></iframe>								
-							</section>
-                            <p>
-
                             <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>
                             </p>
-							
                             <div class="clear"></div>
 						</div>
 					</div>
