@@ -1,33 +1,33 @@
 {
 	"U":
 	{
-		"effectiveLenght":0.3663e-6,
-		"filterWidth":0.65e-6,
-		"fluxZero":4.26e-23
+		"effectiveLenght":0.3663,
+		"filterWidth":0.65,
+		"fluxZero":4.26
 	},
 	"B":
 	{
-		"effectiveLenght":0.4361e-6,
-		"filterWidth":0.089e-6,
-		"fluxZero":4.26e-23
+		"effectiveLenght":0.4361,
+		"filterWidth":0.089,
+		"fluxZero":4.26
 	},
 	"V":
 	{
-		"effectiveLenght":0.5448e-6,
-		"filterWidth":0.084e-6,
-		"fluxZero":3.64e-23
+		"effectiveLenght":0.5448,
+		"filterWidth":0.084,
+		"fluxZero":3.64
 	},
 	"R":
 	{
-		"effectiveLenght":0.6407e-6,
-		"filterWidth":0.158e-6,
-		"fluxZero":3.08e-23
+		"effectiveLenght":0.6407,
+		"filterWidth":0.158,
+		"fluxZero":3.08
 	},
 	"I":
 	{
-		"effectiveLenght":0.7980e-6,
-		"filterWidth":0.154e-6,
-		"fluxZero":2.55e-23
+		"effectiveLenght":0.7980,
+		"filterWidth":0.154,
+		"fluxZero":2.55
 	}
 
 }
