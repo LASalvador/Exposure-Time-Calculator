@@ -75,9 +75,17 @@
  	{	
  		return $this->magnitude;
  	}
- 	public function setSignalNoiseRadio($n, $t, $nPix, $nS, $nR, $g)
- 	{		
- 		$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
+ 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $ki = 0, $sigma = 0, $nwp = 0)
+ 	{
+ 		if($type == 1)
+ 		{		
+ 			$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
+ 		}
+ 		else
+ 		{
+ 			$snr =  pow($ki * 100/ $sigma * $nwp, 2);
+ 			$this->signalNoiseRadio = $snr;
+ 		}
  	}	
  	public function getSignalNoiseRadio()
  	{
