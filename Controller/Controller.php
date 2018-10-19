@@ -6,7 +6,7 @@
 	include '../Model/Instrument.php';
 	include '../Model/Observation.php';
 
-	$magnitude = $_POST['tMag'];
+	$magnitude = isset($_POST['tMag'])? $_POST['tMag'] : 15;
 	$time = isset($_POST['tTemp']) ? $_POST['tTemp']: 0;
 	$nwp = $_POST['tNwp'];
 	$wave = $_POST['tWave'];
@@ -18,7 +18,7 @@
 	$filter = $_POST['tFilter'];
 	$moon = $_POST['tMoon'];
 	$Sky = $_POST['tSky'];
-	$aperture = $_POST['tAperture'];
+	$aperture = isset($_POST['tAperture'])? $_POST['tAperture']: 2;
 
 	echo '<h1>Input Values</h1>';
 	echo 'magnitude'.$magnitude.'<br>';
@@ -75,16 +75,16 @@
 	echo 'Number Photons: '.$observation->getNumberPhotons().'<br>';
 
 
- 	if(isset($time))
+ 	if(isset($time) && $time!=0)
  	{
+ 		$observation->setTimeExposure(1,$time);
  		if($wave=='1/2')
  		{
- 			$observation->setSignalNoiseRadio($observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain());
+ 			$observation->setSignalNoiseRadio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain());
 			$observation->setSigmaP(1, $observation->getSignalNoiseRadio(),$nwp); 
-
-
-				echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
-				echo 'sigmaP: '. number_format($observation->getSigmaP()).'<br>';
+				//echo 'time'.$observation->getTimeExposure().'<br>';
+				//echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
+				//echo 'sigmaP: '.$observation->getSigmaP().'<br>';
  
  		}
  		elseif ($wave=='1/4')
@@ -93,19 +93,36 @@
 			$observation->setSigmaP(2, $observation->getSignalNoiseRadio(),$nwp); 
 			$observation->setSigmaV(1, $observation->getSignalNoiseRadio(),$nwp); 
 
-			echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
-			echo 'sigmaP: '. number_format($observation->getSigmaP()).'<br>';
-			echo 'sigmaV: '. number_format($observation->getSigmaV()).'<br>';
+			//echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
+			//echo 'sigmaP: '.$observation->getSigmaP().'<br>';
+			//echo 'sigmaV: '.$observation->getSigmaV().'<br>';
  		}
-
  	}
- 	else
+ 	elseif( isset($sigmaP) && $sigmaP!=0)
  	{
+ 		$observation->setSigmaP(3,0,0,$sigmaP);
+ 		$observation->setSignalNoiseRadio(2,0,0,0,0,0,0, 1,$sigmaP,$nwp);
+ 		$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRadio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain());
+ 		
 
  	}
+ 	/*elseif (isset($sigmaV)) 
+ 	{
+ 		echo "entrei 3";
+ 		$observation->setSigmaV(2,0,0, $sigmaV);
+ 		$observation->setSignalNoiseRadio(2,0,0,0,0,0,0, 1/2,$sigmaP,$nwp);
+ 		$observation->setSigmaP(2, $observation->getSignalNoiseRadio(),$nwp); 
+ 		$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRadio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain());
+ 	}*/
 
- 	$_SESSION['quantumEfficiency']=$instrument->getCCD()->getQuanTumEfficiency();
- 	$_SESSION['gain']=$instrument->getCDD()->getGain();
+
+ 	echo 'time'.$observation->getTimeExposure().'<br>';
+ 	echo 'SNR: '.$observation->getSignalNoiseRadio().'<br>';
+	echo 'sigmaP: '.$observation->getSigmaP().'<br>';
+	echo 'sigmaV: '.$observation->getSigmaV().'<br>';
+
+ 	$_SESSION['quantumEfficiency'] = $instrument->getCCD()->getQuanTumEfficiency();
+ 	$_SESSION['gain'] = $instrument->getCCD()->getGain();
  	$_SESSION['readoutNoise'] = $instrument->getCCD()->getReadoutNoise();
  	$_SESSION['fluxZero']= $filtro->getFluxZero();
  	$_SESSION['central'] = $filtro->getEffectiveLenght();
@@ -114,10 +131,11 @@
  	$_SESSION['plateScale'] = $instrument->getPlateScale();
 
  	$_SESSION['time'] = $observation->getTimeExposure();
- 	$_SESSION['simgaP'] = $observation->getSigmaP();
- 	$observation->getSigmaV() != null ? $_SESSION['simgaV'] = $observation->getSigmaV(): 0;
+ 	$_SESSION['sigmaP'] = $observation->getSigmaP();
+ 	$_SESSION['sigmaV'] = $observation->getSigmaV();
  	$_SESSION['snr'] = $observation->getSignalNoiseRadio(); 
-	header("location: ../index.php#output"); 	
+	
+	//header("location: ../output.php");
 ?>
 
 
