@@ -22,16 +22,16 @@
  		$this->setNumberPixels($rap);
  		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag);
  	}
- 	public function setSigmaP($type, $snr = 0, $nwp = 0 , $sigmaP = 0)
+ 	public function setSigmaP($type, $snr = 0, $nwp = 0, $sigmaP = 0)
  	{
  		if($type == 1)
  		{ // in this type use wave 1/2
- 			$temp = (100/sqrt($snr))*(1/$nwp);
+ 			$temp = (100/sqrt($nwp))*(1/$snr);
  			$this->sigmaP = $temp;
  		}
  		elseif($type == 2)
  		{ // this type use wave 1/4
- 			$temp = (1/2) * ((100/sqrt($snr)) * (1/$nwp));
+ 			$temp = 100 * ((sqrt(2)/sqrt($nwp)) * (1/$snr));
  			$this->sigmaP = $temp;
  		}
  		else
@@ -43,17 +43,9 @@
  	{
  		return	$this->sigmaP;
  	}
- 	public function setSigmaV($type, $snr = 0, $nwp = 0, $sigmaV = 0)
+ 	public function setSigmaV($sigmaV)
  	{
- 		if($type == 1)
- 		{
- 			$temp = (1/sqrt(2)) * (100/sqrt($snr)) * (1/$nwp);
- 			$this->sigmaV = $temp;
- 		}
- 		else
- 		{
- 			$this->sigmaV = $getSigmaV;
- 		}
+ 			$this->sigmaV = $sigmaV;
  	}
  	public function getSigmaV()
  	{
@@ -61,7 +53,7 @@
  	}
  	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag)
  	{
- 			$this->numberPhotons = $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, 0.4*$mag);
+ 			$this->numberPhotons = $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
  	}
  	public function getNumberPhotons()
  	{
@@ -75,15 +67,15 @@
  	{	
  		return $this->magnitude;
  	}
- 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $ki = 0, $sigma = 0, $nwp = 0)
+ 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $k = 0, $sigma = 0, $nwp = 0)
  	{
  		if($type == 1)
  		{		
  			$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
  		}
- 		else
+ 		elseif($type==2)
  		{
- 			$snr =  pow($ki * 100/ $sigma * $nwp, 2);
+ 			$snr = $k * (100/sqrt($nwp)) * (1/$sigma);
  			$this->signalNoiseRadio = $snr;
  		}
  	}	
@@ -113,9 +105,15 @@
  		{
  			$this->timeExposure = $t;
  		}
- 		else
+ 		elseif($type==2)
  		{
- 			$t = ($snr *( $n + 2* $nPix *$ns) + sqrt(pow(-($snr *( $n + 2* $nPix *$ns)), 2) - 4 * (pow($n,2)) * (-2*$nPix* pow($snr,2) * (pow($nr,2) + pow(0.289, 2)*pow($g,2))))/2*pow($n, 2));
+ 			$a = pow($n,2);
+ 			$b = -1 * pow($snr,2) * ($n + 2*$nPix * $nS);
+ 			$c = -2 * $nPix * pow($snr,2) * (pow($nR,2) + pow(0.289, 2) * pow($g, 2));
+ 			$t = (-$b + sqrt(pow($b,2) -4 * $a * $c))/2/$a;
+ 			echo "<br>".$a."<br>";
+ 			echo "<br>".$b."<br>";
+ 			echo "<br>".$c."<br>";
  			$this->timeExposure = $t;
  		}
  	}

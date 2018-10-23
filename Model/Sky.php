@@ -3,15 +3,18 @@
 	 * This class represents the Atmospheric conditions at the time of observation
 	 * @author: Lucas Almeida Salvador
 	 */
+
+	include_once 'ReaderJSON.php';
 	class Sky
 	{
 		private $numberPhotons;
 		private $transparencySky;
 		private $magnitudeSky;
-		function __construct($transparencySky, $moonPhase, $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale)
+		function __construct($transparencySky, $filter, $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale)
 		{
-			$this->setTransparencySky($transparencySky);
-			$this->setMagnitudeSky($moonPhase);
+			$reader = new ReaderJSON();
+			$this->setTransparencySky($reader->readFilter($filter,$transparencySky));
+			$this->setMagnitudeSky($reader->readFilter($filter,'sky'));
 			$this->setNumberPhotons($this->getMagnitudeSky(), $this->getTransparencySky(), $q, $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale);
 		}
 		public function setNumberPhotons($mSky, $tSky, $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale)
@@ -25,18 +28,7 @@
 		}
 		public function setTransparencySky($transparency)
 		{
-			if($transparency == 1)
-			{
-				$this->transparencySky = 0.7;
-			}
-			else if($transparency ==2)
-			{
-				$this->transparencySky = 0.5;	
-			}
-			else
-			{
-				$this->transparencySky = 0.3;
-			}
+			$this->transparencySky = $transparency;
 		}
 		public function getTransparencySky()
 		{
@@ -44,18 +36,7 @@
 		}
 		public function setMagnitudeSky($magnitude)
 		{
-			if($magnitude == 1)
-			{
-				$this->magnitudeSky = 24;
-			}
-			else if($magnitude == 2)
-			{
-				$this->magnitudeSky = 23;	
-			}
-			else
-			{
-				$this->magnitudeSky = 22;
-			}
+			$this->magnitudeSky = $magnitude;
 		}
 		public function getMagnitudeSky()
 		{

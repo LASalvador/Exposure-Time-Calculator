@@ -58,18 +58,18 @@
 			{
 				$this->ccdNumber = 'CCD3';
 			}
-			/*if($letter>='' && $letter<='')	
+			if($number>=29 && $number<=76)	
 			{
 				$this->ccdNumber = 'CCD4';
 			}
-			if($letter>='' && $letter<='')
+			if($number>=77 && $number<=148)
 			{
 				$this->ccdNumber = 'CCD5';
 			}
-			if($letter>='' && $letter<='')	
+			if($number>=149 && $number<=182)	
 			{
 				$this->ccdNumber = 'CCD6';
-			}*/
+			}
 		}
 		public function getCCDNumber()
 		{
