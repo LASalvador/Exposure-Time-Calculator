@@ -152,9 +152,9 @@
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740</a>
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
 										  </div>
-										  
+										  <!-- Begin Table -->
 										 	<?php include($_SERVER['DOCUMENT_ROOT']."/tabelasCCD.php"); ?>
-										  <!-- End CCD Ixon 4269 4335  -->
+										  <!-- End Table -->
 
 										  <div class="w3-container w3-light-grey w3-padding">
 										   <a class="w3-button w3-right w3-white w3-border" 
@@ -183,7 +183,7 @@
 										<input type="radio" name="tFilter" id="cFil5" value="I">
 										<label for="cFil5">I</label>
 									</p>
-									<p>
+									<!--<p>
 										<label>Moon Phase</label><br>
 										<input type="radio" name="tMoon" id="cMoon1" checked="checked" value="1">
 										<label for="cMoon1">New</label>
@@ -191,14 +191,14 @@
 										<label for="cMoon2">Quarter</label>
 										<input type="radio" name="tMoon" id="cMoon3" value="3">
 										<label for="cMoon3">Full</label>
-									</p>
+									</p>-->
 									<p>
 										<label>Sky quality</label><br>
-										<input type="radio" name="tSky" id="cSky1" checked value="1">
+										<input type="radio" name="tSky" id="cSky1" checked value="photometric">
 										<label for="cSky1">Photometric</label>
-										<input type="radio" name="tSky" id="cSky2" value="2">
+										<input type="radio" name="tSky" id="cSky2" value="good">
 										<label for="cSky2">Good</label>
-										<input type="radio" name="tSky" id="cSky3" value="3">
+										<input type="radio" name="tSky" id="cSky3" value="regular">
 										<label for="cSky3">Regular</label>
 									</p>
 									<p>
@@ -209,7 +209,7 @@
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
 											<input type="radio" name="tMode" id="cMode1" value="1">
 										</a>
-										<label for="cMode1">Calculate the polarization error for a given integration time</label>
+										<label for="cMode1">Calculate the polarization error for a given integration time</label></br>
 										<a onclick="changeState('boxSigma', 'block','boxTime','none')">
 											<input type="radio" name="tMode" id="cMode2" value="0">
 										</a>
@@ -224,10 +224,10 @@
 									<p>
 										<div id="boxSigma">
 											<label for="cSigma">Sigma</label><br>
-											<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1"/>
+											<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1"/><font>%</font>
 										</div>
 									</p>
-									<input type="submit" name="bCalculate" value="Calculate">
+									<input type="submit" name="bCalculate" value="Calculate" formtarget="_blank">
 									<input type="reset" name="breset" value="Reset Values">
 								</fieldset>
 
