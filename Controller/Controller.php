@@ -5,6 +5,7 @@
 	include '../Model/CCD.php';
 	include '../Model/Instrument.php';
 	include '../Model/Observation.php';
+	include '../Model/Graphics.php';
 
 	$magnitude = isset($_POST['tMag'])? $_POST['tMag'] : 15;
 	$nwp = $_POST['tNwp'];
@@ -65,6 +66,9 @@
 
  	}
 
+	$graph = new Graphics($observation, $sky, $instrument);
+	$data = $graph->generateValues($observation->getTimeExposure(), $nwp);
+
  	//Saving values
 	$_SESSION['inMag'] = $magnitude;
 	$_SESSION['inTime'] = $time;
@@ -101,10 +105,12 @@
  	$_SESSION['dTel'] = $instrument->getAperture();
  	$_SESSION['focalReducer'] = $instrument->getFocalReducer();
 
-
+ 	//SKY 
  	$_SESSION['tSky'] = $sky->getTransparencySky();
  	$_SESSION['magSky'] = $sky->getMagnitudeSky();
  	$_SESSION['nSky'] = $sky->getNumberPhotons();
+ 	$_SESSION['data'] = $data;
+
  	
  	header("location: ../output.php");
 ?>
