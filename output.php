@@ -1,4 +1,43 @@
- 
+ <?php 
+ 	session_start();
+
+	require_once './libs/phplot-6.2.0/phplot.php';
+
+	$quantum = isset($_SESSION['quantumEfficiency'])? $_SESSION['quantumEfficiency']: 0; 
+	$gain = isset($_SESSION['gain'])?$_SESSION['gain']: 0;
+	$readoutNoise = isset($_SESSION['readoutNoise'])?$_SESSION['readoutNoise']: 0;
+	$fluxZero = isset($_SESSION['fluxZero'])?$_SESSION['fluxZero']: 0;
+	$central = isset($_SESSION['central'])?$_SESSION['central']: 0;
+	$band = isset($_SESSION['band'])?$_SESSION['band']: 0;
+	$sky = isset($_SESSION['tSky'])?$_SESSION['tSky']: 0;
+	$plateScale = isset($_SESSION['plateScale'])?$_SESSION['plateScale']: 0; 
+	$time = isset($_SESSION['timeExposure']) ? $_SESSION['timeExposure'] : 0;
+	$sigmaP = isset($_SESSION['sigmaP']) ? $_SESSION['sigmaP']: 0;
+	$sigmaV = isset($_SESSION['sigmaV']) ? $_SESSION['sigmaV']: 0; 
+	$snr = isset($_SESSION['snr']) ? $_SESSION['snr']: 0;
+	$data = $_SESSION['data'];
+
+
+	$plot = new PHPlot(1200,600);
+	$plot->SetFailureImage(False); // No error images
+	$plot->SetPrintImage(False); // No automatic output
+	$plot->SetDataValues($data);
+	$plot->SetDataType('data-data');
+	$plot->SetTitle("Polarization Error X Time");
+	$plot->SetXTickIncrement(20);
+	$plot->SetXLabelType('data');
+	$plot->SetXTitle("Integration Time (s)");
+	$plot->SetPrecisionX(1);
+	$plot->SetYTickIncrement(0.01);
+	$plot->SetYLabelType('data');
+	$plot->SetYTitle("Polarization Error (%)");
+	$plot->SetPrecisionY(2);
+	$plot->SetYDataLabelPos('plotin');
+	$plot->DrawGraph();
+
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,16 +63,6 @@
 		<section id="intermediate-values">
 			<h2> intermediate values</h2>
 			<?php
-				session_start();
-				$quantum = isset($_SESSION['quantumEfficiency'])? $_SESSION['quantumEfficiency']: 0; 
-				$gain = isset($_SESSION['gain'])?$_SESSION['gain']: 0;
-				$readoutNoise = isset($_SESSION['readoutNoise'])?$_SESSION['readoutNoise']: 0;
-				$fluxZero = isset($_SESSION['fluxZero'])?$_SESSION['fluxZero']: 0;
-				$central = isset($_SESSION['central'])?$_SESSION['central']: 0;
-				$band = isset($_SESSION['band'])?$_SESSION['band']: 0;
-				$sky = isset($_SESSION['tSky'])?$_SESSION['tSky']: 0;
-				$plateScale = isset($_SESSION['plateScale'])?$_SESSION['plateScale']: 0; 
-				
 				 echo "<h4>Quantum Efficiency<h5></h4>";
 				 echo $quantum;
 				 echo "<h4>Gain</h4>";
@@ -58,12 +87,6 @@
 		<section class="values">
 			<h2> Final values</h2>
 			<?php
-				session_start();
-				$time = isset($_SESSION['timeExposure']) ? $_SESSION['timeExposure'] : 0;
-				$sigmaP = isset($_SESSION['sigmaP']) ? $_SESSION['sigmaP']: 0;
-				$sigmaV = isset($_SESSION['sigmaV']) ? $_SESSION['sigmaV']: 0; 
-				$snr = isset($_SESSION['snr']) ? $_SESSION['snr']: 0;
-
 				echo "<h4>Integration Time</h4>";
 				echo $time;
 				echo "<h4>Sigma P</h4>";
@@ -75,6 +98,7 @@
 			?>
 		</section>
 		<!--End Final values -->
+		<img src="<?php echo $plot->EncodeImage(); ?>" alt="Não Funcionou"/>
 	</div>
 	<?php
 			session_start();
@@ -126,7 +150,7 @@
 
 	<footer>
 		<p>Calculated by Exposure Time Calculator/IAGPOL</p>
-		<?php 	echo "<p>".date("m/d/Y")."</p>";?>
+		<?php echo "<p>".date("m/d/Y")."</p>";?>
 		<p>Developed in CEA/INPE</p>
 	</footer>
 </body> 

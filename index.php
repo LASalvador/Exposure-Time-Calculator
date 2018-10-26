@@ -30,7 +30,7 @@
 	<!-- css do modal -->
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>  
 	<!-- JS da página -->
-	<script type="text/javascript" src="/js/indexJS.js"></script>
+	<script type="application/javascript" src="./js/indexJS.js"></script>
 	<style>
 		.city {display:none}
 		table{
@@ -60,7 +60,7 @@
 
 <body>
 	<!-- TOPO -->    
-	<?php include($_SERVER['DOCUMENT_ROOT']."/topo.php"); ?>
+	<?php include("./topo.php"); ?>
 
 
 	<!-- CONTEUDO -->
@@ -83,7 +83,7 @@
 
 
 				<!-- Column 1 - MENU -->      
-				<?php include($_SERVER['DOCUMENT_ROOT']."/menu.php"); ?>	
+				<?php include("./menu.php"); ?>	
 
 				<!-- Conteudo -->
 				<div id="portal-column-content" class="cell width-3:4 position-1:4">
@@ -153,7 +153,7 @@
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
 										  </div>
 										  <!-- Begin Table -->
-										 	<?php include($_SERVER['DOCUMENT_ROOT']."/tabelasCCD.php"); ?>
+										 	<?php include("./tabelasCCD.php"); ?>
 										  <!-- End Table -->
 
 										  <div class="w3-container w3-light-grey w3-padding">
@@ -207,7 +207,7 @@
 									</p>
 									<p>	<label>ETC Mode</label><br>
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
-											<input type="radio" name="tMode" id="cMode1" value="1">
+											<input type="radio" name="tMode" id="cMode1" value="1" required>
 										</a>
 										<label for="cMode1">Calculate the polarization error for a given integration time</label></br>
 										<a onclick="changeState('boxSigma', 'block','boxTime','none')">
@@ -253,7 +253,7 @@
 	<div class="clear"><!-- --></div>
 
 	<!-- Footer -->
-	<?php include($_SERVER['DOCUMENT_ROOT']."/rodape.php"); ?>
+	<?php include("/.rodape.php"); ?>
 	<!-- /Footer-->
 
 </body>  

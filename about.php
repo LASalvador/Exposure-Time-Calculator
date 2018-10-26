@@ -32,7 +32,7 @@
 
 <body>
 	<!-- TOPO -->    
-	<?php include($_SERVER['DOCUMENT_ROOT']."/topo.php"); ?>
+	<?php include("./topo.php"); ?>
 
 
 	<!-- CONTEUDO -->
@@ -55,7 +55,7 @@
 
 
 				<!-- Column 1 - MENU -->      
-				<?php include($_SERVER['DOCUMENT_ROOT']."/menu.php"); ?>	
+				<?php include("./menu.php"); ?>	
 
 				<!-- Conteudo -->
 				<div id="portal-column-content" class="cell width-3:4 position-1:4">
@@ -97,7 +97,7 @@
 	<div class="clear"><!-- --></div>
 
 	<!-- Footer -->
-	<?php include($_SERVER['DOCUMENT_ROOT']."/rodape.php"); ?>
+	<?php include("./rodape.php"); ?>
 	<!-- /Footer-->
 
 </body>  
