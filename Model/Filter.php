@@ -3,7 +3,6 @@
   * This class represents the Filter used during the observation
   * @author: Lucas Almeida Salvador
   */
-
  include_once 'ReaderJSON.php';
  class Filter 
  {
