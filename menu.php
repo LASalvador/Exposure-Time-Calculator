@@ -19,7 +19,7 @@
         
         	<ul>
                 <li><a href="./index.php" title="Home">Home</a></li>
-                <li><a href="./user-guide.php" title="User Guide">User Guide</a></li>
+                <li><a href="./user-guide.php" title="User Guide">Information</a></li>
                 <li><a href="./about.php" title="About">About</a></li>
     		</ul>
         </li>      
