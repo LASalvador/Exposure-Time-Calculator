@@ -18,4 +18,23 @@ function changeState(el, style, el1, style1) {
     document.getElementById(el).style.display = style;
     //deixado o objeto não utilizado invisible
     document.getElementById(el1).style.display = style1;
+}
+function key(event)
+{
+  if(event.keyCode == 13)
+  {  
+     var form = document.querySelector('#fEtc');
+     if (form.checkValidity()) 
+     {
+      form.submit();
+     }
+     else  
+     {
+       form.querySelector('input[type="submit"]').click();
+     } 
   }
+  if(event.keyCode == 27)
+  {
+    document.getElementById('id01').style.display='none';
+  }
+}
