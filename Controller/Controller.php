@@ -31,8 +31,9 @@
 
 	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture);
 
-
-
+	$graph = new Graphics($observation, $sky, $instrument);
+	$data = $graph->generateValues($time, $nwp);
+	
  	if($mode==1)
  	{
  		$observation->setTimeExposure(1,$time);
@@ -66,8 +67,6 @@
 
  	}
 
-	$graph = new Graphics($observation, $sky, $instrument);
-	$data = $graph->generateValues($observation->getTimeExposure(), $nwp);
 
  	//Saving values
 	$_SESSION['inMag'] = $magnitude;
@@ -111,7 +110,6 @@
  	$_SESSION['nSky'] = $sky->getNumberPhotons();
  	$_SESSION['data'] = $data;
 
- 	
  	header("location: ../output.php");
 ?>
 
