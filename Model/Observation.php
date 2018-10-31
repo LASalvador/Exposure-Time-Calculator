@@ -53,7 +53,8 @@
  	}
  	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag)
  	{
- 			$this->numberPhotons = $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
+ 			$fCalib = 1;
+ 			$this->numberPhotons = $fCalib * $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
  	}
  	public function getNumberPhotons()
  	{
@@ -111,9 +112,7 @@
  			$b = -1 * pow($snr,2) * ($n + 2*$nPix * $nS);
  			$c = -2 * $nPix * pow($snr,2) * (pow($nR,2) + pow(0.289, 2) * pow($g, 2));
  			$t = (-$b + sqrt(pow($b,2) -4 * $a * $c))/2/$a;
- 			echo "<br>".$a."<br>";
- 			echo "<br>".$b."<br>";
- 			echo "<br>".$c."<br>";
+ 			
  			$this->timeExposure = $t;
  		}
  	}
