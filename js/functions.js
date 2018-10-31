@@ -1,7 +1,7 @@
 var domain = 'http://portalnovo.sir.inpe.br';
 
 function googleTranslateElementInit() {
-	new google.translate.TranslateElement({ pageLanguage: 'pt', includedLanguages: 'en,pt', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT }, 'google_translate_element');
+	new google.translate.TranslateElement({ pageLanguage: 'pt-br', includedLanguages: 'en,pt', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT }, 'google_translate_element');
 }
 
 var scriptGoogleAnalytics = document.createElement('script');
