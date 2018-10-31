@@ -31,34 +31,11 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>  
 	<!-- JS da página -->
 	<script type="application/javascript" src="./js/indexJS.js"></script>
-	<style>
-		.city {display:none}
-		table{
-			border: 1px solid #606060 ;
-			border-spacing: 0px;
-		}
-		table td{
-			border: 1px solid #606060 ;
-			margin: 2px;
-			padding: 5px;
-		}
-		label{
-			font-size: 15pt;
-		}
-
-
-		div#boxTime{
-			display: none;
-		}
-		div#boxSigma{
-			display: none;
-		}
-	</style>
-
-
+	<!--css adicional da página-->
+	<link rel="stylesheet" type="text/css" href="./css/css-index.css">
 </head>
 
-<body>
+<body onkeypress="key(event)">
 	<!-- TOPO -->    
 	<?php include("./topo.php"); ?>
 
@@ -94,17 +71,17 @@
 							<h1 class="documentFirstHeading">Exposure Time Calculator - IAGPOL </h1>
 							<section>
 								<!-- Introduction -->
-								<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+								<p>The Exposure Time Calculator (ETC) is a tool to estimate (1) the exposure time required to achieve a given polarization error or (2) the polarization error obtained from a given exposure time. The ETC works for the IAGPOL instrument installed at the Pico dos Dias Observatory (OPD). Details about the calculations can be found clicking on “Information” in the lateral menu."</p>
 	                            <br/>
                             </section>
                             <strong>ETC</strong>
 							<br>
 							<!-- Begging of Form -->
-							<form method="post" id="fEtc" action="Controller/Controller.php" href="output.php#answers">
+							<form method="post" id="fEtc" name="etcForm" action="./Controller/Controller.php">
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" placeholder="15" min="0" max="23"/><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="10" value="15" onclick="this.value=''" required/><font>mag</font>
 									</p>
 									<p>
 										<label for="cNwp">Number of WavePlate positions</label>
@@ -132,8 +109,7 @@
 										<label for="cTel2">1.6m</label>
 									</p>
 									<p>
-										<label for="">Detector</label>
-										<br>
+										<label for="">Detector</label><br><bt>
 										<!-- Begin Modal -->
 										<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Click to Choice a CCD</a>
 										<div id="id01" class="w3-modal">
@@ -203,7 +179,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" placeholder="2"><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" value="2" size="10" onclick="this.value=''" min="0" max="30" required><font>arcsec</font>
 									</p>
 									<p>	<label>ETC Mode</label><br>
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
@@ -218,13 +194,13 @@
 									<p>
 										<div id="boxTime">
 											<label for="tTemp">Integration time</label><br>
-											<input type="Number" name="tTemp" id="cTemp" placeholder="60" min=0 max="100,000" /><font>s</font>
+											<input type="Number" name="tTemp" id="cTemp" min="1" max="100000" size="10" value="60" onclick="this.value=''"/><font>s</font>
 										</div>
 									</p>
 									<p>
 										<div id="boxSigma">
 											<label for="cSigma">Sigma</label><br>
-											<input type="Number" name="tSigmaP" id="cSigmaP" placeholder="0.1"/><font>%</font>
+											<input type="Number" name="tSigmaP" id="cSigmaP" size="10" value="0.1" onclick="this.value=''" step="0.0001" min="0.0001"><font>%</font>
 										</div>
 									</p>
 									<input type="submit" name="bCalculate" value="Calculate" formtarget="_blank">
@@ -253,7 +229,7 @@
 	<div class="clear"><!-- --></div>
 
 	<!-- Footer -->
-	<?php include("/.rodape.php"); ?>
+	<?php include("./rodape.php"); ?>
 	<!-- /Footer-->
 
 </body>  
