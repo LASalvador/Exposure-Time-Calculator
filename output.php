@@ -1,7 +1,8 @@
  <?php 
  	session_start();
 
-	require_once './libs/phplot-6.2.0/phplot.php';
+ 	include './libs/phplot-6.2.0/phplot.php';
+
 
 	$quantum = isset($_SESSION['quantumEfficiency'])? $_SESSION['quantumEfficiency']: 0; 
 	$gain = isset($_SESSION['gain'])?$_SESSION['gain']: 0;
@@ -18,139 +19,137 @@
 	$data = $_SESSION['data'];
 
 
+	function annotate_plot($img, $plot)
+	{
+		global $time, $sigmaP;
+		# Allocate our own colors, rather than poking into the PHPlot object:
+		$green = imagecolorresolve($img, 0, 216, 0);
+		# Get the pixel coordinates of the data points for the best and worst:
+		list($time_x, $sigma_y) = $plot->GetDeviceXY($time, $sigmaP);
+		# Draw ellipses centered on those two points:
+		imageellipse($img, $time_x, $sigma_y, 50, 20, $green);
+		# Place some text above the points:
+		$font = '3';
+		$fh = imagefontheight($font);
+		$fw = imagefontwidth($font);
+		//imagestring($img, $font, $time_x-$fw*4, $sigma_y-$fh-10,'', $green);
+		//$plot->DrawText('', 0, $time $sigmaP-10, $green,'Bad News!', 'center', 'bottom');
+	}
+
 	$plot = new PHPlot(1200,600);
 	$plot->SetFailureImage(False); // No error images
 	$plot->SetPrintImage(False); // No automatic output
 	$plot->SetDataValues($data);
 	$plot->SetDataType('data-data');
 	$plot->SetTitle("Polarization Error X Time");
-	$plot->SetXTickIncrement(20);
 	$plot->SetXLabelType('data');
 	$plot->SetXTitle("Integration Time (s)");
-	$plot->SetPrecisionX(1);
-	$plot->SetYTickIncrement(0.01);
-	$plot->SetYLabelType('data');
+	$plot->SetPrecisionX(0)
+;	$plot->SetYLabelType('data');
 	$plot->SetYTitle("Polarization Error (%)");
 	$plot->SetPrecisionY(2);
-	$plot->SetYDataLabelPos('plotin');
+	//$plot->SetYDataLabelPos('plotin');
+
+	//$plot->SetFontTTF('x_title', 'liberation/LiberationSans-Regular.ttf', 12);
+	//$plot->SetFontTTF('y_title', 'liberation/LiberationSans-Regular.ttf', 12);
+	//$plot->SetFontTTF('x_label', 'liberation/LiberationSans-Regular.ttf', 11);
+	//$plot->SetFontTTF('y_label', 'liberation/LiberationSans-Regular.ttf', 11);
+
+	# Force the bottom of the plot to be at Y=0, and omit
+	# the bottom "$0M" tick label because it looks odd:
+	$plot->SetPlotAreaWorld(NULL, 0);
+	$plot->SetSkipBottomTick(True);
+
+	# Establish the drawing callback to do the annotation:
+	$plot->SetCallback('draw_all', 'annotate_plot', $plot);
+
 	$plot->DrawGraph();
-
-
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Output</title>
+	<title>ETC Results</title>
 	<meta charset="utf-8">
-	<style>
-	.output{
-			background-color: #dddddd;
-		}
-	section.values{
-		border-top: 1px solid #606060;
-		border-bottom: 1px solid #606060;
-	}
-	footer{
-		border-top: 1px solid #606060;
-	}	
-	</style>
+	<link rel="stylesheet" type="text/css" href="./css/css-output.css">
 </head>
 <body>
 	<!-- Begin Output View -->
 	<div class="output">
-		<!--Begin intermediate values -->
-		<section id="intermediate-values">
-			<h2> intermediate values</h2>
-			<?php
-				 echo "<h4>Quantum Efficiency<h5></h4>";
-				 echo $quantum;
-				 echo "<h4>Gain</h4>";
-				 echo $gain;
-				 echo "<h4>Readout Noise</h4>";
-				 echo $readoutNoise;
-				 echo "<h4>Zero magnitude flux</h4>";
-				 echo $fluxZero;
-				 echo "<h4>Central wavelenght</h4>";
-				 echo $central;
-				 echo "<h4>Band width</h4>";
-				 echo $band;
-				 echo "<h4>Sky transparence</h4>";
-				 echo $sky;
-				 echo "<h4>Plate scale</h4>";
-				 echo $plateScale;
-			?>		
-
-		</section>
-		<!-- End intermediate values -->
 		<!-- Begin Final values -->
 		<section class="values">
 			<h2> Final values</h2>
 			<?php
-				echo "<h4>Integration Time</h4>";
-				echo $time;
-				echo "<h4>Sigma P</h4>";
-				echo number_format($sigmaP,2);
-				echo "<h4>Sigma V</h4>";
-				echo number_format($sigmaV,2);
-				echo "<h4>Signal Noise Radio</h4>";
-				echo number_format($snr,2);
+				echo '<span>Integration time:</span> '.$time.' s<br>';
+				echo '<span>Error of the linear polarization:</span> '.number_format($sigmaP,2).' %<br>';
+				if($sigmaV!=0)
+				{
+					echo '<span>Error of the circular polarization:</span> '.number_format($sigmaV,2).' %<br>';
+				}	
+				echo '<span>Signal to noise ratio:</span> '.number_format($snr,2).'<br>';
 			?>
 		</section>
 		<!--End Final values -->
-		<img src="<?php echo $plot->EncodeImage(); ?>" alt="Não Funcionou"/>
-	</div>
-	<?php
-			session_start();
-			echo '<h1>Input Values</h1>';
-			echo 'Magnitude: '.$_SESSION['inMag'].'<br>';
-			echo 'Time: '.$_SESSION['inTime'] .'<br>';
-			echo 'Number Of WavePlates: '.$_SESSION['inNwp'].'<br>';
-			echo 'Wave: '.$_SESSION['inWave'].'<br>';
-			echo 'SigmaP: '.$_SESSION['inSigmaP'].'<br>';
-			echo 'Telescope Diameter: '.$_SESSION['inDTel'].'<br>';
-			echo 'Focal Reducer: '.$_SESSION['inFocal'].'<br>';
-			echo 'Filter: '.$_SESSION['inFilter'].'<br>'; 
-			echo 'Sky quality: '.$_SESSION['inTsky'].'<br>';
-			echo 'Aperture radius: '.$_SESSION['inAperture'].'<br>';
-
-			//observation
-			echo '<h1>Observation</h1>';
-			echo 'Magnitude: '.$_SESSION['inMag'].'<br>';
-			echo 'Radius Aperture: '.$_SESSION['inAperture'].'<br>';
-			echo 'Number pixels: '.number_format($_SESSION['numberPixels'],2).'<br>';
-			echo 'Number Photons: '.number_format($_SESSION['numberPhotons'],2).'<br>';
-		 	echo 'Integration time: '.number_format($_SESSION['timeExposure'],2).'<br>';
-		 	echo 'SNR: '.number_format($_SESSION['snr'],2).'<br>';
-			echo 'sigmaP: '.number_format($_SESSION['sigmaP'],2).'<br>';
-			echo 'sigmaV: '.number_format($_SESSION['sigmaV'],2).'<br>';
-			//filter
-			echo '<h1>Filter</h1>';
-			echo "effectiveLenght: ".$_SESSION['band'].'<br>';
-			echo "filterWidth: ".$_SESSION['band'].'<br>';
-			echo "fluxZero: ".$_SESSION['fluxZero'].'<br>';
-			
-			// instrument
-			echo '<h1>Instrument</h1>';
-			echo 'NumberOfWavePlates '.$_SESSION['nwp'].'<br>';
-			echo 'Telescope Diameter:'.$_SESSION['dTel'].'<br>';
-			echo 'Focal Reducer: '.$_SESSION['focalReducer'].'<br>';
-			echo 'Plate Scale: '.$_SESSION['plateScale'].'<br>';
-			echo "QuantumEfficiency: ".$_SESSION['quantumEfficiency'].'<br>';
-			echo "ReadoutNoise: ".$_SESSION['readoutNoise'].'<br>';
-			echo "Gain: ".$_SESSION['gain'].'<br>';
-
-
-			echo '<h1>Sky</h1>';
-			echo 'Transparency: '.$_SESSION['tSky'].'<br>';
-			echo 'Sky magnitude: '.$_SESSION['magSky'].'<br>';
-			echo 'Number Of Photons: '.number_format($_SESSION['nSky'],2).'<br>';
-	?>
+		<!-- Begin Input values -->
+		<section>
+			<h4>Input Values</h4>
+			<?php
+				session_start();
+				echo 'Magnitude: '.$_SESSION['inMag'].' mag<br>';
+				if($_SESSION['inTime']!=0)
+				{
+					echo 'Integration time: '.$_SESSION['inTime'] .' s<br>';
+				}
+				echo 'Number of Waveṕlate position: '.$_SESSION['inNwp'].'<br>';
+				echo 'Waveplate: '.$_SESSION['inWave'].'<br>';
+				if($_SESSION['inSigmaP']!=0)
+				{
+					echo 'Error of the linear polarization: '.$_SESSION['inSigmaP'].' %<br>';
+				}
+				echo 'Telescope Diameter: '.$_SESSION['inDTel'].' m<br>';
+				if($_SESSION['inFocal']==0)
+				{
+					echo 'Focal Reducer: No <br>';
+				}
+				else
+				{
+					echo 'Focal Reducer: Yes <br>';
+				}
+				echo 'Filter: '.$_SESSION['inFilter'].'<br>'; 
+				echo 'Sky quality: '.$_SESSION['inTsky'].'<br>';
+				echo 'Aperture radius: '.$_SESSION['inAperture'].' arcsec<br>';
+			?>
+		</section>
+		<!-- End final values -->
+		<!--Begin intermediate values -->
+		<section id="intermediate-values">
+			<h4>Intermediate values</h4>
+			<?php
+				session_start();
+				//observation
+				echo 'Number of pixels corresponding to the aperture radius: '.number_format($_SESSION['numberPixels'],2).'<br>';
+				echo 'Number of photons from the source per second: '.number_format($_SESSION['numberPhotons'],2).'<br>';
+				//filter
+				echo 'Filter effective wavelength: '.$_SESSION['central'].'<br>';
+				echo 'Filter width: '.$_SESSION['band'].' micron<br>';
+				echo 'Flux of zero magnitude: '.$_SESSION['fluxZero'].' 10<sup>-23</sup>W m<sup>-2</sup> Hz<sup>-1</sup><br>';
+				// instrument
+				echo 'Plate scale: '.$_SESSION['plateScale'].' arcsec/pix<br>';
+				echo 'Quantum efficiency: '.$_SESSION['quantumEfficiency'].'<br>';
+				echo 'Readout noise: '.$_SESSION['readoutNoise'].' e<sup>-</sup><br>';
+				echo 'Gain: '.$_SESSION['gain'].' e<sup>-</sup>/ADU<br>';
+				echo 'Sky Transparency: '.$_SESSION['tSky'].'<br>';
+				echo 'Sky magnitude: '.$_SESSION['magSky'].' mag<br>';
+				echo 'Number of photons from the sky per second: '.number_format($_SESSION['nSky'],2).'<br>';
+			?>
+		</section>
+		<!-- End intermediate values -->	
+		<img src="<?php echo $plot->EncodeImage();?>" alt="Graph Polarization Error X Time">
 	<!-- End Output View -->
-
+	</div>
 	<footer>
 		<p>Calculated by Exposure Time Calculator/IAGPOL</p>
-		<?php echo "<p>".date("m/d/Y")."</p>";?>
+		<?php 	echo "<p>".date("F j, Y, g:i:s a")."</p>";?>
 		<p>Developed in CEA/INPE</p>
 	</footer>
 </body> 

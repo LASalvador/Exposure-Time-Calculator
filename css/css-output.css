@@ -7,4 +7,7 @@ section.values{
 }
 footer{
 	border-top: 1px solid #606060;
-}	
+}
+span{
+	 font-weight: bold;
+}
