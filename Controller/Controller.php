@@ -30,9 +30,6 @@
 	$sky = new Sky($tSky,$filter, $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale());
 
 	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture);
-
-	$graph = new Graphics($observation, $sky, $instrument);
-	$data = $graph->generateValues($time, $nwp);
 	
  	if($mode==1)
  	{
@@ -68,25 +65,44 @@
  	}
 
 
- 	//Saving values
+	$snr = $observation->getSignalNoiseRadio();
+	$sigmaP = $observation->getSigmaP();
+ 	$sigmaV = $observation->getSigmaV();
+
+ 	$graph = new Graphics($observation, $sky, $instrument, $wave);
+	$data = $graph->generateValues($observation->getTimeExposure(), $nwp, $wave);
+
+
+ 	//Keep the values
+
+ 	//Input values
 	$_SESSION['inMag'] = $magnitude;
-	$_SESSION['inTime'] = $time;
 	$_SESSION['inNwp'] = $nwp;
 	$_SESSION['inWave'] = $wave;
-	$_SESSION['inSigmaP']= $sigmaP;
 	$_SESSION['inDTel'] = $dTel;
 	$_SESSION['inFocal'] = $focal;
 	$_SESSION['inFilter'] = $filter; 
 	$_SESSION['inTsky'] = $tSky;
 	$_SESSION['inAperture'] = $aperture;
 
+	if($mode == 1)
+	{
+		$_SESSION['inTime'] = $time;
+		$_SESSION['inSigmaP']= 0;
+	}
+	else
+	{
+		$_SESSION['inTime'] = 0;
+		$_SESSION['inSigmaP']= $sigmaP;
+	}	
+
 	//saving observation values
 	$_SESSION['numberPixels'] = $observation->getNumberPixels();
 	$_SESSION['numberPhotons'] =$observation->getNumberPhotons();
 	$_SESSION['timeExposure'] = $observation->getTimeExposure();
-	$_SESSION['snr'] = $observation->getSignalNoiseRadio();
-	$_SESSION['sigmaP'] = $observation->getSigmaP();
- 	$_SESSION['sigmaV'] = $observation->getSigmaV();
+	$_SESSION['snr'] = $snr;
+	$_SESSION['sigmaP'] = $sigmaP;
+ 	$_SESSION['sigmaV'] = $sigmaV;
 
 
 	//filter
