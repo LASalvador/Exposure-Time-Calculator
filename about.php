@@ -65,12 +65,12 @@
 
 							<h1 class="documentFirstHeading">About</h1>
 
-							<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                            <br/>
+							<p>This Exposure time calculator (ETC) was developed in the INPE and work for the IAGPOL instrument installed in the Observatory Pico dos Dias.</p>
+							<p>The ETC was developed in PHP 7.1, HTML 5, CSS 3 and JavaScript. The trio HTML, CS3 and JavaScript were used to build the interface of the site. The PHP was used to make the calculations and generate the graph. The graph is created by the<a href="http://phplot.org/" target="_blank"> PHPlot Library.</a></p>
+							   	<p>The code is available <a href="https://github.com/LASalvador/Exposure-Time-Calculator" target="_blank">here</a> and it is licensed under the GNU General Public License v2.0.</p>
+							   	<p>If you find an error send us an email for email. Lucas Salvador(lucas.salvador@inpe.br) or Claudia Rodrigues(claudia.rodrigues@inpe.br).</p>
 
 							<br><br>
-                            
-                            
                             
                             <p>
                             <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>
