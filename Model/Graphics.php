@@ -42,7 +42,7 @@
 		{	
 			return $this->instrument;
 		}
-		public function generateValues($timeIntegration , $nwp)
+		public function generateValues($timeIntegration , $nwp, $wave)
 		{
 			if($timeIntegration>500)
 			{
@@ -56,17 +56,35 @@
 
 			$data = array();
 			//defining in 1s
-			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
+			if($wave=='1/2')
+	 		{	
+	 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
 
 				$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+	 		}
+	 		elseif ($wave=='1/4')
+	 		{	
+	 				$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
+
+				$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+	 		}
 
 			$data[] = array('',1, round($this->getObservation()->getSigmaP(),3) );
 
-			for ($time=20; $time <=$timeRange; $time+=20) 
+			for ($time=10; $time <=$timeRange; $time+=10) 
 			{ 
-				$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
+				if($wave=='1/2')
+		 		{
+		 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
 
-				$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+					$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+		 		}
+		 		elseif ($wave=='1/4')
+		 		{	
+		 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain());
+
+					$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+		 		}
 
 
 				$data[] = array('', $time, round($this->getObservation()->getSigmaP(), 3) );
