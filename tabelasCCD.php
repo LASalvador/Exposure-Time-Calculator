@@ -34,7 +34,7 @@
 										   		<td>Gain</td>
 										   	</tr>
 										   	<tr>
-										   		<td><input type="radio" name="tCCD" id="cCCD1" value="1" checked="checked" /><label for="cCCD1">Slow</label></td>
+										   		<td><input type="radio" name="tCCD" id="cCCD1" value="1"/><label for="cCCD1">Slow</label></td>
 										   		<td>2.5</td>
 										   		<td>2.5</td>
 										   	</tr>
@@ -1486,7 +1486,7 @@
 										    		<td>400</td>
 										    	</tr>
 										    	<tr>
-										    		<td><input type="radio" name="tCCD" id="cCCD159" value="159"/><label for="cCCD159">11</label></td>
+										    		<td><input type="radio" name="tCCD" id="cCCD159" value="159" checked="checked"/><label for="cCCD159">11</label></td>
 										    		<td>x 5.0</td>
 										    		<td>3.4</td>
 										    		<td>16.5</td>
