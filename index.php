@@ -71,7 +71,7 @@
 							<h1 class="documentFirstHeading">Exposure Time Calculator - IAGPOL </h1>
 							<section>
 								<!-- Introduction -->
-								<p>The Exposure Time Calculator (ETC) is a tool to estimate (1) the exposure time required to achieve a given polarization error or (2) the polarization error obtained from a given exposure time. The ETC works for the IAGPOL instrument installed at the Pico dos Dias Observatory (OPD). Details about the calculations can be found clicking on “Information” in the lateral menu."</p>
+								<p>The Exposure Time Calculator (ETC) is a tool to estimate the exposure time required to achieve a given polarization error or the polarization error obtained from a given exposure time. The ETC works for the IAGPOL instrument installed at the Pico dos Dias Observatory (OPD). Details about the calculations can be found clicking on “Information” in the lateral menu.</p>
 	                            <br/>
                             </section>
                             <strong>ETC</strong>
@@ -81,7 +81,7 @@
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="10" value="15" onclick="this.value=''" required/><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="10" value="15" required/><font>mag</font>
 									</p>
 									<p>
 										<label for="cNwp">Number of WavePlate positions</label>
@@ -125,7 +125,7 @@
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '106')">CCD 106</a>
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BV')">iKon - 9867 & 10127</a>
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740</a>
+										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740 & 17588</a>
 										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
 										  </div>
 										  <!-- Begin Table -->
@@ -179,7 +179,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" value="2" size="10" onclick="this.value=''" min="0" max="30" required><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" value="2" size="10" min="0" max="30" required><font>arcsec</font>
 									</p>
 									<p>	<label>ETC Mode</label><br>
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
@@ -194,13 +194,13 @@
 									<p>
 										<div id="boxTime">
 											<label for="tTemp">Integration time</label><br>
-											<input type="Number" name="tTemp" id="cTemp" min="1" max="100000" size="10" value="60" onclick="this.value=''"/><font>s</font>
+											<input type="Number" name="tTemp" id="cTemp" min="1" max="100000" size="10" value="60" /><font>s</font>
 										</div>
 									</p>
 									<p>
 										<div id="boxSigma">
 											<label for="cSigma">Sigma</label><br>
-											<input type="Number" name="tSigmaP" id="cSigmaP" size="10" value="0.1" onclick="this.value=''" step="0.0001" min="0.0001"><font>%</font>
+											<input type="Number" name="tSigmaP" id="cSigmaP" size="10" value="0.1" step="0.0001" min="0.0001"><font>%</font>
 										</div>
 									</p>
 									<input type="submit" name="bCalculate" value="Calculate" formtarget="_blank">
