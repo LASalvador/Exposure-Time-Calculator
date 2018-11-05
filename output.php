@@ -32,8 +32,6 @@
 		$font = '3';
 		$fh = imagefontheight($font);
 		$fw = imagefontwidth($font);
-		//imagestring($img, $font, $time_x-$fw*4, $sigma_y-$fh-10,'', $green);
-		//$plot->DrawText('', 0, $time $sigmaP-10, $green,'Bad News!', 'center', 'bottom');
 	}
 
 	$plot = new PHPlot(1200,600);
@@ -48,12 +46,11 @@
 ;	$plot->SetYLabelType('data');
 	$plot->SetYTitle("Polarization Error (%)");
 	$plot->SetPrecisionY(2);
-	//$plot->SetYDataLabelPos('plotin');
 
-	//$plot->SetFontTTF('x_title', 'liberation/LiberationSans-Regular.ttf', 12);
-	//$plot->SetFontTTF('y_title', 'liberation/LiberationSans-Regular.ttf', 12);
-	//$plot->SetFontTTF('x_label', 'liberation/LiberationSans-Regular.ttf', 11);
-	//$plot->SetFontTTF('y_label', 'liberation/LiberationSans-Regular.ttf', 11);
+	$plot->SetFontTTF('x_title', 'liberation/LiberationSans-Regular.ttf', 12);
+	$plot->SetFontTTF('y_title', 'liberation/LiberationSans-Regular.ttf', 12);
+	$plot->SetFontTTF('x_label', 'liberation/LiberationSans-Regular.ttf', 11);
+	$plot->SetFontTTF('y_label', 'liberation/LiberationSans-Regular.ttf', 11);
 
 	# Force the bottom of the plot to be at Y=0, and omit
 	# the bottom "$0M" tick label because it looks odd:
@@ -75,7 +72,7 @@
 </head>
 <body>
 	<!-- Begin Output View -->
-	<div class="output">
+	<div class="output" id="output">
 		<!-- Begin Final values -->
 		<section class="values">
 			<h2> Final values</h2>
@@ -100,7 +97,7 @@
 				{
 					echo 'Integration time: '.$_SESSION['inTime'] .' s<br>';
 				}
-				echo 'Number of Waveṕlate position: '.$_SESSION['inNwp'].'<br>';
+				echo 'Number of Waveplate position: '.$_SESSION['inNwp'].'<br>';
 				echo 'Waveplate: '.$_SESSION['inWave'].'<br>';
 				if($_SESSION['inSigmaP']!=0)
 				{
@@ -144,10 +141,15 @@
 			?>
 		</section>
 		<!-- End intermediate values -->	
-		<img src="<?php echo $plot->EncodeImage();?>" alt="Graph Polarization Error X Time">
-	<!-- End Output View -->
+		<!-- End Output View -->
 	</div>
-	<footer>
+	<div id="divGraph" class="output">
+		<img src="<?php echo $plot->EncodeImage();?>" alt="Graph Polarization Error X Time">
+	
+	<br>
+		<button onclick="window.print()">Print results</button>
+	</div>
+	<footer id="footer">
 		<p>Calculated by Exposure Time Calculator/IAGPOL</p>
 		<?php 	echo "<p>".date("F j, Y, g:i:s a")."</p>";?>
 		<p>Developed in CEA/INPE</p>
