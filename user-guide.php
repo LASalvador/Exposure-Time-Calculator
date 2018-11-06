@@ -65,7 +65,7 @@
 
 							<h1 class="documentFirstHeading">Information</h1>
 
-							<p>For information about the calculations read the file available <a href="https://drive.google.com/file/d/1lRK3OsHs_gPFjEqMmYsGhBBSOzfQfD8S/view?usp=sharing"> here.</a></p>
+							<p>For information about the calculations read the file available <a href="https://drive.google.com/file/d/1lRK3OsHs_gPFjEqMmYsGhBBSOzfQfD8S/view?usp=sharing" target="_blank"> here.</a></p>
                             <br/>
                     
 
