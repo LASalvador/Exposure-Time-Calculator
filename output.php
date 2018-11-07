@@ -42,15 +42,15 @@
 	$plot->SetTitle("Polarization Error X Time");
 	$plot->SetXLabelType('data');
 	$plot->SetXTitle("Integration Time (s)");
-	$plot->SetPrecisionX(0)
-;	$plot->SetYLabelType('data');
+	$plot->SetPrecisionX(0);
+	$plot->SetYLabelType('data');
 	$plot->SetYTitle("Polarization Error (%)");
 	$plot->SetPrecisionY(2);
 
-	$plot->SetFontTTF('x_title', 'liberation/LiberationSans-Regular.ttf', 12);
-	$plot->SetFontTTF('y_title', 'liberation/LiberationSans-Regular.ttf', 12);
-	$plot->SetFontTTF('x_label', 'liberation/LiberationSans-Regular.ttf', 11);
-	$plot->SetFontTTF('y_label', 'liberation/LiberationSans-Regular.ttf', 11);
+	$plot->SetFontGD('y_label', 4);
+	$plot->SetFontGD('x_label', 4);
+	$plot->SetFontGD('x_title', 5);
+	$plot->SetFontGD('y_title', 5);
 
 	# Force the bottom of the plot to be at Y=0, and omit
 	# the bottom "$0M" tick label because it looks odd:
