@@ -81,7 +81,7 @@
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="15" value="15" required/><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="15" value="15"  step="0.01" required/><font>mag</font>
 									</p>
 									<p>
 										<label for="cNwp">Number of WavePlate positions</label>
