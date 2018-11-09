@@ -119,7 +119,7 @@
 										   			<td>Mode</td>
 										   			<td><p>A/D Rate Mhz - all 16 bit</p></td>
 										   			<td>Preamp setting</td>
-										   			<td><P>CCD sensitivity e-per A/D count</p></td>
+										   			<td><P>Gain e-per A/D count</p></td>
 										   			<td><p>Single Pixel Noise(rms)</p></td>
 										   			<td><p>Base Mean Level</p></td>
 										   		</tr>
@@ -227,7 +227,7 @@
 										   			<td>Mode</td>
 										   			<td><p>A/D Rate Mhz - all 16 bit</p></td>
 										   			<td>Preamp setting</td>
-										   			<td><p>CCD sensitivity e-per A/D count</p></td>
+										   			<td><p>Gain e-per A/D count</p></td>
 										   			<td><p>Single Pixel Noise(rms)</p></td>
 										   			<td><p>Base Mean Level</p></td>
 										   		</tr>
@@ -356,7 +356,7 @@
 													<td>Mode</td>
 													<td>A/D Rate</td>
 													<td>Preamp setting</td>
-													<td>CCD Sensivity</td>
+													<td>Gain</td>
 													<td>Single Pixel Noise</td>
 													<td>Base Mean Level</td>
 												</tr>
@@ -559,7 +559,7 @@
 													<td>Mode</td>
 													<td>A/D Rate</td>
 													<td>Preamp setting</td>
-													<td>CCD Sensivity</td>
+													<td>Gain</td>
 													<td>Single Pixel Noise</td>
 													<td>Base Mean Level</td>
 												</tr>
@@ -782,7 +782,7 @@
 													<td>Mode</td>
 													<td>A/D Rate</td>
 													<td>Preamp setting</td>
-													<td>CCD Sensivity</td>
+													<td>Gain</td>
 													<td>Single Pixel Noise</td>
 													<td>Base Mean Level</td>
 												</tr>
@@ -985,7 +985,7 @@
 													<td>Mode</td>
 													<td>A/D Rate</td>
 													<td>Preamp setting</td>
-													<td>CCD Sensivity</td>
+													<td>Gain</td>
 													<td>Single Pixel Noise</td>
 													<td>Base Mean Level</td>
 												</tr>
@@ -1188,7 +1188,7 @@
 													<td>Mode</td>
 													<td>A/D Rate</td>
 													<td>Preamp setting</td>
-													<td>CCD Sensivity</td>
+													<td>Gain</td>
 													<td>Single Pixel Noise</td>
 													<td>Base Mean Level</td>
 												</tr>
@@ -1407,7 +1407,7 @@
 										    		<td>Mode</td>
 										    		<td>A/D Rate</td>
 										    		<td>Preamp setting</td>
-										    		<td>CCD Sensitivity</td>
+										    		<td>Gain</td>
 										    		<td>Single Pixel Noise</td>
 										    		<td>Base Mean Level</td>
 										    	</tr>
@@ -1545,7 +1545,7 @@
 										    		<td>Mode</td>
 										    		<td>A/D Rate</td>
 										    		<td>Preamp setting</td>
-										    		<td>CCD sensitivy</td>
+										    		<td>Gain</td>
 										    		<td>Single Pixel Noise</td>
 										    		<td>Base Mean Level</td>
 										    	</tr>
