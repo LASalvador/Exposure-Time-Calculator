@@ -65,10 +65,10 @@
 
 							<h1 class="documentFirstHeading">About</h1>
 
-							<p>This Exposure time calculator (ETC) was developed in the INPE and work for the IAGPOL instrument installed in the Observatory Pico dos Dias.</p>
-							<p>The ETC was developed in PHP 7.1, HTML 5, CSS 3 and JavaScript. The trio HTML, CS3 and JavaScript were used to build the interface of the site. The PHP was used to make the calculations and generate the graph. The graph is created by the<a href="http://phplot.org/" target="_blank"> PHPlot Library.</a></p>
-							   	<p>The code is available <a href="https://github.com/LASalvador/Exposure-Time-Calculator" target="_blank">here</a> and it is licensed under the GNU General Public License v2.0.</p>
-							   	<p>If you find an error send us an email for email. Lucas Salvador(lucas.salvador@inpe.br) or Claudia Rodrigues(claudia.rodrigues@inpe.br).</p>
+							<p>This Exposure Time Calculator (ETC) was developed in INPE and works for the IAGPOL instrument installed at Observatory Pico dos Dias.</p>
+							<p>The ETC was developed in PHP 7.1, HTML 5, CSS 3 and JavaScript. The trio HTML, CS3 and JavaScript were used to build the interface of the site.The PHP is used to perform the calculations and to generate the graph. The graph is created using the<a href="http://phplot.org/" target="_blank"> PHPlot Library.</a></p>
+						   	<p>The code is available <a href="https://github.com/LASalvador/Exposure-Time-Calculator" target="_blank">here</a> and it is licensed under the GNU General Public License v2.0.</p>
+						   	<p>If you find an error send us an email for email. Lucas Salvador (<?php echo file_get_contents('./static/lucas.txt');?>) or Claudia Rodrigues (<?php echo file_get_contents('./static/claudia.txt');?>) .</p>
 
 							<br><br>
                             
