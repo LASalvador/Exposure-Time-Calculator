@@ -86,7 +86,7 @@
  	}
  	public function setNumberPixels($rap, $platescale, $binning)
  	{
- 		$this->numberPixels =  3.14159 * pow(($rap/$platescale * $binning), 2);
+ 		$this->numberPixels =  3.14159 * pow(($rap/($platescale * $binning)), 2);
  	}
  	public function getNumberPixels()
  	{
