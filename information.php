@@ -69,8 +69,7 @@
                             <br/>
 
                            
-
-						
+ 	
 						<iframe src="https://docs.google.com/viewer?srcid=17PcS1OGtJHjT8icBlGpGSJkuieGE5ELu&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="580px" height="480px"></iframe>
 
                             <p>
