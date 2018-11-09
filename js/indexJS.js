@@ -33,7 +33,7 @@ function key(event)
        form.querySelector('input[type="submit"]').click();
      } 
   }
-  if(event.keyCode == 27)
+  else if(event.keyCode == 27)
   {
     document.getElementById('id01').style.display='none';
   }
