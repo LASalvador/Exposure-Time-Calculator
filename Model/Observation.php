@@ -1,4 +1,3 @@
-
 <?php
  /**
   * This class represents the Observation and its attributes
@@ -14,12 +13,14 @@
  	private $numberPixels;
  	private $radiusAperture;
  	private $timeExposure;
+ 	private $fCalib;
 
- 	function __construct($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $rap )
+ 	function __construct($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $rap, $platescale, $fCalib, $binning)
  	{
+ 		$this->setFcalib($fCalib);
  		$this->setMagnitude($mag);
  		$this->setRadiusAperture($rap);
- 		$this->setNumberPixels($rap);
+ 		$this->setNumberPixels($rap, $platescale, $binning);
  		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag);
  	}
  	public function setSigmaP($type, $snr = 0, $nwp = 0, $sigmaP = 0)
@@ -53,8 +54,7 @@
  	}
  	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag)
  	{
- 			$fCalib = 1;
- 			$this->numberPhotons = $fCalib * $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
+ 			$this->numberPhotons = $this->getFcalib() *  $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
  	}
  	public function getNumberPhotons()
  	{
@@ -68,11 +68,11 @@
  	{	
  		return $this->magnitude;
  	}
- 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $k = 0, $sigma = 0, $nwp = 0)
+ 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $binning = 0 , $k = 0, $sigma = 0, $nwp = 0)
  	{
  		if($type == 1)
  		{		
- 			$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
+ 			$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + $binning * pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
  		}
  		elseif($type==2)
  		{
@@ -84,9 +84,9 @@
  	{
  		return $this->signalNoiseRadio;
  	}
- 	public function setNumberPixels($rap)
+ 	public function setNumberPixels($rap, $platescale, $binning)
  	{
- 		$this->numberPixels =  3.14159 * pow($rap, 2);
+ 		$this->numberPixels =  3.14159 * pow(($rap/$platescale * $binning), 2);
  	}
  	public function getNumberPixels()
  	{
@@ -100,7 +100,7 @@
  	{
  		return $this->radiusAperture;
  	}
- 	public function setTimeExposure($type,$t = 0, $n=0, $snr = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0)
+ 	public function setTimeExposure($type,$t = 0, $n=0, $snr = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $binning = 0)
  	{
  		if($type==1) 
  		{
@@ -110,7 +110,7 @@
  		{
  			$a = pow($n,2);
  			$b = -1 * pow($snr,2) * ($n + 2*$nPix * $nS);
- 			$c = -2 * $nPix * pow($snr,2) * (pow($nR,2) + pow(0.289, 2) * pow($g, 2));
+ 			$c = -2 * $nPix * pow($snr,2) * ($binning * pow($nR,2) + pow(0.289, 2) * pow($g, 2));
  			$t = (-$b + sqrt(pow($b,2) -4 * $a * $c))/2/$a;
  			
  			$this->timeExposure = $t;
@@ -119,6 +119,14 @@
  	public function getTimeExposure()
  	{
  		return $this->timeExposure;
+ 	}
+ 	public function setFcalib($value)
+ 	{
+ 		$this->fCalib = $value;
+ 	}
+ 	public function getFcalib()
+ 	{
+ 		return $this->fCalib;
  	}
 
  }

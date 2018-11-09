@@ -45,7 +45,7 @@
 	$plot->SetPrecisionX(0);
 	$plot->SetYLabelType('data');
 	$plot->SetYTitle("Polarization Error (%)");
-	$plot->SetPrecisionY(2);
+	$plot->SetPrecisionY(3);
 
 	$plot->SetFontGD('y_label', 4);
 	$plot->SetFontGD('x_label', 4);
@@ -77,14 +77,16 @@
 		<section class="values">
 			<h2> Final values</h2>
 			<?php
-				echo '<span>Integration time:</span> '.$time.' s<br>';
-				echo '<span>Error of the linear polarization:</span> '.number_format($sigmaP,2).' %<br>';
+				echo '<span>Integration time: </span> '.$time.' s<br>';
+				echo '<span>Error of the linear polarization: </span> '.number_format($sigmaP,3).' %<br>';
 				if($sigmaV!=0)
 				{
-					echo '<span>Error of the circular polarization:</span> '.number_format($sigmaV,2).' %<br>';
+					echo '<span>Error of the circular polarization:</span> '.number_format($sigmaV,3).' %<br>';
 				}	
-				echo '<span>Signal to noise ratio:</span> '.number_format($snr,2).'<br>';
+				echo '<span>Signal to noise ratio of one waveplate position
+: </span> '.number_format($snr,2).'<br>';
 			?>
+			<button onclick="window.print()" style="font-size: 15pt;">Print results</button>
 		</section>
 		<!--End Final values -->
 		<!-- Begin Input values -->
@@ -137,17 +139,21 @@
 				echo 'Gain: '.$_SESSION['gain'].' e<sup>-</sup>/ADU<br>';
 				echo 'Sky Transparency: '.$_SESSION['tSky'].'<br>';
 				echo 'Sky magnitude: '.$_SESSION['magSky'].' mag<br>';
-				echo 'Number of photons from the sky per second: '.number_format($_SESSION['nSky'],2).'<br>';
+				echo 'Number of photons from the sky per second per pixels: '.number_format($_SESSION['nSky'],2).'<br>';
+				echo 'Fcalib: '.$_SESSION['fCalib'].'<br>';
+				echo 'Binning: '.$_SESSION['binning'].'<br>';
 			?>
 		</section>
 		<!-- End intermediate values -->	
 		<!-- End Output View -->
 	</div>
 	<div id="divGraph" class="output">
+		<br>
+		<br>
 		<img src="<?php echo $plot->EncodeImage();?>" alt="Graph Polarization Error X Time">
 	
 	<br>
-		<button onclick="window.print()">Print results</button>
+		<button onclick="window.print()" style="font-size: 15pt;">Print results</button>
 	</div>
 	<footer id="footer">
 		<p>Calculated by Exposure Time Calculator/IAGPOL</p>

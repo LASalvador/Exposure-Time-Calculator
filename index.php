@@ -71,7 +71,7 @@
 							<h1 class="documentFirstHeading">Exposure Time Calculator - IAGPOL </h1>
 							<section>
 								<!-- Introduction -->
-								<p>The Exposure Time Calculator (ETC) is a tool to estimate the exposure time required to achieve a given polarization error or the polarization error obtained from a given exposure time. The ETC works for the IAGPOL instrument installed at the Pico dos Dias Observatory (OPD). Details about the calculations can be found clicking on “Information” in the lateral menu.</p>
+								<p>The Exposure Time Calculator (ETC) is a tool to estimate the exposure time required to achieve a given polarization error or the polarization error obtained using a given exposure time. The ETC works for the IAGPOL instrument installed at the Pico dos Dias Observatory (OPD). Details about the calculations can be found clicking on “Information” in the lateral menu.</p>
 	                            <br/>
                             </section>
                             <strong>ETC</strong>
@@ -81,7 +81,7 @@
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
-										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="10" value="15" required/><font>mag</font>
+										<input type="Number" name="tMag" id="cMag" min="0" max="23" size="15" value="15" required/><font>mag</font>
 									</p>
 									<p>
 										<label for="cNwp">Number of WavePlate positions</label>
@@ -100,6 +100,17 @@
 											<label for="cWave1">1/2 wave</label>
 											<input type="radio" name="tWave" id="cWave2" value="1/4"/>
 											<label for="cWave2">1/4 wave</label>
+									</p>
+									<p>
+										<label for="cBin">Binning</label>
+										<br>
+										<select name="tBin" id="cBin">
+											<option value="1" selected="selected">1x1</option>
+											<option value="2">2x2</option>
+											<option value="3">3x3</option>
+											<option value="4">4X4</option>
+											<option value="5">5X5</option>
+										</select>
 									</p>
 									<p>
 										<label>Telescope</label><br>
@@ -149,13 +160,13 @@
 									<p>									
 										<label>Filter</label><br>
 										<input type="radio" name="tFilter" id="cFil1" value="U">
-										<label for="cFil1">U</label>
+										<label for="cFil1">U</label>&nbsp;&nbsp;
 										<input type="radio" name="tFilter" id="cFil2" value="B">
-										<label for="cFil2">B</label>
+										<label for="cFil2">B</label>&nbsp;&nbsp;
 										<input type="radio" name="tFilter" id="cFil3" checked value="V">
-										<label for="cFil3">V</label>
+										<label for="cFil3">V</label>&nbsp;&nbsp;
 										<input type="radio" name="tFilter" id="cFil4" value="R">
-										<label for="cFil4">R</label>
+										<label for="cFil4">R</label>&nbsp;&nbsp;
 										<input type="radio" name="tFilter" id="cFil5" value="I">
 										<label for="cFil5">I</label>
 									</p>
@@ -179,7 +190,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" value="2" size="10" min="0" max="30" required><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" value="2" size="15" min="0" max="30" required><font>arcsec</font>
 									</p>
 									<p>	<label>ETC Mode</label><br>
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
@@ -194,13 +205,13 @@
 									<p>
 										<div id="boxTime">
 											<label for="tTemp">Integration time</label><br>
-											<input type="Number" name="tTemp" id="cTemp" min="1" max="100000" size="10" value="60" /><font>s</font>
+											<input type="Number" name="tTemp" id="cTemp" min="1" max="100000" size="15" value="60" /><font>s</font>
 										</div>
 									</p>
 									<p>
 										<div id="boxSigma">
 											<label for="cSigma">Sigma</label><br>
-											<input type="Number" name="tSigmaP" id="cSigmaP" size="10" value="0.1" step="0.0001" min="0.0001"><font>%</font>
+											<input type="Number" name="tSigmaP" id="cSigmaP" size="15" value="0.1" step="0.0001" min="0.0001"><font>%</font>
 										</div>
 									</p>
 									<input type="submit" name="bCalculate" value="Calculate" formtarget="_blank">
