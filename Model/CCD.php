@@ -15,7 +15,7 @@
 		private $quantumEfficiency;
 		/** CCD's serial number*/
 		private $ccdNumber;
-
+		/** CCD's binning */
 		private $binning;
 
 		/**
@@ -23,6 +23,7 @@
 		*
 		* @param int $ccdNumber number choiced on table ccd. 
 		* @param char @filter represent the filter choiced.
+		* @param int $binning binning choiced
 		*/	
 		public function __construct($ccdNumber, $filter, $binning)
 		{
@@ -128,10 +129,18 @@
 		{
 			return $this->ccdNumber;
 		}
+		/**
+		* Set's up binning
+		* @param int $binning
+		*/
 		public function setBinning($binning)
 		{
 			$this->binning = $binning;
 		}
+		/**
+		* Return binning
+		* @return int binning
+		*/
 		public function getBinning()
 		{
 			return $this->binning;	
