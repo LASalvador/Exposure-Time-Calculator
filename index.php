@@ -170,15 +170,15 @@
 										<input type="radio" name="tFilter" id="cFil5" value="I">
 										<label for="cFil5">I</label>
 									</p>
-									<!--<p>
+									<p>
 										<label>Moon Phase</label><br>
-										<input type="radio" name="tMoon" id="cMoon1" checked="checked" value="1">
+										<input type="radio" name="tMoon" id="cMoon1" checked="checked" value="new">
 										<label for="cMoon1">New</label>
-										<input type="radio" name="tMoon" id="cMoon2" value="2">
+										<input type="radio" name="tMoon" id="cMoon2" value="quarter">
 										<label for="cMoon2">Quarter</label>
-										<input type="radio" name="tMoon" id="cMoon3" value="3">
+										<input type="radio" name="tMoon" id="cMoon3" value="full">
 										<label for="cMoon3">Full</label>
-									</p>-->
+									</p>
 									<p>
 										<label>Sky quality</label><br>
 										<input type="radio" name="tSky" id="cSky1" checked value="photometric">

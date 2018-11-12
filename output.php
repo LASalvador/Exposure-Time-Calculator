@@ -117,6 +117,7 @@
 				echo 'Filter: '.$_SESSION['inFilter'].'<br>'; 
 				echo 'Sky quality: '.$_SESSION['inTsky'].'<br>';
 				echo 'Aperture radius: '.$_SESSION['inAperture'].' arcsec<br>';
+				echo 'Moon Phase: '.$_SESSION['inMoon'].'<br>';
 			?>
 		</section>
 		<!-- End final values -->

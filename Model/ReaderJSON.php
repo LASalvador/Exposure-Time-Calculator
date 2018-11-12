@@ -24,5 +24,11 @@
 			$json = json_decode($arquivo);
 			return  $json->$filter->$attribute;
 		}
+		function readMsky($filter, $attribute, $phase)
+		{
+			$arquivo = file_get_contents('../static/filter.json');
+			$json = json_decode($arquivo);
+			return $json->$filter->$attribute->$phase;
+		}
 	}
 ?>

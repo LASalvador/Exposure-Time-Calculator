@@ -15,6 +15,7 @@
 	$detector = $_POST['tCCD'];
 	$focal = $_POST['tFocal'];
 	$filter = $_POST['tFilter'];
+	$moon = $_POST['tMoon'];
 	$tSky = $_POST['tSky'];
 	$aperture = isset($_POST['tAperture'])? $_POST['tAperture']: 2;
 	$sigmaP = isset($_POST['tSigmaP']) ? $_POST['tSigmaP']: 0;
@@ -27,7 +28,7 @@
 	
 	$instrument = new Instrument($nwp,$dTel,$focal,$ccd);
 
-	$sky = new Sky($tSky,$filter, $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning());
+	$sky = new Sky($tSky,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning());
 
 	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning());
 	
@@ -82,6 +83,7 @@
 	$_SESSION['inFilter'] = $filter; 
 	$_SESSION['inTsky'] = $tSky;
 	$_SESSION['inAperture'] = $aperture;
+	$_SESSION['inMoon'] = $moon;
 
 	if($mode == 1)
 	{
@@ -124,6 +126,8 @@
  	$_SESSION['tSky'] = $sky->getTransparencySky();
  	$_SESSION['magSky'] = $sky->getMagnitudeSky();
  	$_SESSION['nSky'] = $sky->getNumberPhotons();
+ 	
+
  	$_SESSION['data'] = $data;
 
  	header("location: ../output.php");

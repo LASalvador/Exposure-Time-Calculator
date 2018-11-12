@@ -4,49 +4,74 @@
 		"effectiveLenght":0.3663,
 		"filterWidth":0.65,
 		"fluxZero":4.26,
-		"sky":18.1,
 		"photometric": 0.7285,
 		"good":0.5331,
-		"regular":0.6232
+		"regular":0.6232,
+		"sky":
+		{
+			"new": 20.2 ,
+			"quarter":18.1,
+			"full":15.2
+		}
 	},
 	"B":
 	{
 		"effectiveLenght":0.4361,
 		"filterWidth":0.089,
 		"fluxZero":4.26,
-		"sky":19.8,
-		"photometric":0.8356 ,
+		"photometric":0.8356,
 		"good":0.7185,
-		"regular":0.7748
+		"regular":0.7748,
+		"sky":
+		{
+			"new": 20.9 ,
+			"quarter":19.8,
+			"full":17.7
+		}
 	},
 	"V":
 	{
 		"effectiveLenght":0.5448,
 		"filterWidth":0.084,
 		"fluxZero":3.64,
-		"sky":20.1,
-		"photometric":0.9012 ,
+		"photometric":0.9012,
 		"good":0.8181,
-		"regular":0.8586
+		"regular":0.8586,
+		"sky":
+		{
+			"new": 20.5,
+			"quarter":20.1,
+			"full":18.7
+		}
 	},
 	"R":
 	{
 		"effectiveLenght":0.6407,
 		"filterWidth":0.158,
 		"fluxZero":3.08,
-		"sky":20.4,
-		"photometric":0.9727 ,
+		"photometric":0.9727,
 		"good":0.8590,
-		"regular":0.9141
+		"regular":0.9141,
+		"sky":
+		{
+			"new": 20.7,
+			"quarter":20.4,
+			"full":19.7
+		}
 	},
 	"I":
 	{
 		"effectiveLenght":0.7980,
 		"filterWidth":0.154,
 		"fluxZero":2.55,
-		"sky":20.1,
 		"photometric": 0.9908,
 		"good":0.8929,
-		"regular":0.9406
+		"regular":0.9406,
+		"sky":
+		{
+			"new": 20.3,
+			"quarter":20.1,
+			"full":19.6
+		}
 	}
 }
