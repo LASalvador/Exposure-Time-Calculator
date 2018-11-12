@@ -12,11 +12,11 @@
 		private $magnitudeSky;
 		private $fCalib;
 
-		function __construct($transparencySky, $filter, $moonPhase , $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $fCalib, $binning)
+		function __construct($transparencySky, $airMass , $filter, $moonPhase , $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $fCalib, $binning)
 		{
 			$this->setFcalib($fCalib);
 			$reader = new ReaderJSON();
-			$this->setTransparencySky($reader->readFilter($filter,$transparencySky));
+			$this->setTransparencySky($reader->readFilter($filter,$transparencySky), $airMass);
 			$this->setMagnitudeSky($reader->readMsky($filter,'sky',$moonPhase));
 			$this->setNumberPhotons($this->getMagnitudeSky(), $this->getTransparencySky(), $q, $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $binning);
 		}
@@ -29,9 +29,9 @@
 		{
 			return $this->numberPhotons;
 		}
-		public function setTransparencySky($transparency)
+		public function setTransparencySky($k , $x)
 		{
-			$this->transparencySky = $transparency;
+			$this->transparencySky = pow(10,-0.4*$k*$x);
 		}
 		public function getTransparencySky()
 		{

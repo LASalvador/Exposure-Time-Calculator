@@ -189,6 +189,10 @@
 										<label for="cSky3">Regular</label>
 									</p>
 									<p>
+										<label for="cAperture">Air Mass</label><br>
+										<input type="Number" name="tAirMass" id="cAirMass" value="1" size="15" min="1" max="3" step="0.01" required>
+									</p>
+									<p>
 										<label for="cAperture">Aperture radius</label><br>
 										<input type="Number" name="tAperture" id="cAperture" value="2" size="15" min="0" max="30" required><font>arcsec</font>
 									</p>
