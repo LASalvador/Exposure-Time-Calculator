@@ -4,9 +4,9 @@
 		"effectiveLenght":0.3663,
 		"filterWidth":0.65,
 		"fluxZero":4.26,
-		"photometric": 0.7285,
-		"good":0.5331,
-		"regular":0.6232,
+		"photometric": 0.344,
+		"good":0.5135,
+		"regular":0.683,
 		"sky":
 		{
 			"new": 20.2 ,
@@ -19,9 +19,9 @@
 		"effectiveLenght":0.4361,
 		"filterWidth":0.089,
 		"fluxZero":4.26,
-		"photometric":0.8356,
-		"good":0.7185,
-		"regular":0.7748,
+		"photometric":0.195,
+		"good":0.277,
+		"regular":0.359,
 		"sky":
 		{
 			"new": 20.9 ,
@@ -34,9 +34,9 @@
 		"effectiveLenght":0.5448,
 		"filterWidth":0.084,
 		"fluxZero":3.64,
-		"photometric":0.9012,
-		"good":0.8181,
-		"regular":0.8586,
+		"photometric":0.113,
+		"good": 0.1655,
+		"regular":0.218,
 		"sky":
 		{
 			"new": 20.5,
@@ -49,9 +49,9 @@
 		"effectiveLenght":0.6407,
 		"filterWidth":0.158,
 		"fluxZero":3.08,
-		"photometric":0.9727,
-		"good":0.8590,
-		"regular":0.9141,
+		"photometric":0.03,
+		"good":0.0975,
+		"regular":0.165,
 		"sky":
 		{
 			"new": 20.7,
@@ -64,9 +64,9 @@
 		"effectiveLenght":0.7980,
 		"filterWidth":0.154,
 		"fluxZero":2.55,
-		"photometric": 0.9908,
-		"good":0.8929,
-		"regular":0.9406,
+		"photometric": 0.01,
+		"good":0.0665,
+		"regular":0.123,
 		"sky":
 		{
 			"new": 20.3,
