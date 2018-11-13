@@ -139,7 +139,7 @@
 				echo 'Quantum efficiency: '.$_SESSION['quantumEfficiency'].'<br>';
 				echo 'Readout noise: '.$_SESSION['readoutNoise'].' e<sup>-</sup><br>';
 				echo 'Gain: '.$_SESSION['gain'].' e<sup>-</sup>/ADU<br>';
-				echo 'Sky Transparency: '.$_SESSION['tSky'].'<br>';
+				echo 'Sky Transparency: '.number_format($_SESSION['tSky'],3).'<br>';
 				echo 'Sky magnitude: '.$_SESSION['magSky'].' mag<br>';
 				echo 'Number of photons from the sky per second per pixels: '.number_format($_SESSION['nSky'],2).'<br>';
 				echo 'Fcalib: '.$_SESSION['fCalib'].'<br>';
