@@ -49,7 +49,7 @@
  	}
  	/**
  	* Sets up Telescope's Diameter of aperture
- 	* @param float aperture
+ 	* @param float aperture Diameter of aperture
  	*/
  	public function setAperture($aperture)
  	{
@@ -64,24 +64,26 @@
  		 return $this->aperture;	
  	}
  	/**
- 	*
- 	*
+ 	* Sets up Focal Reducer
+ 	* @param boolean $focalReducer
  	*/
  	public function setFocalReducer($focalReducer)
  	{
  		$this->focalReducer = $focalReducer;
  	}
  	/**
- 	*
- 	*
+ 	* return Focal Reducer
+ 	* @return boolean Focal reducer
  	*/
  	public function getFocalReducer()
  	{
  		return $this->focalReducer;
  	}
  	/**
- 	*
- 	*
+ 	* Sets up Plate Scale
+ 	* @param String $ccd Number CCD's number
+ 	* @param boolean $focalReducer focal reducer on Instrument
+ 	* @param Float $dTel Telescope's Diameter of aperture
  	*/
  	public function setPlateScale($ccdNumber, $focalReducer, $dTel)
  	{
@@ -127,24 +129,24 @@
  		}
  	}
  	/**
- 	*
- 	*
+ 	* Return PlateScale   
+ 	* @return float $plateScale PlateScale
  	*/
  	public function getPlateScale()
  	{
  		return $this->plateScale;
  	}
  	/**
- 	*
- 	*
+ 	* Sets up CCD
+ 	* @param CCD $ccd CDD used in the observation
  	*/
  	public function setCCD(CCD $ccd)
  	{
  		$this->ccd = $ccd;
  	}
- 	/**
- 	*
- 	*
+ 	/** 
+ 	* Return CCD
+ 	* @	
  	*/
  	public function getCCD()
  	{
