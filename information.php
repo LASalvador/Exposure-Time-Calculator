@@ -65,10 +65,8 @@
 
 							<h1 class="documentFirstHeading">Information</h1>
 
-							<p>For information about the calculations read the file available <a href="https://drive.google.com/file/d/1lRK3OsHs_gPFjEqMmYsGhBBSOzfQfD8S/view?usp=sharing" target="_blank"> here.</a></p>
+							<p>For information about the calculations read the file</p>
                             <br/>
-
-                           
  	
 						<iframe src="https://docs.google.com/viewer?srcid=17PcS1OGtJHjT8icBlGpGSJkuieGE5ELu&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="580px" height="480px"></iframe>
 
