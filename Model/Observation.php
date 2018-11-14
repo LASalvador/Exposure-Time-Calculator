@@ -99,7 +99,7 @@
  	}
  	/**
  	* Sets up  Number of source photons
- 	 @param float $q Quantum Efficiency
+ 	* @param float $q Quantum Efficiency
  	* @param float $tSky Sky Transparency
  	* @param float $f0 flux of a zero magnitude source
  	* @param float $filterWidth FilterWidth
