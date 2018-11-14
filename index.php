@@ -76,7 +76,7 @@
                             </section>
                             <strong>ETC</strong>
 							<br>
-							<!-- Begging of Form -->
+							<!--Form -->
 							<form method="post" id="fEtc" name="etcForm" action="./Controller/Controller.php">
 								<fieldset>
 									<p>
@@ -122,33 +122,33 @@
 									<p>
 										<label for="">Detector</label><br><bt>
 										<!-- Begin Modal -->
-										<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Click to Choice a CCD</a>
-										<div id="id01" class="w3-modal">
-										 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-										  <header class="w3-container w3-blue"> 
-										   <span onclick="document.getElementById('id01').style.display='none'" 
-										   class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
-										   <h2>CCDs</h2>
-										  </header>
-										  <!-- Realiza as transições de tabs -->
-										  <div class="w3-bar w3-border-bottom">
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '105')">CCD 105</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '106')">CCD 106</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BV')">iKon - 9867 & 10127</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740 & 17588</a>
-										   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
-										  </div>
-										  <!-- Begin Table -->
-										 	<?php include("./tabelasCCD.php"); ?>
-										  <!-- End Table -->
+											<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Click to Choice a CCD</a>
+											<div id="id01" class="w3-modal">
+											 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+											  <header class="w3-container w3-blue"> 
+											   <span onclick="document.getElementById('id01').style.display='none'" 
+											   class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
+											   <h2>CCDs</h2>
+											  </header>
+											  <!-- Realiza as transições de tabs -->
+											  <div class="w3-bar w3-border-bottom">
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '105')">CCD 105</a>
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, '106')">CCD 106</a>
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BV')">iKon - 9867 & 10127</a>
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740 & 17588</a>
+											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
+											  </div>
+											  <!-- Begin Table -->
+											 	<?php include("./tabelasCCD.php"); ?>
+											  <!-- End Table -->
 
-										  <div class="w3-container w3-light-grey w3-padding">
-										   <a class="w3-button w3-right w3-white w3-border" 
-										   onclick="document.getElementById('id01').style.display='none'">Close</a>
-										  </div>
-										 </div>
-										</div>
+											  <div class="w3-container w3-light-grey w3-padding">
+											   <a class="w3-button w3-right w3-white w3-border" 
+											   onclick="document.getElementById('id01').style.display='none'">Close</a>
+											  </div>
+											 </div>
+											</div>
 										<!-- End Modal -->
 									</p>
 									<p>	<label>Focal Reducer</label><br>

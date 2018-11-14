@@ -3,7 +3,7 @@
 
  	include './libs/phplot-6.2.0/phplot.php';
 
-
+ 	/** etting values used in Output */
 	$quantum = isset($_SESSION['quantumEfficiency'])? $_SESSION['quantumEfficiency']: 0; 
 	$gain = isset($_SESSION['gain'])?$_SESSION['gain']: 0;
 	$readoutNoise = isset($_SESSION['readoutNoise'])?$_SESSION['readoutNoise']: 0;
@@ -18,7 +18,7 @@
 	$snr = isset($_SESSION['snr']) ? $_SESSION['snr']: 0;
 	$data = $_SESSION['data'];
 
-
+	/** Build Graph */
 	function annotate_plot($img, $plot)
 	{
 		global $time, $sigmaP;

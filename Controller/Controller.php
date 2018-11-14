@@ -1,4 +1,8 @@
 <?php 
+ /**
+ * Class resposible to control the flux of ETC
+ * @author: Lucas Almeida Salvador
+ */
 	session_start();	
 	include '../Model/Filter.php'; 
 	include '../Model/Sky.php';
@@ -7,6 +11,7 @@
 	include '../Model/Observation.php';
 	include '../Model/Graphics.php';
 
+	/** Getting input values*/
 	$magnitude = isset($_POST['tMag'])? $_POST['tMag'] : 15;
 	$nwp = $_POST['tNwp'];
 	$wave = $_POST['tWave'];
@@ -22,20 +27,24 @@
 	$sigmaP = isset($_POST['tSigmaP']) ? $_POST['tSigmaP']: 0;
 	$time = isset($_POST['tTemp']) ? $_POST['tTemp']: 0;
 	$mode = $_POST['tMode'];
-
+	
+	/** Build CCD, Filter, Instrument and Sky Objects */
 	$filtro =  new Filter($filter);       
-	
 	$ccd = new CCD($detector, $filter, $binning);
-	
 	$instrument = new Instrument($nwp,$dTel,$focal,$ccd);
-
 	$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning());
-
+	/** Build Observation Object */
 	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning());
 	
+	/** Generate the values according ETC mode choiced 
+		if Mode=1 Int.Time -> Polarization Error 
+		if Mode=2 Polarization Error -> Int.Time*/
  	if($mode==1)
  	{
+
  		$observation->setTimeExposure(1,$time);
+
+ 		/** Generate values according WavePlate*/
  		if($wave=='1/2')
  		{
  			$observation->setSignalNoiseRadio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain(), $ccd->getBinning());
@@ -50,6 +59,7 @@
  	}
  	else
  	{
+ 		/** Generate values according WavePlate*/
  		if($wave=='1/2')
  		{
  			$observation->setSigmaP(3,0,0,$sigmaP);
@@ -65,10 +75,14 @@
  		}
 
  	}
+
+ 	//Saving values 
 	$snr = $observation->getSignalNoiseRadio();
 	$sigmaP = $observation->getSigmaP();
  	$sigmaV = $observation->getSigmaV();
 
+
+ 	//Generate Dataset to the Graph
  	$graph = new Graphics($observation, $sky, $instrument, $wave);
 	$data = $graph->generateValues($observation->getTimeExposure(), $nwp, $wave);
 
@@ -129,9 +143,10 @@
  	$_SESSION['magSky'] = $sky->getMagnitudeSky();
  	$_SESSION['nSky'] = $sky->getNumberPhotons();
  	
-
+ 	//Dataset to graph
  	$_SESSION['data'] = $data;
 
+ 	//Open the output screen
  	header("location: ../output.php");
 ?>
 

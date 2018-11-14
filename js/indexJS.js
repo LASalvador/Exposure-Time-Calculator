@@ -1,4 +1,6 @@
 document.getElementsByClassName("tablink")[0].click();
+
+// Responsible to switch tabs
 function openTab(evt, cityName) {
   var i, x, tablinks;
   x = document.getElementsByClassName("city");
@@ -12,13 +14,15 @@ function openTab(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.classList.add("w3-light-grey");
 }
-
+// It controls the ETC MODE animation
 function changeState(el, style, el1, style1) {
     //deixando o objeto a ser usado visible
     document.getElementById(el).style.display = style;
     //deixado o objeto não utilizado invisible
     document.getElementById(el1).style.display = style1;
 }
+
+//To deal with shortcuts
 function key(event)
 {
   if(event.keyCode == 13)
