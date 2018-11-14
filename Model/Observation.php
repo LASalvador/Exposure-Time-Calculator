@@ -14,7 +14,7 @@
  	/** Mag of Observation */
  	private $magnitude;
  	/** Signal to Noise Ratio */
- 	private $signalNoiseRadio;
+ 	private $signalNoiseRatio;
  	/** Number of source pixels */
  	private $numberPixels;
  	/** Number of Aperture Radius to photometry */
@@ -149,27 +149,27 @@
  	* @param float $sigma Error of Polarization
  	* @param int $nwp number of WavePlates positions
  	*/
- 	public function setSignalNoiseRadio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $binning = 0 , $k = 0, $sigma = 0, $nwp = 0)
+ 	public function setSignalNoiseRatio($type, $n = 0, $t = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $binning = 0 , $k = 0, $sigma = 0, $nwp = 0)
  	{
  		//When ETC is in Mode 1 (Int. Time -> Sigma)
  		if($type == 1)
  		{		
- 			$this->signalNoiseRadio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + $binning * pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
+ 			$this->signalNoiseRatio = $n*$t/sqrt($n*$t+2*$nPix*($nS*$t + $binning * pow($nR,2) + pow(0.289, 2) * pow($g,2))); 	
  		}
  		//When ETC is in Mode 2 (Sigma -> Int. Time)
  		elseif($type==2)
  		{
  			$snr = $k * (100/sqrt($nwp)) * (1/$sigma);
- 			$this->signalNoiseRadio = $snr;
+ 			$this->signalNoiseRatio = $snr;
  		}
  	}
  	/**
  	* Return Signal to Noise Ratio
  	* @return float $signalNoiseRaio  Signal to Noise Ratio
  	*/	
- 	public function getSignalNoiseRadio()
+ 	public function getSignalNoiseRatio()
  	{
- 		return $this->signalNoiseRadio;
+ 		return $this->signalNoiseRatio;
  	}
  	/**
  	* Sets up the Number of Pixels 

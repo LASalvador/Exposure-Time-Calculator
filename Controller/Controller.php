@@ -47,13 +47,13 @@
  		/** Generate values according WavePlate*/
  		if($wave=='1/2')
  		{
- 			$observation->setSignalNoiseRadio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain(), $ccd->getBinning());
-			$observation->setSigmaP(1, $observation->getSignalNoiseRadio(),$nwp); 
+ 			$observation->setSignalNoiseRatio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain(), $ccd->getBinning());
+			$observation->setSigmaP(1, $observation->getSignalNoiseRatio(),$nwp); 
  		}
  		elseif ($wave=='1/4')
  		{	
- 			$observation->setSignalNoiseRadio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain(), $ccd->getBinning());
-			$observation->setSigmaP(2, $observation->getSignalNoiseRadio(),$nwp); 
+ 			$observation->setSignalNoiseRatio(1,$observation->getNumberPhotons(), $time, $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(),$instrument->getCCD()->getGain(), $ccd->getBinning());
+			$observation->setSigmaP(2, $observation->getSignalNoiseRatio(),$nwp); 
 			$observation->setSigmaV($observation->getSigmaP()); 
  		}
  	}
@@ -63,21 +63,21 @@
  		if($wave=='1/2')
  		{
  			$observation->setSigmaP(3,0,0,$sigmaP);
- 			$observation->setSignalNoiseRadio(2,0,0,0,0,0,0,0,1,$sigmaP,$instrument->getNumberWavePlates());
- 			$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRadio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain(), $ccd->getBinning());
+ 			$observation->setSignalNoiseRatio(2,0,0,0,0,0,0,0,1,$sigmaP,$instrument->getNumberWavePlates());
+ 			$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRatio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain(), $ccd->getBinning());
  		}
  		elseif ($wave=='1/4')
  		{
  			$observation->setSigmaP(3,0,0,$sigmaP);
  			$observation->setSigmaV($observation->getSigmaP());
- 			$observation->setSignalNoiseRadio(2,0,0,0,0,0,0,0,sqrt(2),$sigmaP,$instrument->getNumberWavePlates());
- 			$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRadio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain(),$ccd->getBinning());
+ 			$observation->setSignalNoiseRatio(2,0,0,0,0,0,0,0,sqrt(2),$sigmaP,$instrument->getNumberWavePlates());
+ 			$observation->setTimeExposure(2,0, $observation->getNumberPhotons(), $observation->getSignalNoiseRatio(), $observation->getNumberPixels(), $sky->getNumberPhotons(), $instrument->getCCD()->getReadoutNoise(), $instrument->getCCD()->getGain(),$ccd->getBinning());
  		}
 
  	}
 
  	//Saving values 
-	$snr = $observation->getSignalNoiseRadio();
+	$snr = $observation->getSignalNoiseRatio();
 	$sigmaP = $observation->getSigmaP();
  	$sigmaV = $observation->getSigmaV();
 

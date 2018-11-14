@@ -100,15 +100,15 @@
 			// defining the values at $time = 1
 			if($wave=='1/2')
 	 		{	
-	 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(), $this->getInstrument()->getCCD()->getBinning());
+	 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(), $this->getInstrument()->getCCD()->getBinning());
 
-				$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+				$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 	 		}
 	 		elseif ($wave=='1/4')
 	 		{	
-	 				$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
+	 				$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
-				$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+				$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 	 		}
 
 			$data[] = array('',1, round($this->getObservation()->getSigmaP(),3) );
@@ -118,15 +118,15 @@
 			{ 
 				if($wave=='1/2')
 		 		{
-		 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
+		 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
-					$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+					$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 		 		}
 		 		elseif ($wave=='1/4')
 		 		{	
-		 			$this->getObservation()->setSignalNoiseRadio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
+		 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
-					$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRadio(),$nwp);
+					$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 		 		}
 
 
