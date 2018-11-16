@@ -64,21 +64,21 @@ aperture - It represents Telescope's Diameter of aperture
 focal reducer - It represents focal reducer. 
 Plate Scale  - It represents the plate scale of the instrument 
 CCD - It represents the CCD. 
-##Methods
+## Methods
 ### constructor 
 It builds the object and sets up all attributes.
 
-###  setNumberWavePlates
+### setNumberWavePlates
 It sets up the number of wave plates 
-###  getNumberWavePlates
+### getNumberWavePlates
 It returns the number of waveplates
-###  setAperture 
+### setAperture 
 It sets up the Telescope Diameter
-###  getAperture
+### getAperture
 It returns the Telescope Diameter
 ### setFocalReducer
 It sets up the focal reducer
-###  getFocalReducer
+### getFocalReducer
 It returns the Focal Reducer
 ### setPlateScale
 It sets up Plate Scale
