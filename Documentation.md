@@ -1,6 +1,6 @@
 The text below describes the classes used in ETC.
 
-#Class CCD
+# Class CCD
 This class represents the CCD[link wiki] used in the instrument.
 ## Attributes
 readout noise - represents the readout noise to the CCD.
@@ -92,13 +92,13 @@ It returns CCD
 # Class Sky
 Represent the Atmospheric conditions at the time of observation. 
 
-##Attributes
+## Attributes
 numberPhotons - It represents the number Photons of sky
 transparency sky - It represents the transparency of the sky. 
 magnitude sky - It represents the magnitude of the sky. 
 fcalib - It's a factor to correct the possible difference between this ETC results and the real measurements,
 
-##Methods
+## Methods
 ### constructor
 It builds the object and set all the attributes
 ### setNumberPhotons 
@@ -115,7 +115,7 @@ It sets up the Magnitude of sky
 It returns the Magnitude of Sky.
 
 
-#class Observation
+# class Observation
 This class represents the Observation and its attributes
 ## Attributes 
 sigmaP - Error of the linear polarization 
