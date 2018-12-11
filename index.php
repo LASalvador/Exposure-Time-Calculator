@@ -122,7 +122,7 @@
 									<p>
 										<label for="">Detector</label><br><bt>
 										<!-- Begin Modal -->
-											<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Click to Choice a CCD</a>
+											<a onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-blue">Click to choose a CCD</a>
 											<div id="id01" class="w3-modal">
 											 <div class="w3-modal-content w3-card-4 w3-animate-zoom">
 											  <header class="w3-container w3-blue"> 
@@ -138,6 +138,7 @@
 											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-EX')">iKon - 14912 & 17587</a>
 											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iKon-L936-BR')">iKon - 13739 & 13740 & 17588</a>
 											   <a class="tablink w3-bar-item w3-button" onclick="openTab(event, 'iXon-DU-888E-C00-#BV')">iXon - 4269 & 4335</a>
+											   <!--<a class="tablink w3-bar-item w3-button" onclick="openTab(event, '19002')">iKon - 19002</a>-->
 											  </div>
 											  <!-- Begin Table -->
 											 	<?php include("./tabelasCCD.php"); ?>
@@ -194,7 +195,7 @@
 									</p>
 									<p>
 										<label for="cAperture">Aperture radius</label><br>
-										<input type="Number" name="tAperture" id="cAperture" value="2" size="15" min="0" max="30" required><font>arcsec</font>
+										<input type="Number" name="tAperture" id="cAperture" value="2" size="15" min="0" max="30" step="0.01" required><font>arcsec</font>
 									</p>
 									<p>	<label>ETC Mode</label><br>
 										<a onclick="changeState('boxTime','block','boxSigma','none')">
