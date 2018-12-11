@@ -83,8 +83,7 @@
 				{
 					echo '<span>Error of the circular polarization:</span> '.number_format($sigmaV,3).' %<br>';
 				}	
-				echo '<span>Signal to noise ratio of one waveplate position
-: </span> '.number_format($snr,2).'<br>';
+				echo '<span> Integrated signal noise ratio of one waveplate position: </span> '.number_format($snr,2).'<br>';
 			?>
 			<button onclick="window.print()" style="font-size: 15pt;">Print results</button>
 		</section>
