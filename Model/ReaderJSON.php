@@ -7,26 +7,36 @@
 	{
 		/**
 		* It Reads the Quantum Efficiency value
-		* @param String $CCDType Type of CCD
+		* @param Int $ccdNumber CCD's serial number
 		* @param String $FilterColor Filter selected
 		*/
-		function readQuantumEfficiency($CCDType, $FilterColor)
+		function readQuantumEfficiency($ccdNumber, $filterColor)
 		{
-			$arquivo = file_get_contents('../static/Quantum.json');
+			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
 			$json = json_decode($arquivo);
-
-			return $json->QuantumEfficiency->$CCDType->$FilterColor;
+			return $json->QuantumEfficiency->$filterColor;
 		}
 		/**
 		* It reads the CCD values as gain, readout Noise etc.
+		* @param Int $ccdNumber CCD's serial number
 		* @param int $ccdMode Operation Mode of CCD
 		* @param String $attribute attribute required
 		*/
-		function readCCDvalues($ccdMode, $attribute)
+		function readCCDvalues($ccdNumber,$ccdMode, $attribute)
 		{
-			$arquivo = file_get_contents('../static/ccd.json');
+			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
 			$json = json_decode($arquivo);
-			return $json->{$ccdMode}->{$attribute};
+			return $json->Modes->$ccdMode->$attribute;
+		}
+		/**
+		* It reads the CCD pixel Size
+		* @param Int $ccdNumber CCD's serial number
+		*/
+		function readCCDPixelSize($ccdNumber)
+		{
+			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
+			$json = json_decode($arquivo);
+			return $json->PixelSize;
 		}
 		/**
 		* It reads the Filter values as effective wavelength, flux zero etc

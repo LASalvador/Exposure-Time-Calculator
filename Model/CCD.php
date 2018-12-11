@@ -17,6 +17,9 @@
 		private $ccdNumber;
 		/** CCD's binning */
 		private $binning;
+		/** CCD's pixel size */
+		private $pixelSize;
+
 
 		/**
 		* Constructor: Sets up all attributes of CCD.
@@ -25,15 +28,16 @@
 		* @param char @filter represent the filter choiced.
 		* @param int $binning binning choiced
 		*/	
-		public function __construct($ccdNumber, $filter, $binning)
+		public function __construct($ccdNumber, $mode ,$filter, $binning)
 		{
 
 			$reader = new ReaderJSON();
 			$this->setCCDNumber($ccdNumber);
 			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($this->getCCDNumber(),$filter));
-			$this->setReadoutNoise($reader->readCCDvalues($ccdNumber,'readoutNoise'));
-			$this->setGain($reader->readCCDvalues($ccdNumber,'gain'));
+			$this->setReadoutNoise($reader->readCCDvalues($this->getCCDNumber(),$mode,'readoutNoise'));
+			$this->setGain($reader->readCCDvalues($this->getCCDNumber(),$mode,'gain'));
 			$this->setBinning($binning);
+			$this->setPixelSize($reader->readCCDPixelSize($this->getCCDNumber()));
 		}
 		/**
 		* Sets up Readout Noise
@@ -90,36 +94,13 @@
 			return $this->quantumEfficiency;
 		}
 		/**
-		* Define the CCDNumber(ID) 
-		* @param float $number is the number select on table CCD
+		* Define the CCD's serial number 
+		* @param int $number is the serial number
 		*
 		*/
 		public function setCCDNumber($number)
 		{
-			if($number>=1 && $number<=2)
-			{
-				$this->ccdNumber = 'CCD1';
-			}
-			elseif($number>=2 && $number<=4)	
-			{
-				$this->ccdNumber = 'CCD2';
-			}
-			elseif($number>=5 && $number<=28)
-			{
-				$this->ccdNumber = 'CCD3';
-			}
-			if($number>=29 && $number<=76)	
-			{
-				$this->ccdNumber = 'CCD4';
-			}
-			if($number>=77 && $number<=148)
-			{
-				$this->ccdNumber = 'CCD5';
-			}
-			if($number>=149 && $number<=182)	
-			{
-				$this->ccdNumber = 'CCD6';
-			}
+			$this->ccdNumber = $number;
 		}
 		/**
 		* Return the CCD Number
@@ -145,6 +126,23 @@
 		{
 			return $this->binning;	
 		}
+
+		/**
+		* Sets the CCD's pixel size
+		* @param float pixel size
+		*/
+		public function setPixelSize($pixel)
+		{
+			$this->pixelSize = $pixel;
+		}
+		/**
+		* Return the CCD's pixel size
+		*/
+		public function getPixelSize()
+		{
+			return $this->pixelSize;
+		}
+
 
 	}
 ?>
