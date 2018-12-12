@@ -11,10 +11,14 @@
  	private $aperture;
  	/** Focal Reducer */
  	private $focalReducer;
- 	/** Plate Scale */
- 	private $plateScale;
+ 	/** Plate Scale on CCD */
+ 	private $plateScaleCCD;
  	/** CCD */
  	private $ccd;
+ 	/** Plata Scale in telescope*/
+ 	private $plateScaleTelescope;
+
+
  	/**
  	* Constructor: Sets up the Instrument attributes
  	* 
@@ -23,13 +27,14 @@
  	* @param int $focal Focal reducer
  	* @param CCD $ccd CCD
  	*/
- 	function __construct($numberWavePlates, $dTel,$focal,$ccd)
+ 	function __construct($numberWavePlates, $dTel, $focalReducer,$ccd)
  	{
  		$this->setNumberWavePlates($numberWavePlates);
  		$this->setAperture($dTel);
  		$this->setFocalReducer($focal);
  		$this->setCCD($ccd);
- 		$this->setPlateScale($ccd->getCCDNumber(),$focal, $dTel);
+ 		$this->setPlateScaleTelescope($dTel);
+ 		$this->setPlateScale($focalReducer);
  	}
  	/**
  	* Sets up Number of WavePlate Positions
@@ -85,48 +90,17 @@
  	* @param boolean $focalReducer focal reducer on Instrument
  	* @param Float $dTel Telescope's Diameter of aperture
  	*/
- 	public function setPlateScale($ccdNumber, $focalReducer, $dTel)
+ 	public function setPlateScale($focalReducer)
  	{
-
- 		if($ccdNumber == "CCD2")
+ 		if($focalReducer == 1)
  		{
- 			if($focalReducer == 1 && $dTel == 0.6)
- 			{
- 				$this->plateScale = 1.208;		
- 			}
- 			elseif ($focalReducer == 1 && $dTel == 1.6) 
- 			{
- 				$this->plateScale = 0.64;
- 			}
- 			elseif($focalReducer == 0 && $dTel == 0.6)
- 			{
- 				$this->plateScale = 0.604;
- 			}
- 			elseif($focalReducer == 0 && $dTel == 1.6)
- 			{
- 				$this->plateScale = 0.32;
- 			}
+ 			$factor = 2;
  		}
  		else
  		{
- 			if($focalReducer == 1 && $dTel == 0.6)
- 			{
- 				$this->plateScale = 0.68;		
- 			}
- 			elseif($focalReducer == 1 && $dTel == 1.6) 
- 			{
- 				$this->plateScale = 0.36;
- 			}
- 			elseif($focalReducer == 0 && $dTel == 0.6)
- 			{
- 				$this->plateScale = 0.34;
- 			}
- 			elseif($focalReducer == 0 && $dTel == 1.6)
- 			{
- 				$this->plateScale = 0.18;
- 			}
-
+ 			$factor = 1;
  		}
+ 		$this->plateScaleCCD = $this->getPlateScaleTelescope() * $this->getCCD()->getPixelSize() * $factor;
  	}
  	/**
  	* Return PlateScale   
@@ -134,7 +108,7 @@
  	*/
  	public function getPlateScale()
  	{
- 		return $this->plateScale;
+ 		return $this->plateScaleCCD;
  	}
  	/**
  	* Sets up CCD
@@ -146,11 +120,44 @@
  	}
  	/** 
  	* Return CCD
- 	* @	
  	*/
  	public function getCCD()
  	{
  		return $this->ccd;
  	}
+ 	/**
+ 	* Sets the Plate Scale Telescope
+ 	* @param float $dTel telescope Diameter
+ 	*/
+ 	public function setPlateScaleTelescope($dTel)
+ 	{	
+ 		/**Defining the plate scale according to the diameter of the telescope
+ 		* This values taken from http://lnapadrao.lna.br/OPD/telescopios/telescopios-do-opd
+ 		*/
+ 		if($dTel == 1.6)
+ 		{
+ 			$this->plateScaleTelescope = 13.09;
+ 		}
+ 		else
+ 		{
+ 			$this->plateScaleTelescope = 29.09;	
+ 		}
+ 	}
+ 	/**
+ 	* Returns the plate scale telescope
+ 	*/
+ 	public function getPlateScaleTelescope()
+ 	{
+ 		return $this->plateScaleTelescope;
+ 	}
+
+
+
+
+
+
+
+
+
  }
 ?>
