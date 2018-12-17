@@ -3,7 +3,8 @@
   * This class represents the Filter used during the observation
   * @author: Lucas Almeida Salvador
   */
- include_once 'ReaderJSON.php';
+ namespace App\Model;
+ use App\Model\ReaderJSON;
  class Filter 
  {
  	/** Filter Width*/
@@ -24,8 +25,6 @@
  		$this->setFilterWidth($reader->readFilter($filter, 'filterWidth'));
  		$this->setEffectiveLenght($reader->readFilter($filter,'effectiveLenght'));
  		$this->setFluxZero($reader->readFilter($filter,'fluxZero'));
-
-
  	}
  	/**
  	* Set's up Filter Width

@@ -3,7 +3,7 @@
 	 * This class represents the Atmospheric conditions at the time of observation
 	 * @author: Lucas Almeida Salvador
 	 */
-
+	namespace App\Model;
 	include_once 'ReaderJSON.php';
 	class Sky
 	{

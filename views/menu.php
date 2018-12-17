@@ -18,9 +18,9 @@
         <label for="1" title="Acesse os subitens de Modelo Padrão" class="titulo">Menu</label>
         
         	<ul>
-                <li><a href="./index.php" title="Home">Home</a></li>
+                <li><a href="?r=/" title="Home">Home</a></li>
                 <li><a href="./information.php" title="Information">Information</a></li>
-                <li><a href="./about.php" title="About">About</a></li>
+                <li><a href="?r=/about" title="About">About</a></li>
     		</ul>
         </li>      
         

@@ -1,31 +1,25 @@
  <?php 
  	session_start();
 
- 	include './libs/phplot-6.2.0/phplot.php';
+ 	include __DIR__.'/../libs/phplot-6.2.0/phplot.php';
 
- 	/** etting values used in Output */
-	$quantum = isset($_SESSION['quantumEfficiency'])? $_SESSION['quantumEfficiency']: 0; 
-	$gain = isset($_SESSION['gain'])?$_SESSION['gain']: 0;
-	$readoutNoise = isset($_SESSION['readoutNoise'])?$_SESSION['readoutNoise']: 0;
-	$fluxZero = isset($_SESSION['fluxZero'])?$_SESSION['fluxZero']: 0;
-	$central = isset($_SESSION['central'])?$_SESSION['central']: 0;
-	$band = isset($_SESSION['band'])?$_SESSION['band']: 0;
-	$sky = isset($_SESSION['tSky'])?$_SESSION['tSky']: 0;
-	$plateScale = isset($_SESSION['plateScale'])?$_SESSION['plateScale']: 0; 
-	$time = isset($_SESSION['timeExposure']) ? $_SESSION['timeExposure'] : 0;
-	$sigmaP = isset($_SESSION['sigmaP']) ? $_SESSION['sigmaP']: 0;
-	$sigmaV = isset($_SESSION['sigmaV']) ? $_SESSION['sigmaV']: 0; 
-	$snr = isset($_SESSION['snr']) ? $_SESSION['snr']: 0;
-	$data = $_SESSION['data'];
-
+ 	/** getting values used in Output */
+	$time = isset($_SESSION['results']['timeExposure']) ? $_SESSION['results']['timeExposure'] : 0;
+	$sigmaP = isset($_SESSION['results']['sigmaP']) ? $_SESSION['results']['sigmaP']: 0;
+	$sigmaV = isset($_SESSION['results']['sigmaV']) ? $_SESSION['results']['sigmaV']: 0; 
+	$snr = isset($_SESSION['results']['snr']) ? $_SESSION['results']['snr']: 0;
+	$data = $_SESSION['results']['dataSet'];
+	
+	$GLOBALS['time'] = $time;
+	$GLOBALS['sigmaP'] = $sigmaP;
 	/** Build Graph */
 	function annotate_plot($img, $plot)
 	{
-		global $time, $sigmaP;
+		//global $time, $sigmaP;
 		# Allocate our own colors, rather than poking into the PHPlot object:
 		$green = imagecolorresolve($img, 0, 216, 0);
 		# Get the pixel coordinates of the data points for the best and worst:
-		list($time_x, $sigma_y) = $plot->GetDeviceXY($time, $sigmaP);
+		list($time_x, $sigma_y) = $plot->GetDeviceXY($GLOBALS['time'], $GLOBALS['sigmaP']);
 		# Draw ellipses centered on those two points:
 		imageellipse($img, $time_x, $sigma_y, 50, 20, $green);
 		# Place some text above the points:
@@ -61,14 +55,13 @@
 	$plot->SetCallback('draw_all', 'annotate_plot', $plot);
 
 	$plot->DrawGraph();
-
  ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>ETC Results</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="./css/css-output.css">
+	<link rel="stylesheet" type="text/css" href="../css/css-output.css">
 </head>
 <body>
 	<!-- Begin Output View -->
@@ -77,7 +70,7 @@
 		<section class="values">
 			<h2> Final values</h2>
 			<?php
-				echo '<span>Integration time: </span> '.$time.' s<br>';
+				echo '<span>Integration time: </span> '.number_format($time,3).' s<br>';
 				echo '<span>Error of the linear polarization: </span> '.number_format($sigmaP,3).' %<br>';
 				if($sigmaV!=0)
 				{
@@ -93,19 +86,19 @@
 			<h4>Input Values</h4>
 			<?php
 				session_start();
-				echo 'Magnitude: '.$_SESSION['inMag'].' mag<br>';
+				echo 'Magnitude: '.$_SESSION['results']['inMag'].' mag<br>';
 				if($_SESSION['inTime']!=0)
 				{
-					echo 'Integration time: '.$_SESSION['inTime'] .' s<br>';
+					echo 'Integration time: '.$_SESSION['results']['inTime'] .' s<br>';
 				}
-				echo 'Number of Waveplate position: '.$_SESSION['inNwp'].'<br>';
-				echo 'Waveplate: '.$_SESSION['inWave'].'<br>';
-				if($_SESSION['inSigmaP']!=0)
+				echo 'Number of Waveplate position: '.$_SESSION['results']['inNwp'].'<br>';
+				echo 'Waveplate: '.$_SESSION['results']['inWave'].'<br>';
+				if($_SESSION['results']['inSigmaP']!=0)
 				{
-					echo 'Error of the linear polarization: '.$_SESSION['inSigmaP'].' %<br>';
+					echo 'Error of the linear polarization: '.$_SESSION['results']['inSigmaP'].' %<br>';
 				}
-				echo 'Telescope Diameter: '.$_SESSION['inDTel'].' m<br>';
-				if($_SESSION['inFocal']==0)
+				echo 'Telescope Diameter: '.$_SESSION['results']['inDTel'].' m<br>';
+				if($_SESSION['results']['inFocal']==0)
 				{
 					echo 'Focal Reducer: No <br>';
 				}
@@ -113,11 +106,11 @@
 				{
 					echo 'Focal Reducer: Yes <br>';
 				}
-				echo 'Filter: '.$_SESSION['inFilter'].'<br>'; 
-				echo 'Sky quality: '.$_SESSION['inTsky'].'<br>';
-				echo 'Air Mass: '.$_SESSION['inAirMass'].'<br>';
-				echo 'Aperture radius: '.$_SESSION['inAperture'].' arcsec<br>';
-				echo 'Moon Phase: '.$_SESSION['inMoon'].'<br>';
+				echo 'Filter: '.$_SESSION['results']['inFilter'].'<br>'; 
+				echo 'Sky quality: '.$_SESSION['results']['inTsky'].'<br>';
+				echo 'Air Mass: '.$_SESSION['results']['inAirMass'].'<br>';
+				echo 'Aperture radius: '.$_SESSION['results']['inAperture'].' arcsec<br>';
+				echo 'Moon Phase: '.$_SESSION['results']['inMoon'].'<br>';
 			?>
 		</section>
 		<!-- End final values -->
@@ -127,22 +120,22 @@
 			<?php
 				session_start();
 				//observation
-				echo 'Number of pixels corresponding to the aperture radius: '.number_format($_SESSION['numberPixels'],2).'<br>';
-				echo 'Number of photons from the source per second: '.number_format($_SESSION['numberPhotons'],2).'<br>';
+				echo 'Number of pixels corresponding to the aperture radius: '.number_format($_SESSION['results']['numberPixels'],2).'<br>';
+				echo 'Number of photons from the source per second: '.number_format($_SESSION['results']['numberPhotons'],2).'<br>';
 				//filter
-				echo 'Filter effective wavelength: '.$_SESSION['central'].'<br>';
-				echo 'Filter width: '.$_SESSION['band'].' micron<br>';
-				echo 'Flux of zero magnitude: '.$_SESSION['fluxZero'].' 10<sup>-23</sup>W m<sup>-2</sup> Hz<sup>-1</sup><br>';
+				echo 'Filter effective wavelength: '.$_SESSION['results']['central'].'<br>';
+				echo 'Filter width: '.$_SESSION['results']['band'].' micron<br>';
+				echo 'Flux of zero magnitude: '.$_SESSION['results']['fluxZero'].' 10<sup>-23</sup>W m<sup>-2</sup> Hz<sup>-1</sup><br>';
 				// instrument
-				echo 'Plate scale: '.$_SESSION['plateScale'].' arcsec/pix<br>';
-				echo 'Quantum efficiency: '.$_SESSION['quantumEfficiency'].'<br>';
-				echo 'Readout noise: '.$_SESSION['readoutNoise'].' e<sup>-</sup><br>';
-				echo 'Gain: '.$_SESSION['gain'].' e<sup>-</sup>/ADU<br>';
-				echo 'Sky Transparency: '.number_format($_SESSION['tSky'],3).'<br>';
-				echo 'Sky magnitude: '.$_SESSION['magSky'].' mag<br>';
-				echo 'Number of photons from the sky per second per pixels: '.number_format($_SESSION['nSky'],2).'<br>';
-				echo 'Fcalib: '.$_SESSION['fCalib'].'<br>';
-				echo 'Binning: '.$_SESSION['binning'].'<br>';
+				echo 'Plate scale: '.$_SESSION['results']['plateScale'].' arcsec/pix<br>';
+				echo 'Quantum efficiency: '.$_SESSION['results']['quantumEfficiency'].'<br>';
+				echo 'Readout noise: '.$_SESSION['results']['readoutNoise'].' e<sup>-</sup><br>';
+				echo 'Gain: '.$_SESSION['results']['gain'].' e<sup>-</sup>/ADU<br>';
+				echo 'Sky Transparency: '.number_format($_SESSION['results']['tSky'],3).'<br>';
+				echo 'Sky magnitude: '.$_SESSION['results']['magSky'].' mag<br>';
+				echo 'Number of photons from the sky per second per pixels: '.number_format($_SESSION['results']['nSky'],2).'<br>';
+				echo 'Fcalib: '.$_SESSION['results']['fCalib'].'<br>';
+				echo 'Binning: '.$_SESSION['results']['binning'].'<br>';
 			?>
 		</section>
 		<!-- End intermediate values -->	

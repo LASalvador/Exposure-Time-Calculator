@@ -36,11 +36,9 @@
 
 	$instrument = new Instrument($nwp,$dTel, $focal ,$ccd);
 
-	echo $instrument->getPlateScale();
-
 	$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning());
 	// Build Observation Object
-	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning());
+	$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning());	
 	
 	// Generate the values according ETC mode choiced 
 		//if Mode=1 Int.Time -> Polarization Error 
@@ -153,7 +151,7 @@
  	$_SESSION['data'] = $data;
 
  	//Open the output screen
- 	header("location: ../output.php");
+ 	header("location: ../../views/output.php");
 ?>
 
 

@@ -3,6 +3,7 @@
 	 * This class read the JSON file and returns the requires values
 	 * @author: Lucas Almeida Salvador
 	 */
+	namespace App\Model;
 	class ReaderJSON
 	{
 		/**
@@ -12,7 +13,7 @@
 		*/
 		function readQuantumEfficiency($ccdNumber, $filterColor)
 		{
-			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
+			$arquivo = file_get_contents(__DIR__.'/../../static/CCD'.$ccdNumber.'.json');
 			$json = json_decode($arquivo);
 			return $json->QuantumEfficiency->$filterColor;
 		}
@@ -24,7 +25,7 @@
 		*/
 		function readCCDvalues($ccdNumber,$ccdMode, $attribute)
 		{
-			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
+			$arquivo = file_get_contents(__DIR__.'/../../static/CCD'.$ccdNumber.'.json');
 			$json = json_decode($arquivo);
 			return $json->Modes->$ccdMode->$attribute;
 		}
@@ -34,7 +35,7 @@
 		*/
 		function readCCDPixelSize($ccdNumber)
 		{
-			$arquivo = file_get_contents('../static/CCD'.$ccdNumber.'.json');
+			$arquivo = file_get_contents(__DIR__.'/../../static/CCD'.$ccdNumber.'.json');
 			$json = json_decode($arquivo);
 			return $json->PixelSize;
 		}
@@ -45,7 +46,7 @@
 		*/
 		function readFilter($filter, $attribute)
 		{
-			$arquivo = file_get_contents('../static/filter.json');
+			$arquivo = file_get_contents(__DIR__.'/../../static/filter.json');
 			$json = json_decode($arquivo);
 			return  $json->$filter->$attribute;
 		}
@@ -57,7 +58,7 @@
 		*/
 		function readMsky($filter, $attribute, $phase)
 		{
-			$arquivo = file_get_contents('../static/filter.json');
+			$arquivo = file_get_contents(__DIR__.'/../../static/filter.json');
 			$json = json_decode($arquivo);
 			return $json->$filter->$attribute->$phase;
 		}

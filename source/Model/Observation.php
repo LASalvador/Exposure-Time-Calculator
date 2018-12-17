@@ -3,6 +3,8 @@
   * This class represents the Observation and its attributes
   * @author: Lucas Almeida Salvador
   */
+ namespace App\Model;
+ 
  class Observation
  {
  	/** Polarization Error on WavePlate 1/2 */

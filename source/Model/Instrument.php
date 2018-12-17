@@ -3,6 +3,7 @@
   * This class represents the Instrument IAGPOL and its main attributes
   * @author: Lucas Almeida Salvador
   */
+ namespace App\Model;
  class Instrument 
  {
  	/** Number of Wave Plates Positions to the Instrument*/

@@ -3,8 +3,9 @@
 	 * This class represents the CCD.
 	 * @author: Lucas Almeida Salvador
 	 */
-
-	include_once 'ReaderJSON.php';
+	namespace App\Model;
+	
+	use App\Model\ReaderJSON;
 	class CCD
 	{
 		/**  CCD's Readout Noise*/
@@ -30,7 +31,6 @@
 		*/	
 		public function __construct($ccdNumber, $mode ,$filter, $binning)
 		{
-
 			$reader = new ReaderJSON();
 			$this->setCCDNumber($ccdNumber);
 			$this->setQuanTumEfficiency($reader->readQuantumEfficiency($this->getCCDNumber(),$filter));

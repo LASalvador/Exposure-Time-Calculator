@@ -7,32 +7,32 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="/img/favicon.png" />
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="../../img/favicon.png" />
 
-	<link media="screen" href="/css/plone.css" type="text/css" rel="stylesheet" id="plone-css" />    
-	<link media="all" href="/css/main.css" type="text/css" rel="stylesheet" id="main-css" />  
-	<link media="all" href="/css/style.css" type="text/css" rel="stylesheet" id="style-css" />
+	<link media="screen" href="../../css/plone.css" type="text/css" rel="stylesheet" id="plone-css" />    
+	<link media="all" href="../../css/main.css" type="text/css" rel="stylesheet" id="main-css" />  
+	<link media="all" href="../../css/style.css" type="text/css" rel="stylesheet" id="style-css" />
 
-	<link media="all" href="/css/css-intranet-inpe.css" rel="stylesheet" id="intranet-css" /> 
-	<link media="all" href="/css/css-menu.css" rel="stylesheet" id="menu-css" /> 
-	<link media="all" rel="stylesheet" type="text/css" href="/css/css-servico-inpe.css"/>
-	<link media="all" href="/css/css-branco-inpe.css" rel="stylesheet">   
+	<link media="all" href="../../css/css-intranet-inpe.css" rel="stylesheet" id="intranet-css" /> 
+	<link media="all" href="../../css/css-menu.css" rel="stylesheet" id="menu-css" /> 
+	<link media="all" rel="stylesheet" type="text/css" href="../../css/css-servico-inpe.css"/>
+	<link media="all" href="../../css/css-branco-inpe.css" rel="stylesheet">   
 
 	<!-- CONTRASTE -->
-	<link media="all" href="/css/css-intranet-inpe-contraste.css" rel="stylesheet" id="intranet-css-contraste" /> 
-	<link media="all" href="/css/css-menu-contraste.css" rel="stylesheet" id="menu-css-contraste" />   
+	<link media="all" href="../../css/css-intranet-inpe-contraste.css" rel="stylesheet" id="intranet-css-contraste" /> 
+	<link media="all" href="../../css/css-menu-contraste.css" rel="stylesheet" id="menu-css-contraste" />   
 
-	<script src="/js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
-	<script src="/js/jquery/jquery.cookie.js" type="application/javascript"></script>  
-	<script src="/js/functions.js" type="application/javascript"></script>
+	<script src="../../js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
+	<script src="../../js/jquery/jquery.cookie.js" type="application/javascript"></script>  
+	<script src="../../js/functions.js" type="application/javascript"></script>
 
 
 </head>
 
 <body>
 	<!-- TOPO -->    
-	<?php include("./topo.php"); ?>
+	<?php include("views/topo.php"); ?>
 
 
 	<!-- CONTEUDO -->
@@ -55,7 +55,7 @@
 
 
 				<!-- Column 1 - MENU -->      
-				<?php include("./menu.php"); ?>	
+				<?php include("views/menu.php"); ?>	
 
 				<!-- Conteudo -->
 				<div id="portal-column-content" class="cell width-3:4 position-1:4">
@@ -97,7 +97,7 @@
 	<div class="clear"><!-- --></div>
 
 	<!-- Footer -->
-	<?php include("./rodape.php"); ?>
+	<?php include("views/rodape.php"); ?>
 	<!-- /Footer-->
 
 </body>  

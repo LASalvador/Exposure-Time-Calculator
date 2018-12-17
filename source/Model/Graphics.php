@@ -1,10 +1,9 @@
 <?php
 	/**
-	 * This class do the graph dates and build the graph 
+	 * This class generate the data set to build the graph 
 	 * @author: Lucas Almeida Salvador
 	 */
-
-	include '../libs/phplot-6.2.0/phplot.php';
+	namespace App\Model;
 	class Graphics 
 	{
 		/** Observation object */
@@ -94,8 +93,6 @@
 			{
 				$timeRange = 500;
 			}
-
-
 			$data = array();
 			// defining the values at $time = 1
 			if($wave=='1/2')
@@ -112,7 +109,6 @@
 	 		}
 
 			$data[] = array('',1, round($this->getObservation()->getSigmaP(),3) );
-
 			//Defining the values begin 10 to $timeRange
 			for ($time=10; $time <=$timeRange; $time+=10) 
 			{ 
