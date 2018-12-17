@@ -4,6 +4,8 @@
   * @author: Lucas Almeida Salvador
   */
  namespace App\Model;
+	
+ use App\Model\ReaderJSON;
  class Instrument 
  {
  	/** Number of Wave Plates Positions to the Instrument*/
@@ -18,6 +20,12 @@
  	private $ccd;
  	/** Plata Scale in telescope*/
  	private $plateScaleTelescope;
+ 	/** The fraction of the telescope area that effectively collects photons*/
+ 	private $fArea;
+ 	/** The transmission of the telescope surface*/
+ 	private $tTel;
+ 	/** the transmission in the instrument*/
+ 	private $tInstr;
 
 
  	/**
@@ -150,6 +158,49 @@
  	public function getPlateScaleTelescope()
  	{
  		return $this->plateScaleTelescope;
+ 	}
+ 	/**
+ 	* Sets the fArea of telescope
+ 	* @param float $area The fraction of the telescope area that effectively collects photons 
+ 	*/
+ 	public function setFArea($area)
+ 	{
+ 		$this->fArea = $area;
+ 	}
+ 	/**
+ 	*	Return the fArea 
+ 	*/
+ 	public function getFArea()
+ 	{
+ 		return $this->fArea;
+ 	}
+ 	/**
+ 	* Sets the tTel
+ 	* @param char $filter represents the chosen filter
+ 	*/
+ 	public function setTTel($filter)
+ 	{
+ 		$reader = new ReaderJSON();
+ 		$tTel = $reader->readFilter($filter, 'tTel');
+ 		$this->tTel = $tTel;
+ 	}
+ 	/**
+ 	* Return tTel
+ 	*/
+ 	public function getTTel()
+ 	{
+ 		return $this->tTel;
+ 	}
+ 	public function setTInstr($focal)
+ 	{
+ 		if($focal)
+ 			$this->tInstr = 0.90;
+ 		else
+ 			$this->tInstr = 0.95;
+ 	}
+ 	public function getTInstr()
+ 	{
+ 		return $this->tInstr;
  	}
 
 

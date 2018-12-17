@@ -45,11 +45,19 @@
 			$detector = json_decode($detector);
 
 			$filtro =  new Filter($filter); 
+			
 			$ccd = new CCD($detector->serialNumber, $detector->mode, $filter, $binning);
+			
 			$instrument = new Instrument($nwp,$dTel, $focal ,$ccd);
-			$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning());
+			$instrument->setFArea(0.804);
+			$instrument->setTTel($filter);
+			$instrument->setTInstr($focal);
+
+
+			$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning(), $instrument->getFArea(),$instrument->getTTel(),$instrument->getTInstr());
 			// Build Observation Object
-			$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning());
+			$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning(), $instrument->getFArea(), $instrument->getTTel(), $instrument->getTInstr());
+
 			if($mode==1)
 		 	{
 		 		$inTime = $time;

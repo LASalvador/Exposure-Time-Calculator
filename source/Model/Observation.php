@@ -40,13 +40,13 @@
  	* @param float $fCalib It's a factor to correct possible difference between this ETC results and the real measurements
  	* @param int $binning Binning of CCD
  	*/ 
- 	function __construct($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $rap, $platescale, $fCalib, $binning)
+ 	function __construct($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $rap, $platescale, $fCalib, $binning, $fArea, $tTel, $tInstr)
  	{
  		$this->setFcalib($fCalib);
  		$this->setMagnitude($mag);
  		$this->setRadiusAperture($rap);
  		$this->setNumberPixels($rap, $platescale, $binning);
- 		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag);
+ 		$this->setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $fArea, $tTel, $tInstr);
  	}
  	/**
  	* Sets up Error of the linear polarization or sigmaP 
@@ -109,9 +109,9 @@
  	* @param float $dTel Telescope's Diameter
  	* @param float $mag Magnitude of Source
  	*/
- 	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag)
+ 	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $fArea, $tTel, $tInstr)
  	{
- 			$this->numberPhotons = $this->getFcalib() *  $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
+ 			$this->numberPhotons = $fArea * $tTel * $tInstr * $this->getFcalib() *  $q * $tSky * 1.18531e10 * $f0 * ($filterWidth/$effectiveLenght) * ($dTel * $dTel) *  pow(10, -0.4*$mag);
  	}
  	/**
  	* Return Number of source photons

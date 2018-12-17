@@ -31,13 +31,13 @@
 		* @param float $fCalib fCalib
  		* @param float $binning Binning of CCD.
 		*/
-		function __construct($transparencySky, $airMass , $filter, $moonPhase , $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $fCalib, $binning)
+		function __construct($transparencySky, $airMass , $filter, $moonPhase , $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $fCalib, $binning, $fArea, $tTel,$tInstr)
 		{
 			$this->setFcalib($fCalib);
 			$reader = new ReaderJSON();
 			$this->setTransparencySky($reader->readFilter($filter,$transparencySky), $airMass);
 			$this->setMagnitudeSky($reader->readMsky($filter,'sky',$moonPhase));
-			$this->setNumberPhotons($this->getMagnitudeSky(), $this->getTransparencySky(), $q, $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $binning);
+			$this->setNumberPhotons($this->getMagnitudeSky(), $this->getTransparencySky(), $q, $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $binning, $fArea, $tTel,$tInstr);
 		}
 		/**
 		* Sets up Number Photons of Sky
@@ -51,9 +51,9 @@
 		* @param float $plateScale Plate Scale of CCD
  		* @param float $binning Binning of CCD.
 		*/
-		public function setNumberPhotons($mSky, $tSky, $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $binning)
+		public function setNumberPhotons($mSky, $tSky, $q , $f0, $filterWidth, $effectiveLenght, $dTel, $plateScale, $binning, $fArea, $tTel,$tInstr)
 		{
-			$n = $this->getFcalib() *  $q * $tSky * 1.18531e10* $f0 * ($filterWidth/$effectiveLenght) * pow($dTel, 2) * pow($plateScale, 2) * pow($binning, 2) * pow(10, -0.4*$mSky);
+			$n = $this->getFcalib() *  $q * $tSky * 1.18531e10* $f0 * ($filterWidth/$effectiveLenght) * pow($dTel, 2) * pow($plateScale, 2) * pow($binning, 2) * pow(10, -0.4*$mSky) * $fArea * $tTel * $tInstr;
 				$this->numberPhotons = $n;
 		}
 		/**
