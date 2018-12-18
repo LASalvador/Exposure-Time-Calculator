@@ -16,6 +16,7 @@
 
 	<link media="all" href="../css/css-intranet-inpe.css" rel="stylesheet" id="intranet-css" /> 
 	<link media="all" href="../css/css-menu.css" rel="stylesheet" id="menu-css" /> 
+	<link media="all" href="../css/css-home.css" rel="stylesheet"/>
 	<link media="all" rel="stylesheet" type="text/css" href="../../css/css-servico-inpe.css"/>
 	<link media="all" href="../css/css-branco-inpe.css" rel="stylesheet">   
 
@@ -26,6 +27,7 @@
 	<script src="../js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
 	<script src="../js/jquery/jquery.cookie.js" type="application/javascript"></script>  
 	<script src="../js/functions.js" type="application/javascript"></script>
+
 
 
 </head>
@@ -63,13 +65,40 @@
 					<div id="main-content">    
 						<div id="content">
 
-							<h1 class="documentFirstHeading">Exposure Time Calculator</h1>
+							<h1 class="documentFirstHeading">Exposure Time Calculator (ETC)</h1>
+							<div class="box">
+								<!-- Begin card IAGPOL-->
+								<div class="card">
+									<div class="container">
+										<a href="?r=/IAGPOL"><h3><b>ETC - IAGPOL</b></h3></a>
+									</div>
+									<div class="container">
+											<a href="?r=/IAGPOL"><img src="../img/pe1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!-- End Card IAGPOL -->
+								<!-- Begin Card SPARC4 -->
+								<div class="card">
+									<div class="container">
+										<a href="?r=/SPARC4"><h3><b>ETC - SPARC4</b></h3></a>
+									</div>
+									<div class="container">
+											<a href="?r=/SPARC4"><img src="../img/pe1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!--End Card SPARC4 -->
+								<!-- Begin Card CD-->
 
-							<ul>
-								<li><a href="?r=/IAGPOL">IAGPOL</a></li>
-								<li><a href="?r=/SPARC4">SPARC4</a></li>
-								<li><a href="?r=/CD">Camera Direta</a></li>
-							</ul>
+								<div class="card">
+									<div class="container">
+										<a href="?r=/CD"><h3><b>ETC - Câmara Direta</b></h3></a>
+									</div>
+									<div class="container">
+										<a href="?r=/CD"><img src="../img/pe1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!--End Card CD -->
+							</div>
                             
                             <p>
                             <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>

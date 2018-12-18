@@ -19,7 +19,13 @@
         
         	<ul>
                 <li><a href="?r=/" title="Home">Home</a></li>
-                <li><a href="./information.php" title="Information">Information</a></li>
+                <li><a href="./information.php" title="Information">Information</a>
+                    <ul>
+                        <li>IAGPOL</li>
+                        <li>SPARC4</li>
+                        <li>CD</li>
+                    </ul>
+                </li>
                 <li><a href="?r=/about" title="About">About</a></li>
     		</ul>
         </li>      
