@@ -63,9 +63,9 @@
 					<div id="main-content">    
 						<div id="content">
 
-							<h1 class="documentFirstHeading">Exposure Time Calculator - Câmera Direta</h1>
+							<h1 class="documentFirstHeading">Exposure Time Calculator - Câmara Direta</h1>
 
-						
+							<p>Página em construção!</p>
                             
                             <p>
                             <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>

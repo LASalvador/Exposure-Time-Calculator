@@ -65,7 +65,7 @@
 
 							<h1 class="documentFirstHeading">Exposure Time Calculator - SPARC4</h1>
 
-						
+							<p>Página em construção!</p>
                             
                             <p>
                             <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>
