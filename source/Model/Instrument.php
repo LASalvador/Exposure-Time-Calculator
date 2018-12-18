@@ -26,6 +26,8 @@
  	private $tTel;
  	/** the transmission in the instrument*/
  	private $tInstr;
+ 	/**The transmission of the filter.*/
+ 	private $tFilter;
 
 
  	/**
@@ -191,6 +193,10 @@
  	{
  		return $this->tTel;
  	}
+ 	/**
+ 	* Sets the tInstr, the transmission in the instrument
+ 	* @param boolean $focal reducer represents the value of focalReducer
+ 	*/
  	public function setTInstr($focal)
  	{
  		if($focal)
@@ -198,11 +204,26 @@
  		else
  			$this->tInstr = 0.95;
  	}
+ 	/**
+ 	* Return the tInstr the transmission in the instrument
+ 	*/
  	public function getTInstr()
  	{
  		return $this->tInstr;
  	}
-
+ 	/**
+ 	*
+ 	*/
+ 	public function setTFilter($filter)
+ 	{
+ 		$reader = new ReaderJSON();
+ 		$tFilter = $reader->readFilter($filter, 'tFilter');
+ 		$this->tFilter = $tFilter;
+ 	}
+ 	public function getTFilter()
+ 	{
+ 		return $this->tFilter;
+ 	}
 
 
 

@@ -52,11 +52,11 @@
 			$instrument->setFArea(0.804);
 			$instrument->setTTel($filter);
 			$instrument->setTInstr($focal);
+			$instrument->setTFilter($filter);
 
-
-			$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning(), $instrument->getFArea(),$instrument->getTTel(),$instrument->getTInstr());
+			$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning(), $instrument->getFArea(),$instrument->getTTel(),$instrument->getTInstr(), $instrument->getTFilter());
 			// Build Observation Object
-			$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning(), $instrument->getFArea(), $instrument->getTTel(), $instrument->getTInstr());
+			$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning(), $instrument->getFArea(), $instrument->getTTel(), $instrument->getTInstr(), $instrument->getTFilter());
 
 			if($mode==1)
 		 	{
