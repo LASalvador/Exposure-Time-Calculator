@@ -1,4 +1,12 @@
-The text below describes the classes used in ETC.
+# Project description
+The Exposure Time Calculator (ETC) is a tool to calculate the integration time or some observational error of an observation. The ETC consists of three ETCs: 
+ - ETC - IAGPOL of the IAGPOL instrument. 
+ - ETC - SPARC4, the SPARC4 instrument. 
+ - ETC - Camara Direta of the Camara Direta instrument. 
+ 
+The ETC was created in PHP 7.1 using the MVC architecture. In addition to these technologies, JSON, HTML5, CSS3 and JavaScript were used.
+
+This documentation is simple and objective to give an overview, so will not go into details of the operation of ETC. For further details refer to the ETC code.
 
 # Class CCD
 This class represents the CCD[link wiki] used in the instrument.
