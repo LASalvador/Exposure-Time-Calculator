@@ -23,10 +23,11 @@
 
 
 		/**
-		* Constructor: Sets up all attributes of CCD.
+		* Constructor: It sets up all attributes of CCD.
 		*
 		* @param int $ccdNumber number choiced on table ccd. 
-		* @param char @filter represent the filter choiced.
+		* @param int $mod, It represents the CCD mode choiced
+		* @param char $filter represent the filter choiced.
 		* @param int $binning binning choiced
 		*/	
 		public function __construct($ccdNumber, $mode ,$filter, $binning)
@@ -40,8 +41,7 @@
 			$this->setPixelSize($reader->readCCDPixelSize($this->getCCDNumber()));
 		}
 		/**
-		* Sets up Readout Noise
-		*
+		* It sets up Readout Noise
 		* @param float $readoutNoise is the CCD's ReadoutNoise
 		*/
 		public function setReadoutNoise($readoutNoise)
@@ -49,78 +49,72 @@
 			$this->readoutNoise = $readoutNoise;
 		}
 		/**
-		* Return the readout noise value
-		*
-		* @return float - readout noise value
+		* It return the readout noise value
+		* @return float $redoutNoise - readout noise value
 		*/
 		public function getReadoutNoise()
 		{
 			return $this->readoutNoise;
 		}
 		/**
-		* Sets up Gain
-		*
-		* @param float $gain is the CCD's gain
+		* It sets up Gain
+		* @param float $gain the CCD's gain
 		*/
 		public function setGain($gain)
 		{
 			$this->gain = $gain;
 		}
 		/**
-		* Return the gain value
-		*
-		* @return float - gain value
+		* It return the gain value
+		* @return float $gain gain value
 		*/
 		public function getGain()
 		{
 			return $this->gain;
 		}
 		/**
-		* Set up QuantumEfficiency value
-		* 
-		* @param float - $quantumEfficiency is the quantumEfficiency value
+		* It sets up QuantumEfficiency value
+		* @param float $quantumEfficiency the quantumEfficiency value
 		*/
 		public function setQuanTumEfficiency($quantum)
 		{
 			$this->quantumEfficiency = $quantum;
 		}
 		/**
-		* Return the quantum efficiency value
-		* 
-		* @return quantum Efficiency value
+		* It returns the quantum efficiency value
+		* @return float $quantumEfficiency quantum Efficiency value
 		*/
 		public function getQuanTumEfficiency()
 		{
 			return $this->quantumEfficiency;
 		}
 		/**
-		* Define the CCD's serial number 
+		* It sets up the CCD's serial number 
 		* @param int $number is the serial number
-		*
 		*/
 		public function setCCDNumber($number)
 		{
 			$this->ccdNumber = $number;
 		}
 		/**
-		* Return the CCD Number
-		* @return string CCDNumber
+		* It returns the CCD Number
+		* @return int $ccdNumber  CCDNumber
 		*/
 		public function getCCDNumber()
 		{
 			return $this->ccdNumber;
 		}
 		/**
-		* Set's up binning
-		* @param int $binning
+		* It Sets up binning
+		* @param int $binning CCD's binning
 		*/
 		public function setBinning($binning)
 		{
 			$this->binning = $binning;
 		}
 		/**
-		* Return binning
-		* @return int binning
+		* It returns binning
+		* @return int $binning binning
 		*/
 		public function getBinning()
 		{
@@ -128,15 +122,16 @@
 		}
 
 		/**
-		* Sets the CCD's pixel size
-		* @param float pixel size
+		* It sets the CCD's pixel size
+		* @param float $pixel CCD's pixel size
 		*/
 		public function setPixelSize($pixel)
 		{
 			$this->pixelSize = $pixel;
 		}
 		/**
-		* Return the CCD's pixel size
+		* It returns the CCD's pixel size
+		* @return float $pixelSize CCD's pixel Size
 		*/
 		public function getPixelSize()
 		{
