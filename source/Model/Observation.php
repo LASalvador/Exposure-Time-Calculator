@@ -108,10 +108,10 @@
  	* @param float $effectiveLenght - EffectiveWaveLenght of Filter
  	* @param float $dTel - Telescope's Diameter
  	* @param float $mag - Magnitude of Source
-  * @param float $fArea - The fraction of the telescope area that effectively collects photons
-  * @param float $tTel - The transmission of the telescope surface
-  * @param float $tInstr - the transmission in the instrument
-  * @param float $tFilter - The transmission of the filter
+   * @param float $fArea - The fraction of the telescope area that effectively collects photons
+   * @param float $tTel - The transmission of the telescope surface
+   * @param float $tInstr - the transmission in the instrument
+   * @param float $tFilter - The transmission of the filter
  	*/
  	public function setNumberPhotons($q, $tSky, $f0, $filterWidth, $effectiveLenght, $dTel , $mag, $fArea, $tTel, $tInstr, $tFilter)
  	{
@@ -225,12 +225,12 @@
  	*/
  	public function setTimeExposure($type,$t = 0, $n=0, $snr = 0, $nPix = 0, $nS = 0, $nR = 0, $g = 0, $binning = 0)
  	{
-   //When the ETC is in mode Int. time -> Polarization error
+    //When the ETC is in mode Int. time -> Polarization error
  		if($type==1) 
  		{
  			$this->timeExposure = $t;
  		}
-   //When the ETC is in mode Polarization error -> Int. time
+    //When the ETC is in mode Polarization error -> Int. time
  		elseif($type==2)
  		{
  			$a = pow($n,2);
@@ -258,7 +258,7 @@
  		$this->fCalib = $value;
  	}
  	/**
-  * It returns the Fcalib
+   * It returns the Fcalib
  	* @return float $fCalib - fCalib
  	*/
  	public function getFcalib()
