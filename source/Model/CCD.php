@@ -25,10 +25,10 @@
 		/**
 		* Constructor: It sets up all attributes of CCD.
 		*
-		* @param int $ccdNumber number choiced on table ccd. 
-		* @param int $mod, It represents the CCD mode choiced
-		* @param char $filter represent the filter choiced.
-		* @param int $binning binning choiced
+		* @param int $ccdNumber - number choiced on table ccd. 
+		* @param int $mod - It represents the CCD mode choiced
+		* @param char $filter - represent the filter choiced.
+		* @param int $binning - binning choiced
 		*/	
 		public function __construct($ccdNumber, $mode ,$filter, $binning)
 		{
@@ -41,8 +41,8 @@
 			$this->setPixelSize($reader->readCCDPixelSize($this->getCCDNumber()));
 		}
 		/**
-		* It sets up Readout Noise
-		* @param float $readoutNoise is the CCD's ReadoutNoise
+		* It sets up the Readout Noise
+		* @param float $readoutNoise - CCD's ReadoutNoise
 		*/
 		public function setReadoutNoise($readoutNoise)
 		{
@@ -57,24 +57,24 @@
 			return $this->readoutNoise;
 		}
 		/**
-		* It sets up Gain
-		* @param float $gain the CCD's gain
+		* It sets up the Gain
+		* @param float $gain - CCD's gain
 		*/
 		public function setGain($gain)
 		{
 			$this->gain = $gain;
 		}
 		/**
-		* It return the gain value
-		* @return float $gain gain value
+		* It return the Gain value
+		* @return float $gain - Gain
 		*/
 		public function getGain()
 		{
 			return $this->gain;
 		}
 		/**
-		* It sets up QuantumEfficiency value
-		* @param float $quantumEfficiency the quantumEfficiency value
+		* It sets up the QuantumEfficiency value
+		* @param float $quantumEfficiency - quantumEfficiency value
 		*/
 		public function setQuanTumEfficiency($quantum)
 		{
@@ -82,7 +82,7 @@
 		}
 		/**
 		* It returns the quantum efficiency value
-		* @return float $quantumEfficiency quantum Efficiency value
+		* @return float $quantumEfficiency - quantum Efficiency value
 		*/
 		public function getQuanTumEfficiency()
 		{
@@ -90,7 +90,7 @@
 		}
 		/**
 		* It sets up the CCD's serial number 
-		* @param int $number is the serial number
+		* @param int $number - the serial number
 		*/
 		public function setCCDNumber($number)
 		{
@@ -98,23 +98,23 @@
 		}
 		/**
 		* It returns the CCD Number
-		* @return int $ccdNumber  CCDNumber
+		* @return int $ccdNumber - CCDNumber
 		*/
 		public function getCCDNumber()
 		{
 			return $this->ccdNumber;
 		}
 		/**
-		* It Sets up binning
-		* @param int $binning CCD's binning
+		* It Sets up the binning
+		* @param int $binning - CCD's binning
 		*/
 		public function setBinning($binning)
 		{
 			$this->binning = $binning;
 		}
 		/**
-		* It returns binning
-		* @return int $binning binning
+		* It returns the binning
+		* @return int $binning - binning
 		*/
 		public function getBinning()
 		{
@@ -123,7 +123,7 @@
 
 		/**
 		* It sets the CCD's pixel size
-		* @param float $pixel CCD's pixel size
+		* @param float $pixel - CCD's pixel size
 		*/
 		public function setPixelSize($pixel)
 		{
@@ -131,13 +131,11 @@
 		}
 		/**
 		* It returns the CCD's pixel size
-		* @return float $pixelSize CCD's pixel Size
+		* @return float $pixelSize - CCD's pixel Size
 		*/
 		public function getPixelSize()
 		{
 			return $this->pixelSize;
 		}
-
-
 	}
 ?>
