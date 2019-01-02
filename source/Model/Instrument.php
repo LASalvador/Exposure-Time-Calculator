@@ -33,10 +33,10 @@
  	/**
  	* Constructor: It sets up the Instrument attributes
  	* 
- 	* @param int $numberWavePlates number of Wave Plates Positions 
- 	* @param float $dTel Telescope's Diameter of aperture
- 	* @param int $focal Focal reducer
- 	* @param CCD $ccd CCD
+ 	* @param int $numberWavePlates - number of Wave Plates Positions 
+ 	* @param float $dTel - Telescope's Diameter of aperture
+ 	* @param int $focal - Focal reducer
+ 	* @param CCD $ccd - CCD
  	*/
  	function __construct($numberWavePlates, $dTel, $focalReducer,$ccd)
  	{
@@ -48,56 +48,56 @@
  		$this->setPlateScale($focalReducer);
  	}
  	/**
- 	* It sets up Number of WavePlate Positions
- 	* @param int $number Number of WavePlate Positions
+ 	* It sets up the Number of WavePlate Positions
+ 	* @param int $number - Number of WavePlate Positions
  	*/
  	public function setNumberWavePlates($number)
  	{
  		$this->numberWavePlates = $number;
  	}
  	/**
- 	* It returns number of waveplate positions
- 	* @return int $numberWavePlates
+ 	* It returns the number of waveplate positions
+ 	* @return int $numberWavePlates - Number of WavePlate Positions
  	*/
  	public function getNumberWavePlates()
  	{
  		return $this->numberWavePlates;
  	}
  	/**
- 	* It sets up Telescope's Diameter of aperture
- 	* @param float aperture Diameter of aperture
+ 	* It sets up the Telescope's Diameter of aperture
+ 	* @param float $aperture - Telescope's aperture diameter
  	*/
  	public function setAperture($aperture)
  	{
  		$this->aperture = $aperture;
  	}
  	/**
- 	* It returns Telescope's Diameter of aperture
- 	* @return float $aperture
+ 	* It returns the Telescope's Diameter of aperture
+ 	* @return float $aperture - Telescope's Diameter of aperture
  	*/
  	public function getAperture()
  	{
  		 return $this->aperture;	
  	}
  	/**
- 	* It sets up Focal Reducer
- 	* @param boolean $focalReducer
+ 	* It sets up the Focal Reducer
+ 	* @param boolean $focalReducer - Focal Reducer 
  	*/
  	public function setFocalReducer($focalReducer)
  	{
  		$this->focalReducer = $focalReducer;
  	}
  	/**
- 	* It returns Focal Reducer
- 	* @return boolean Focal reducer
+ 	* It return the Focal Reducer
+ 	* @return boolean $focalReducer - Focal reducer
  	*/
  	public function getFocalReducer()
  	{
  		return $this->focalReducer;
  	}
  	/**
- 	* It sets up Plate Scale
- 	* @param boolean $focalReducer focal reducer on Instrument
+ 	* It sets up the Plate Scale
+ 	* @param boolean $focalReducer - focal reducer on Instrument
  	*/
  	public function setPlateScale($focalReducer)
  	{	//Defining the factor 
@@ -113,15 +113,15 @@
  	}
  	/**
  	* It returns the PlateScale   
- 	* @return float $plateScale PlateScale
+ 	* @return float $plateScale - PlateScale
  	*/
  	public function getPlateScale()
  	{
  		return $this->plateScaleCCD;
  	}
  	/**
- 	* It sets up CCD
- 	* @param CCD $ccd CDD used in the observation
+ 	* It sets up the CCD
+ 	* @param CCD $ccd - CDD used in the observation
  	*/
  	public function setCCD(CCD $ccd)
  	{
@@ -129,7 +129,7 @@
  	}
  	/** 
  	* It returns the CCD
-	* @return CCD $ccd CCD used in the observation
+	* @return CCD $ccd - CCD used in the observation
  	*/
  	public function getCCD()
  	{
@@ -137,7 +137,7 @@
  	}
  	/**
  	* It sets up the Plate Scale Telescope
- 	* @param float $dTel telescope Diameter
+ 	* @param float $dTel - telescope Diameter
  	*/
  	public function setPlateScaleTelescope($dTel)
  	{	
@@ -155,15 +155,15 @@
  	}
  	/**
  	* It returns the plate scale telescope
-	* @return float $plateScaleTelescope Telescope's Plate Scale
+	* @return float $plateScaleTelescope - Telescope's Plate Scale
  	*/
  	public function getPlateScaleTelescope()
  	{
  		return $this->plateScaleTelescope;
  	}
  	/**
- 	* It sets the fArea of telescope
- 	* @param float $area The fraction of the telescope area that effectively collects photons 
+ 	* It sets up the fArea of telescope
+ 	* @param float $area - The fraction of the telescope area that effectively collects photons 
  	*/
  	public function setFArea($area)
  	{
@@ -171,15 +171,15 @@
  	}
  	/**
  	* It returns the fArea 
-	* @return float $fArea fArea
+	* @return float $fArea - The fraction of the telescope area that effectively collects photons 
  	*/
  	public function getFArea()
  	{
  		return $this->fArea;
  	}
  	/**
- 	* It sets the tTel
- 	* @param char $filter represents the chosen filter
+ 	* It sets up the tTel, The transmission of the telescope surface
+ 	* @param char $filter - represents the chosen filter
  	*/
  	public function setTTel($filter)
  	{
@@ -189,7 +189,7 @@
  	}
  	/**
  	* It returns tTel
-	* @return float $tTel
+	* @return float $tTel - The transmission of the telescope surface
  	*/
  	public function getTTel()
  	{
@@ -197,7 +197,7 @@
  	}
  	/**
  	* It sets up the tInstr, the transmission in the instrument
- 	* @param boolean $focal reducer represents the value of focalReducer
+ 	* @param boolean $focal reducer - represents the value of focalReducer
  	*/
  	public function setTInstr($focal)
  	{
@@ -208,15 +208,15 @@
  	}
  	/**
  	* It returns the tInstr the transmission in the instrument
-	* @return float $TInstr 
+	* @return float $TInstr - the transmission in the instrument
  	*/
  	public function getTInstr()
  	{
  		return $this->tInstr;
  	}
  	/**
- 	*It sets up the tFilter
-	* @param char $filter represents the chosen filter
+ 	*It sets up the tFilter, The transmission of the filter
+	* @param char $filter - represents the chosen filter
  	*/
  	public function setTFilter($filter)
  	{
@@ -225,20 +225,12 @@
  		$this->tFilter = $tFilter;
  	}
 	/* 
-	* It returns the tFilter
-	* @return float $tFilter 
+	* It returns the tFilter, The transmission of the filter
+	* @return float $tFilter, The transmission of the filter 
 	*/
  	public function getTFilter()
  	{
  		return $this->tFilter;
  	}
-
-
-
-
-
-
-
-
  }
 ?>
