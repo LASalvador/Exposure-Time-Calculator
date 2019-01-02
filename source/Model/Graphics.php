@@ -15,20 +15,19 @@
 
 
 		/**
-		* Constructor: Sets up Graphics attributes
-		* @param $observationObject Observation object
-		* @param $skyObject Sky object
-		* @param $instrument Instrument object 
+		* Constructor: It Sets up Graphics attributes
+		* @param $observationObject - Observation object
+		* @param $skyObject - Sky object
+		* @param $instrument - Instrument object 
 		*/
 		function __construct($observationObject,$skyObject, $instrumentObject)
 		{
-			
 			$this->setObservation($observationObject);
 			$this->setSky($skyObject);
 			$this->setInstrument($instrumentObject);
 		}
 		/**
-		* Sets Observation
+		* It Sets up the Observation 
 		* @param Observation $observationObject
 		*/
 		public function setObservation(Observation $observationObject)
@@ -36,51 +35,52 @@
 			$this->observation = $observationObject;
 		}
 		/**
-		* Return Observation
-		* @return observation
+		* It Returns the Observation object
+		* @return $observation - Observation object
 		*/
 		public function getObservation()
 		{	
 			return $this->observation;
 		}
 		/**
-		* Sets Sky
-		* @param Sky $skyObject
+		* It Sets up the Sky object
+		* @param Sky $skyObject - Sky object
 		*/
 		public function setSky(Sky $skyObject)
 		{	
 			$this->sky = $skyObject;
 		}
 		/**
-		* Return sky
-		* @return sky
+		* It Returns the sky object
+		* @return $sky - Sky object
 		*/
 		public function getSky()
 		{	
 			return $this->sky;
 		}
 		/**
-		* Sets Instrument
-		* @param Instrument $instrumentObject
+		* It Sets up the Instrument object
+		* @param Instrument $instrumentObject - object
 		*/
 		public function setInstrument(Instrument $instrumentObject)
 		{
 			$this->instrument = $instrumentObject;
 		}
 		/**
-		* Return object
-		* @return Instrument
+		*It returns Instrument object 
+		* @return Instrument $instrument - Instrument object
 		*/
 		public function getInstrument()
 		{	
 			return $this->instrument;
 		}
 		/**
-		* Generate a dataset to build the graph. The values is generate from 1 to 500. If $timeIntegration>500 
-		* @param float $timeIntegration Integration Time 
-		* @param int $nwp Number of WavePlates Positions 
-		* @param float $wave Waveplate 
-		* @return Array $data dataset to build the graph
+		* Generate a dataset to build the graph. 
+		* If $timeIntegration > 500 the values are generate from 1 to 500 else the values are to $timeIntegration
+		* @param float $timeIntegration - Integration Time 
+		* @param int $nwp - Number of WavePlates Positions 
+		* @param float $wave - Waveplate 
+		* @return Array $data - dataset to build the graph
 		*/
 		public function generateValues($timeIntegration , $nwp, $wave)
 		{
@@ -94,40 +94,44 @@
 				$timeRange = 500;
 			}
 			$data = array();
-			// defining the values at $time = 1
+			// It's defining the values at $time = 1s
+			
+			// In wavelate of 1/2 wave
 			if($wave=='1/2')
 	 		{	
 	 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(), $this->getInstrument()->getCCD()->getBinning());
 
 				$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 	 		}
+			// In wavelate of 1/4 wave
 	 		elseif ($wave=='1/4')
 	 		{	
-	 				$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
+	 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), 1, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
 				$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 	 		}
-
+			//It's Setting the values to 1s
 			$data[] = array('',1, round($this->getObservation()->getSigmaP(),3) );
-			//Defining the values begin 10 to $timeRange
+			//It's Defining the values begin 10 to $timeRange in step 10
 			for ($time=10; $time <=$timeRange; $time+=10) 
-			{ 
+			{ 	// In wavelate of 1/2 wave
 				if($wave=='1/2')
 		 		{
 		 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
 					$this->getObservation()->setSigmaP(1,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 		 		}
+				// In wavelate of 1/4 wave
 		 		elseif ($wave=='1/4')
 		 		{	
 		 			$this->getObservation()->setSignalNoiseRatio(1,$this->getObservation()->getNumberPhotons(), $time, $this->getObservation()->getNumberPixels(), $this->getSky()->getNumberPhotons(),$this->getInstrument()->getCCD()->getReadoutNoise(),$this->getInstrument()->getCCD()->getGain(),  $this->getInstrument()->getCCD()->getBinning());
 
 					$this->getObservation()->setSigmaP(2,$this->getObservation()->getSignalNoiseRatio(),$nwp);
 		 		}
-
-
+				//It's Saving the values in Array
 				$data[] = array('', $time, round($this->getObservation()->getSigmaP(), 3) );
 			}
+			//It's retorning the Array
 			return $data;
 		}
 	}
