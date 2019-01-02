@@ -10,22 +10,25 @@
  	use App\Model\Graphics;
 
 	final class Appcontroller extends Controller
-	{
+	{	//Load the homepage
 		public static function index()
 		{
-			
 			return self::view('home');
 		}
+		//load the about page
 		public static function about()
 		{
 			return self::view('about');
 		}
+		//load the form required
 		public static function loadForm($etc)
 		{
 			return self::view('form'.$etc);
 		}
+		// do the calculations to ETC IAGPOL
 		public static function submitFormIAGPOL()
 		{
+			//Getting values
 			$magnitude  = self::params('tMag');
 			$nwp = self::params('tNwp');
 			$wave = self::params('tWave');
@@ -41,9 +44,9 @@
 			$sigmaP = self::params('tSigmaP');
 			$time = self::params('tTime');
 			$mode = self::params('tMode');
-
+		
 			$detector = json_decode($detector);
-
+			//Building objects
 			$filtro =  new Filter($filter); 
 			
 			$ccd = new CCD($detector->serialNumber, $detector->mode, $filter, $binning);
@@ -57,7 +60,7 @@
 			$sky = new Sky($tSky, $airMass,$filter, $moon , $instrument->getCCD()->getQuanTumEfficiency(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $instrument->getPlateScale(),1, $ccd->getBinning(), $instrument->getFArea(),$instrument->getTTel(),$instrument->getTInstr(), $instrument->getTFilter());
 			// Build Observation Object
 			$observation = new Observation($instrument->getCCD()->getQuanTumEfficiency(), $sky->getTransparencySky(), $filtro->getFluxZero(), $filtro->getFilterWidth(), $filtro->getEffectiveLenght(), $instrument->getAperture(), $magnitude, $aperture, $instrument->getPlateScale(), 1, $ccd->getBinning(), $instrument->getFArea(), $instrument->getTTel(), $instrument->getTInstr(), $instrument->getTFilter());
-
+			// Defining mode
 			if($mode==1)
 		 	{
 		 		$inTime = $time;
@@ -100,11 +103,10 @@
 		 	$snr = $observation->getSignalNoiseRatio();
 			$sigmaP = $observation->getSigmaP();
  			$sigmaV = $observation->getSigmaV();
-
+			//Generate Data set
 		 	$graph = new Graphics($observation, $sky, $instrument);
 			$data = $graph->generateValues($observation->getTimeExposure(), $nwp, $wave);
-
-
+			//Building the array
 			$results = array(
 				'inMag' => $magnitude,
 				'inNwp' => $nwp,
@@ -139,7 +141,9 @@
 				'nSky' =>  $sky->getNumberPhotons(),
 				'dataSet' => $data,
 			);
+			//Saving values 
 			self::saveValues('results', $results);
+			//Redirect the page
 			self::redirect('/IAGPOL/Output');
 		}
 		public static function loadOuput($etc)
