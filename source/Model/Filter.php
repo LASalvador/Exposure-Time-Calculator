@@ -9,15 +9,14 @@
  {
  	/** Filter Width*/
  	private $filterWidth;
- 	/** Effective wavelength of the filter*/
+ 	/** Effective wavelength*/
  	private $effectiveLenght;
- 	/** Flux Magnitude Zero of the filter */
+ 	/** Flux Magnitude Zero*/
  	private $fluxZero;
 
  	/**
- 	* Constructor: Sets up the Filter attributes
- 	* 
- 	* @param Filter choiced by the User
+ 	* Constructor: It Sets up the Filter attributes
+ 	* @param $filter - Filter choiced by the User
  	*/
  	function __construct($filter)
  	{
@@ -27,48 +26,48 @@
  		$this->setFluxZero($reader->readFilter($filter,'fluxZero'));
  	}
  	/**
- 	* Set's up Filter Width
- 	* @param float $filter filter width 
+ 	* It Sets up the Filter Width
+ 	* @param float $filter - Filter width 
  	*/
  	public function setFilterWidth($filter)
  	{
  		$this->filterWidth = $filter;
  	}
  	/**
- 	* Return the Filter Width
- 	* @return float Filter Width
+ 	* It Returns the Filter Width
+ 	* @return float $filterWidth - Filter Width
  	*/
  	public function getFilterWidth()
  	{
  		return $this->filterWidth;
  	}
  	/**
- 	* Set's the Effective Wavelenght
- 	* @param float $effective wavelenght
+ 	* It Sets up the Effective Wavelenght
+ 	* @param float $effective - Effective wavelenght
  	*/
  	public function setEffectiveLenght($effective)
  	{
  		$this->effectiveLenght = $effective;
  	}
  	/**
- 	* Return Effective Wavelenght
- 	* @return float wavelenght
+ 	* It returns the Effective Wavelenght
+ 	* @return float $effectiveLenght - Effecitive wavelenght
  	*/
  	public function getEffectiveLenght()
  	{
  		return $this->effectiveLenght;
  	}
  	/**
- 	* Set's up Flux Magnitude Zero
- 	* @param float $flux Flux Magnitude Zero
+ 	* It Sets up the Flux Magnitude Zero
+ 	* @param float $flux - Flux Magnitude Zero
  	*/
  	public function setFluxZero($flux)
  	{
  		$this->fluxZero = $flux;
  	}
  	/**
- 	* Return Flux Magnitude Zero
- 	* @return float flux Magnitude Zero
+ 	* It returns the Flux Magnitude Zero
+ 	* @return float $fluxZero - flux Magnitude Zero
  	*/
  	public function getFluxZero()
  	{
