@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * This class read the JSON file and returns the requires values
+	 * This class reads the JSON file and returns the requires values
 	 * @author: Lucas Almeida Salvador
 	 */
 	namespace App\Model;
@@ -8,8 +8,8 @@
 	{
 		/**
 		* It Reads the Quantum Efficiency value
-		* @param Int $ccdNumber CCD's serial number
-		* @param String $FilterColor Filter selected
+		* @param Int $ccdNumber - CCD's serial number
+		* @param String $FilterColor - Filter selected
 		*/
 		function readQuantumEfficiency($ccdNumber, $filterColor)
 		{
@@ -19,9 +19,9 @@
 		}
 		/**
 		* It reads the CCD values as gain, readout Noise etc.
-		* @param Int $ccdNumber CCD's serial number
-		* @param int $ccdMode Operation Mode of CCD
-		* @param String $attribute attribute required
+		* @param Int $ccdNumber - CCD's serial number
+		* @param int $ccdMode - Operation Mode of CCD
+		* @param String $attribute - attribute required
 		*/
 		function readCCDvalues($ccdNumber,$ccdMode, $attribute)
 		{
@@ -31,7 +31,7 @@
 		}
 		/**
 		* It reads the CCD pixel Size
-		* @param Int $ccdNumber CCD's serial number
+		* @param Int $ccdNumber - CCD's serial number
 		*/
 		function readCCDPixelSize($ccdNumber)
 		{
@@ -41,8 +41,8 @@
 		}
 		/**
 		* It reads the Filter values as effective wavelength, flux zero etc
-		* @param String $filter filter selected
-		* @param String $attribute attribute selected
+		* @param String $filter - filter selected
+		* @param String $attribute - attribute selected
 		*/
 		function readFilter($filter, $attribute)
 		{
@@ -51,10 +51,10 @@
 			return  $json->$filter->$attribute;
 		}
 		/**
-		* It reads Magnitude Sky values
-		* @param String $filter filter selected
-		* @param String $attribute attribute selected
-		* @param String $phase moon phase selected
+		* It reads the Magnitude Sky values
+		* @param String $filter - filter selected
+		* @param String $attribute - attribute selected
+		* @param String $phase - moon phase selected
 		*/
 		function readMsky($filter, $attribute, $phase)
 		{
