@@ -3,7 +3,7 @@
 Habilite o JavaScript do navegador para que o site funcione corretamente.
 </noscript>
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/barra-governo.php"); ?>
+<?php include("barra-governo.php"); ?>
 
 <div class="fundo-topo" id="topo">
 	<div class="conteudo-topo">
@@ -63,10 +63,10 @@ Habilite o JavaScript do navegador para que o site funcione corretamente.
         
         	<div class="clear"><!-- --></div>
             <ul>
-                <li><a href="http://www.facebook.com/pages/Instituto-Nacional-de-Pesquisas-Espaciais/124907444261208" title="Acesse Facebook" target="_blank"><img src="/img/facebookIcon.png" alt="Facebook"></a></li>
-                <li><a href="https://twitter.com/inpe_mct" title="Acesse Twitter" target="_blank"><img src="/img/twitterIcon.png" alt="Twitter"></a></li>
-                <li><a href="http://www.youtube.com/user/inpemct" title="Acesse Youtube" target="_blank"><img src="/img/youtubeIcon.png" alt="Youtube"></a></li>
-                <li><a href="/rss.php" title="Acesse RSS" target="_blank"><img src="/img/rssIcon.png" alt="RSS"></a></li>
+                <li><a href="http://www.facebook.com/pages/Instituto-Nacional-de-Pesquisas-Espaciais/124907444261208" title="Acesse Facebook" target="_blank"><img src="../img/facebookIcon.png" alt="Facebook"></a></li>
+                <li><a href="https://twitter.com/inpe_mct" title="Acesse Twitter" target="_blank"><img src="../img/twitterIcon.png" alt="Twitter"></a></li>
+                <li><a href="http://www.youtube.com/user/inpemct" title="Acesse Youtube" target="_blank"><img src="../img/youtubeIcon.png" alt="Youtube"></a></li>
+                <li><a href="/rss.php" title="Acesse RSS" target="_blank"><img src="../img/rssIcon.png" alt="RSS"></a></li>
             </ul>
         </div>
         

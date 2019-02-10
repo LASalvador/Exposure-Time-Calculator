@@ -3,9 +3,7 @@
 	 * This class represents the CCD.
 	 * @author: Lucas Almeida Salvador
 	 */
-	namespace App\Model;
 	
-	use App\Model\ReaderJSON;
 	class CCD
 	{
 		/**  CCD's Readout Noise*/

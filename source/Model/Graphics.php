@@ -3,7 +3,6 @@
 	 * This class generate the data set to build the graph 
 	 * @author: Lucas Almeida Salvador
 	 */
-	namespace App\Model;
 	class Graphics 
 	{
 		/** Observation object */

@@ -1,65 +1,119 @@
-<?php 
-	require_once __DIR__.'/vendor/autoload.php';
+<?php include($_SERVER['DOCUMENT_ROOT']."include/functions.php"); ?>
 
-	use App\Router;
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" dir="ltr">
+<head>
+	<title>INPE/ETC</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-	$app = new Router();
-	//rota para home da ETC
-	$app->get('/',function(){
-		return \App\Controller\AppController::index();
-	});
-	// rota para carregar about da ETC 
-	$app->get('/about',function(){
-		return \App\Controller\AppController::about();
-	});
-	// rota para carregar o form IAGPOL
-	$app->get('/IAGPOL',function(){
-		return \App\Controller\AppController::loadForm('IAGPOL');
-	});
-	// rota para enviar o form IAGPOL
-	$app->post('/IAGPOL',function(){
-		return \App\Controller\AppController::submitFormIAGPOL();
-	});
-	// rota para carregar o information do IAGPOL
-	$app->get('/IAGPOL/Information', function() {
-		return \App\Controller\AppController::loadInformation('IAGPOL');
-	});
-	//rota para cerregar o output do IAGPOL
-	$app->get('/IAGPOL/Output',function(){
-		return \App\Controller\AppController::loadOuput('IAGPOL');
-	});
-	// rota para carregar o form SPARC4
-	$app->get('/SPARC4',function(){
-		return \App\Controller\AppController::loadForm('SPARC4');
-	});
-	// rota para enviar o form SPARC4
-	$app->post('/SPARC4',function(){
-		return \App\Controller\AppController::submitFormSPARC4();
-	});
-	// rota para carregar o information do SPARC4
-	$app->get('/SPARC4/Information', function() {
-		return \App\Controller\AppController::loadInformation('SPARC4');
-	});
-	//rota para cerregar o output do SPARC4
-	$app->get('/SPARC4/Output',function(){
-		return \App\Controller\AppController::loadOuput('SPARC4');
-	});
-	// rota para carregar o form SPARC4
-	$app->get('/CD',function(){
-		return \App\Controller\AppController::loadForm('CD');
-	});
-	// rota para enviar o form SPARC4
-	$app->post('/CD',function(){
-		return \App\Controller\AppController::submitFormCD();
-	});
-	// rota para carregar o information do SPARC4
-	$app->get('/CD/Information', function() {
-		return \App\Controller\AppController::loadInformation('CD');
-	});
-	//rota para cerregar o output do SPARC4
-	$app->get('/CD/Output',function(){
-		return \App\Controller\AppController::loadOuput('CD');
-	});
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="/img/favicon.png" />
 
-	$app->run();
-?>
+	<link media="screen" href="css/plone.css" type="text/css" rel="stylesheet" id="plone-css" />    
+	<link media="all" href="css/main.css" type="text/css" rel="stylesheet" id="main-css" />  
+	<link media="all" href="css/style.css" type="text/css" rel="stylesheet" id="style-css" />
+
+	<link media="all" href="css/css-intranet-inpe.css" rel="stylesheet" id="intranet-css" /> 
+	<link media="all" href="css/css-menu.css" rel="stylesheet" id="menu-css" /> 
+	<link media="all" href="css/css-home.css" rel="stylesheet"/>
+	<link media="all" rel="stylesheet" type="text/css" href="css/css-servico-inpe.css"/>
+	<link media="all" href="/css/css-branco-inpe.css" rel="stylesheet">   
+
+	<!-- CONTRASTE -->
+	<link media="all" href="css/css-intranet-inpe-contraste.css" rel="stylesheet" id="intranet-css-contraste" /> 
+	<link media="all" href="css/css-menu-contraste.css" rel="stylesheet" id="menu-css-contraste" />   
+
+	<script src="js/jquery/jquery-1.9.1.js" type="application/javascript"></script>  
+	<script src="js/jquery/jquery.cookie.js" type="application/javascript"></script>  
+	<script src="js/functions.js" type="application/javascript"></script>
+
+
+
+</head>
+
+<body>
+	<!-- TOPO -->    
+	<?php include("views/topo.php"); ?>
+
+
+	<!-- CONTEUDO -->
+	<div id="main" role="main">
+		<div id="plone-content">
+
+			<div id="portal-columns" class="row">
+
+				<!-- Column 1 - MENU -->      
+				<?php include("views/menu.php"); ?>	
+
+				<!-- Conteudo -->
+				<div id="portal-column-content" class="cell width-3:4 position-1:4">
+
+					<div id="main-content">    
+						<div id="content">
+
+							<h1 class="documentFirstHeading">Exposure Time Calculator (ETC)</h1>
+							<div class="box">
+								<!-- Begin card IAGPOL-->
+								<div class="card">
+									<div class="container">
+										<a href="views/formIAGPOL.php"><h3><b>ETC - IAGPOL</b></h3></a>
+									</div>
+									<div class="container">
+											<a href="views/formIAGPOL.php"><img src="img/bc1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!-- End Card IAGPOL -->
+								<!-- Begin Card SPARC4 -->
+								<div class="card">
+									<div class="container">
+										<a href=""><h3><b>ETC - SPARC4</b></h3></a>
+									</div>
+									<div class="container">
+											<a href=""><img src="img/bc1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!--End Card SPARC4 -->
+								<!-- Begin Card CD-->
+
+								<div class="card">
+									<div class="container">
+										<a href=""><h3><b>ETC - Câmara Direta</b></h3></a>
+									</div>
+									<div class="container">
+										<a href=""><img src="img/bc1.jpg" alt="img pe1"></a>
+									</div>
+								</div>
+								<!--End Card CD -->
+							</div>
+                            
+                            <p>
+                            <strong>Desenvolvido por <a href="http://www.cea.inpe.br/" title="Acesse COCTI/INPE" target="_blank">CEA/INPE</a></strong>
+                            </p>
+							
+                            <div class="clear"></div>
+
+
+						</div>
+					</div>
+				</div>
+				<!-- Fim do Conteudo -->            
+
+
+				<div class="clear"><!-- --></div>
+				<div id="voltar-topo"><a href="#topo" title="Acesse Voltar para o topo">Voltar para o topo</a></div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- FIM CONTEUDO -->
+
+	<div class="clear"><!-- --></div>
+
+	<!-- Footer -->
+	<?php include("views/rodape.php"); ?>
+	<!-- /Footer-->
+
+</body>  
+</html>

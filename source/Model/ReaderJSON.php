@@ -3,7 +3,6 @@
 	 * This class reads the JSON file and returns the requires values
 	 * @author: Lucas Almeida Salvador
 	 */
-	namespace App\Model;
 	class ReaderJSON
 	{
 		/**

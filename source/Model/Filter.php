@@ -3,8 +3,7 @@
   * This class represents the Filter used during the observation
   * @author: Lucas Almeida Salvador
   */
- namespace App\Model;
- use App\Model\ReaderJSON;
+ include 'ReaderJSON.php';
  class Filter 
  {
  	/** Filter Width*/

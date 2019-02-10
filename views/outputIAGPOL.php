@@ -1,7 +1,7 @@
  <?php 
  	session_start();
 
- 	include __DIR__.'/../libs/phplot-6.2.0/phplot.php';
+ 	include '../libs/phplot-6.2.0/phplot.php';
 
  	/** getting values used in Output */
 	$time = isset($_SESSION['results']['timeExposure']) ? $_SESSION['results']['timeExposure'] : 0;

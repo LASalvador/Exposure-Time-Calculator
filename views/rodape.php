@@ -75,4 +75,4 @@
 	</div>  
 </div>
 
-<?php include("views/rodape-governo.php"); ?>
+<?php include("rodape-governo.php"); ?>

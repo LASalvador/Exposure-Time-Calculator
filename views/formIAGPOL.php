@@ -1,5 +1,3 @@
-<?php include($_SERVER['DOCUMENT_ROOT']."/include/functions.php"); ?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" dir="ltr">
 <head>
@@ -37,7 +35,7 @@
 
 <body onkeypress="key(event)">
 	<!-- TOPO -->    
-	<?php include("views/topo.php"); ?>
+	<?php include("topo.php"); ?>
 
 
 	<!-- CONTEUDO -->
@@ -46,21 +44,10 @@
 
 			<div id="portal-columns" class="row">
 
-				<!-- RASTRO -->
-				<div id="viewlet-above-content">
-					<div id="portal-breadcrumbs">
-						<span id="breadcrumbs-you-are-here">
-							Você está aqui: 
-							<span>
-								<?= rastro();?>
-							</span>
-						</span>
-					</div>
-				</div>
 
 
 				<!-- Column 1 - MENU -->      
-				<?php include("views/menu.php"); ?>	
+				<?php include("menu.php"); ?>	
 
 				<!-- Conteudo -->
 				<div id="portal-column-content" class="cell width-3:4 position-1:4">
@@ -77,7 +64,7 @@
                             <strong>ETC</strong>
 							<br>
 							<!--Form -->
-							<form method="post" id="fEtc" name="etcForm" action="?r=/IAGPOL">
+							<form method="post" id="fEtc" name="etcForm" action="../source/Controller/ControllerIAGPOL.php">
 								<fieldset>
 									<p>
 										<label for="cMag">Magnitude</label><br>
@@ -141,7 +128,7 @@
 											   <!--<a class="tablink w3-bar-item w3-button" onclick="openTab(event, '19002')">iKon - 19002</a>-->
 											  </div>
 											  <!-- Begin Table -->
-											 	<?php include("views/tabelasCCDIAGPOL.php"); ?>
+											 	<?php include("tabelasCCDIAGPOL.php"); ?>
 											  <!-- End Table -->
 
 											  <div class="w3-container w3-light-grey w3-padding">
@@ -245,7 +232,7 @@
 	<div class="clear"><!-- --></div>
 
 	<!-- Footer -->
-	<?php include("views/rodape.php"); ?>
+	<?php include("rodape.php"); ?>
 	<!-- /Footer-->
 
 </body>  

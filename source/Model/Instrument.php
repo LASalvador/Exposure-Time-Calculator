@@ -3,9 +3,7 @@
   * This class represents the Instrument used during the observation and its main attributes
   * @author: Lucas Almeida Salvador
   */
- namespace App\Model;
 	
- use App\Model\ReaderJSON;
  class Instrument 
  {
  	/** Number of Wave Plates Positions to the Instrument*/
